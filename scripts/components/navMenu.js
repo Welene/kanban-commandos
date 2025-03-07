@@ -214,5 +214,8 @@ function handleKeyboardToggle(event) {
     }
 }
 
+// behövs funktionallitet för att bara få upp admin valet när man har role admin:
+// man ska loggas ut när man klickar på logga ut och då rensas currentUser i localStorage
+
 // Exportera renderHamburgerMenu så den kan användas i andra delar av applikationen
 export { renderHamburgerMenu };
