@@ -1,0 +1,1 @@
+// Här ska kod som har med localStorage att göra skrivas, t ex spara/hämta från localStorage

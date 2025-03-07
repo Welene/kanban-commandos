@@ -1,0 +1,1 @@
+// Här ska funktionen för att lägga till produkter i kundvagnen
