@@ -1,3 +1,6 @@
+/* Font imports */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap");
+
 /* Base */
 * {
     padding: 0;
@@ -8,26 +11,21 @@
 /* Variables */
 :root {
     --dark-grey-bg-color: #605858;
-    --light-grey-bg-color: #EEEEEE;
+    --light-grey-bg-color: #eeeeee;
     --white-bg-color: #fff;
     --black-bg-color: #000;
-    --red-bg-color: #EB5757;
-
+    --red-bg-color: #eb5757;
     --black-text-color: #000;
     --white-text-color: #fff;
 }
 
 /* Utils */
 .content-wrapper {
-    max-width: 390px;
-    margin: 0 auto;
-    border: 1px solid #000;
-    background-color: green;
+    width: 100%;
+}
+
+body {
+    font-family: "Fira Sans", sans-serif;
 }
 
 /* ==== INDEX PAGE ==== */
-body {
-    color: var(--red-bg-color);
-    background-color: var(--dark-grey-bg-color);
-}
-
