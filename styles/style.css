@@ -30,8 +30,7 @@ body {
 
 /* ==== INDEX PAGE ==== */
 .index {
-    height: 100vh;
-    display:  flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -49,7 +48,18 @@ body {
     z-index: -1;
 }
 
+.content-wrapper__heading {
+    font-weight: 600;
+    font-size: 2.5rem;
+    font-family: "Fira Sans", sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 3.5rem 1rem 0rem 1rem;
+    text-align: center;
+    letter-spacing: .5rem;
+}
+
 .content-wrapper__intro-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,8 +67,9 @@ body {
 }
 
 .content-wrapper__logo {
-    margin-bottom: 2rem;
+    margin-bottom: 10rem;
     margin-top: 6rem;
+    height: 10rem;
 }
 
 .content-wrapper__btn {
@@ -71,5 +82,7 @@ body {
     border-style: none;
     color: #414141;
     background-color: rgba(255, 255, 255, 0.75);
-    box-shadow: 0px 8px 10px -2px rgb(39, 39, 39);
+    box-shadow: 0px 0px 20px 0px #2e2e2e;
+    position: relative;
+    bottom: 2rem;
 }
