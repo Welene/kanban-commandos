@@ -139,7 +139,7 @@ body {
 
 .menu__link {
     text-decoration: none;
-    color: var(--primary-white);
+    color: var(--white-text-color);
     font-size: 1.3rem;
     font-weight: 600;
     padding: 0.7rem 1.1rem;
@@ -153,4 +153,8 @@ body {
 .menu__link--logout {
     border-color: var(--red-bg-color);
     color: var(--red-bg-color);
+}
+
+.menu__link--active {
+    border-color: var(--light-grey-bg-color);
 }

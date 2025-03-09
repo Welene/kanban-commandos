@@ -88,9 +88,9 @@ function renderHamburgerMenu() {
                             : ""
                     }
 
-                    <!-- Logga ut-länk visas endast om det finns en inloggad användare -->
+                    <!-- Logga ut-länk visas endast om det finns en inloggad användare med ett username-->
                     ${
-                        currentUser
+                        currentUser && currentUser.username
                             ? `
                             <li class="menu__item">
                                 <a id="logoutLink" class="menu__link menu__link--logout" href="./index.html" aria-label="Log out from the system">
