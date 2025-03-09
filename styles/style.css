@@ -128,11 +128,6 @@ body {
     padding: 0.4rem;
 }
 
-.menu__item:last-child {
-    border-color: var(--red-bg-color);
-    color: var(--red-bg-color);
-}
-
 .menu__link--logo {
     align-self: center;
     justify-content: center;
@@ -153,4 +148,9 @@ body {
     border-radius: 10px;
     min-width: 70%;
     width: 100%;
+}
+
+.menu__link--logout {
+    border-color: var(--red-bg-color);
+    color: var(--red-bg-color);
 }
