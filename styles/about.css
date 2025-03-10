@@ -1,12 +1,12 @@
 .about-section {
-    background-color: var(--light-grey-bg-color);
-    background-image: url(/assets/bg-images/leafbg.svg);
     padding: 2rem;
 }
 
-.about__content-wrapper {
+.content-wrapper--about {
     margin: 0 auto;
     text-align: center;
+    background-color: var(--light-grey-bg-color);
+    background-image: url(/assets/bg-images/leafbg.svg);
 }
 
 .about__title {
