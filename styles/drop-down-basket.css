@@ -1,0 +1,38 @@
+.overlay-basket {
+    position: relative;
+    background-color: var(--red-bg-color);
+    width: 100vw;
+    left: -16px;
+    height: 433px;
+    padding: 1rem;
+}
+
+.overlay-basket__title {
+    text-align: center;
+}
+
+.basket__list {
+    margin: auto 0;
+    list-style: none;
+    width: 100%;
+}
+
+.overlay-basket__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.separator {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 20px;
+    background-color: aqua;
+}
+
+.separator::before {
+    content: '..............';
+    flex-grow: 1;
+    text-align: center;
+}

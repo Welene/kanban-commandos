@@ -41,6 +41,31 @@
                     <span class="header__basket-item-count">16</span>
                 </button>
             </header>
+
+            <section id="overlayBasketBox" class="overlay-basket">
+                <h2 class="overlay-basket__title">Översikt kundvagn</h2>
+                <ul id="basketList" class="basket__list">
+                    <li data="basketItem" class="overlay-basket__item">
+                        <section id="basketItems">
+                            <p id="basketItemTitle">Karlstad</p>
+                            <p id="basketItemCount">x2</p>
+                        </section>
+                        <div class="separator"></div>
+                        <p id="basketItemPrice">27kr</p>
+                    </li>
+                </ul>
+                <section id="basketTotal" class="basket-totalt-box">
+                    <p id="basketTotalTitle">Totalt</p>
+                    <p id="basketTotalAmount">101kr</p>
+                </section>
+                <button
+                    id="basketPreviewOrderBtn"
+                    class="basket-preview-order-btn"
+                >
+                    Förhandsranska beställning
+                </button>
+            </section>
+
             <main class="content-wrapper__intro-content">
                 <img
                     src="../assets/icons/logo-red.svg"
