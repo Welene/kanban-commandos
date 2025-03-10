@@ -10,26 +10,7 @@ function renderHamburgerMenu() {
 
     const burgerHTML = `
         <div class="menu">
-            <input
-                type="checkbox"
-                class="menu__checkbox"
-                id="menu-toggle"
-                aria-hidden="true" 
-                aria-label="closed"
-            />
-            <label
-                id="burgerLabel"
-                tabindex="0"
-                class="menu__button"
-                for="menu-toggle"
-                aria-label="Toggle navigation menu"
-            >
-                <span
-                    role="button"
-                    class="menu__button-line"
-                    aria-label="Open burger menu (mobile only)"
-                ></span>
-            </label>
+            
 
             <!-- Navigation Burger Menu -->
             <nav id="menuNavigation"
@@ -111,7 +92,6 @@ function renderHamburgerMenu() {
     // Anropa funktionen som sätter upp event-listeners för menyn
     setupLogoutButton();
     setupBurgerMenu();
-    openBurgerMenu();
 }
 
 // Funktionen för att initiera hamburger-menyn

@@ -37,64 +37,6 @@ body {
 /* ==== INDEX PAGE ==== */
 
 /* ==== Burger Menu Styling ==== */
-.menu__checkbox {
-    display: none;
-}
-
-.menu__button {
-    display: block;
-    width: 4rem;
-    height: 3rem;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    z-index: 901;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    padding: 1.5rem 1rem;
-}
-
-.menu__button-line,
-.menu__button-line::before,
-.menu__button-line::after {
-    border-radius: var(--radius-7);
-    background-color: var(--black-text-color);
-    width: 2.5rem;
-    height: 3px;
-    position: absolute;
-    transition: all 0.4s ease-in-out;
-    border-radius: 10px;
-}
-
-.menu__button-line::before,
-.menu__button-line::after {
-    content: '';
-    position: absolute;
-    left: 0;
-}
-
-.menu__button-line::before {
-    top: -9px;
-}
-
-.menu__button-line::after {
-    top: 9px;
-}
-
-/* Menu Open Effect */
-.menu__checkbox:checked ~ .menu__button .menu__button-line {
-    transform: rotate(45deg);
-}
-
-.menu__checkbox:checked ~ .menu__button .menu__button-line::before {
-    transform: rotate(-90deg);
-    top: 0;
-}
-
-.menu__checkbox:checked ~ .menu__button .menu__button-line::after {
-    opacity: 0;
-}
 
 /* Fullscreen Menu */
 .menu__navigation {
@@ -181,6 +123,7 @@ body {
 .header__nav-menu-lines,
 .header__nav-menu-lines::before,
 .header__nav-menu-lines::after {
+    z-index: 901;
     display: block;
     position: relative;
     content: '';
