@@ -1,0 +1,66 @@
+/* ==== About Section ==== */
+.about-section {
+    background-image: url(/assets/leafbg.svg);
+    background-color: var(--white-bg-color);
+    padding: 50px 0;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-header h1 {
+    font-size: 2.5rem;
+    color: var(--dark-grey-bg-color);
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--red-bg-color);
+}
+
+.section-content {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--black-text-color);
+}
+
+/* ==== Vision Section ==== */
+.vision-section {
+    background-color: var(--dark-grey-bg-color);
+    color: var(--white-text-color);
+    padding: 50px 0;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.section-header h1 {
+    color: var(--white-text-color);
+}
+
+.section-content {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--white-text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-header h1 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .section-content {
+        font-size: 1rem;
+    }
+}
