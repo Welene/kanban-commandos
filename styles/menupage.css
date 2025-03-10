@@ -1,6 +1,30 @@
 .leaf-background {
     height: 100vh;
     width: 100%;
-    /* background-image: url('../assets/icons/''; */
-
+    background-image: url(/assets/bg-images/leafbg.svg);
+    background-color: var(--light-green-bg-color);
 }
+
+.food-menu-container{
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 10px;
+    color: var(--white-text-color);
+    background-color: var(--dark-grey-bg-color);
+}
+.food-menu-container__top {
+    padding: 1rem 1.5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.food-menu-container__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.food-menu-container__filter {
+    flex: 1;
+    font-size: 2rem;
+}
+/* .food-menu-container__card-container{} */
