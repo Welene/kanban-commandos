@@ -112,10 +112,6 @@ body {
     transform: translateX(0%);
 }
 
-/* .menu__checkbox:checked ~ .menu__navigation {
-    transform: translateX(0%);
-} */
-
 /* Menu Links */
 .menu__list {
     display: flex;
