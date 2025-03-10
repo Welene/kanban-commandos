@@ -1,66 +1,59 @@
-/* ==== About Section ==== */
 .about-section {
-    background-image: url(/assets/leafbg.svg);
-    background-color: var(--white-bg-color);
-    padding: 50px 0;
-    margin-top: 20px;
-    border-radius: 8px;
+    background-color: var(--light-grey-bg-color);
+    background-image: url(/assets/bg-images/leafbg.svg);
+    padding: 2rem;
 }
 
-.section-header {
+.about__content-wrapper {
+    margin: 0 auto;
     text-align: center;
-    margin-bottom: 30px;
 }
 
-.section-header h1 {
-    font-size: 2.5rem;
-    color: var(--dark-grey-bg-color);
-    margin-bottom: 10px;
-}
-
-.section-header p {
-    font-size: 1.2rem;
-    color: var(--red-bg-color);
-}
-
-.section-content {
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.6;
+.about__title {
+    padding: 1rem;
+    font-family: 'Rowdies', sans-serif;
+    font-size: 3rem;
     color: var(--black-text-color);
+    margin-bottom: 1rem;
 }
 
-/* ==== Vision Section ==== */
-.vision-section {
-    background-color: var(--dark-grey-bg-color);
-    color: var(--white-text-color);
-    padding: 50px 0;
-    border-radius: 8px;
-    margin-top: 20px;
+.about__description {
+    font-size: 1.2rem;
+    color: var(--weakblack-text-color);
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 2rem;
 }
 
-.section-header h1 {
-    color: var(--white-text-color);
+.about__vision,
+.about__history {
+    background-color: var(--white-bg-color);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.section-content {
-    text-align: center;
+.about__vision-title,
+.about__history-title {
+    font-family: 'Rowdies', sans-serif;
+    font-size: 2rem;
+    color: var(--black-text-color);
+    margin-bottom: 1rem;
+}
+
+.about__vision-description,
+.about__history-description {
     font-size: 1.1rem;
+    color: var(--weakblack-text-color);
     line-height: 1.6;
-    color: var(--white-text-color);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .section-header h1 {
-        font-size: 2rem;
-    }
-
-    .section-header p {
-        font-size: 1rem;
-    }
-
-    .section-content {
-        font-size: 1rem;
-    }
+.about__photo img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
