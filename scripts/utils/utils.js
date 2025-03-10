@@ -5,7 +5,7 @@
 function toggleAriaLabel(event) {
     const menuToggle = event.target;
     menuToggle.ariaLabel =
-        menuToggle.ariaLabel === "closed" ? "open" : "closed";
+        menuToggle.ariaLabel === 'closed' ? 'open' : 'closed';
 }
 
 /**
@@ -14,7 +14,7 @@ function toggleAriaLabel(event) {
  */
 
 function highlightActiveBurgerLink() {
-    console.log("highlightActiveBurgerLink()");
+    console.log('highlightActiveBurgerLink()');
 
     const path = window.location.pathname;
 
@@ -22,28 +22,39 @@ function highlightActiveBurgerLink() {
     const menuLinks = [
         {
             path: [
-                "index.html",
-                "/",
-                "/Exam-MovieDataBase/",
-                "/Exam-MovieDataBase/index.html",
+                'index.html',
+                '/',
+                '/Exam-MovieDataBase/',
+                '/Exam-MovieDataBase/index.html',
             ],
-            id: "homeLink",
+            id: 'homeLink',
         },
-        { path: ["/menu.html", "/pages/menu.html"], id: "menuLink" },
-        { path: ["/orders.html", "/pages/orders.html"], id: "ordersLink" },
-        { path: ["/history.html", "/pages/history.html"], id: "historyLink" },
-        { path: ["/profile.html", "/pages/profile.html"], id: "profileLink" },
-        { path: ["/map.html", "/pages/map.html"], id: "mapLink" },
-        { path: ["/about.html", "/pages/about.html"], id: "aboutLink" },
-        { path: ["/order-overview.html"], id: "adminLink" }, // Admin-sida
+        { path: ['/menu.html', '/pages/menu.html'], id: 'menuLink' },
+        { path: ['/orders.html', '/pages/orders.html'], id: 'ordersLink' },
+        { path: ['/history.html', '/pages/history.html'], id: 'historyLink' },
+        { path: ['/profile.html', '/pages/profile.html'], id: 'profileLink' },
+        { path: ['/map.html', '/pages/map.html'], id: 'mapLink' },
+        { path: ['/about.html', '/pages/about.html'], id: 'aboutLink' },
+        { path: ['/order-overview.html'], id: 'adminLink' }, // Admin-sida
     ];
 
     menuLinks.forEach(({ path: paths, id }) => {
         if (paths.some((p) => path.endsWith(p))) {
             document
                 .querySelectorAll(`#${id}`)
-                .forEach((el) => el.classList.add("menu__link--active"));
+                .forEach((el) => el.classList.add('menu__link--active'));
         }
+    });
+}
+
+export function clickLoginBtn() {
+    let loginButton = document.getElementById('loginBtn');
+
+    loginButton.addEventListener('click', () => {
+        window.location.href = '../pages/menu.html';
+        console.log(
+            'navigated to main.html page after clicking on login button'
+        );
     });
 }
 

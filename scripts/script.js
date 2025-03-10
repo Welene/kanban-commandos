@@ -3,7 +3,7 @@ import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
 } from './data/localStorage.js';
-import { highlightActiveBurgerLink } from './utils/utils.js';
+import { highlightActiveBurgerLink, clickLoginBtn } from './utils/utils.js';
 import { renderHamburgerMenu, openNavMenu } from './components/navMenu.js';
 
 console.log('Script.js loaded');
@@ -37,3 +37,5 @@ if (path === '/pages/' || path === '/pages/index.html') {
 
 renderHamburgerMenu();
 highlightActiveBurgerLink();
+// calls function that navigates you to menu.html when clicking on "Logga inn" in index page
+clickLoginBtn();
