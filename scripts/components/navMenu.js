@@ -1,12 +1,12 @@
-import { toggleAriaLabel } from "../utils/utils.js";
+import { toggleAriaLabel } from '../utils/utils.js';
 import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
-} from "../data/localStorage.js";
+} from '../data/localStorage.js';
 
 // **Renderar hamburger menyn**
 function renderHamburgerMenu() {
-    const currentUser = getDataFromLocalStorage("currentUser");
+    const currentUser = getDataFromLocalStorage('currentUser');
 
     const burgerHTML = `
         <div class="menu">
@@ -32,7 +32,7 @@ function renderHamburgerMenu() {
             </label>
 
             <!-- Navigation Burger Menu -->
-            <nav
+            <nav id="menuNavigation"
                 class="menu__navigation"
                 aria-label="Main Navigation on Mobile"
                 aria-expanded="false"
@@ -77,7 +77,7 @@ function renderHamburgerMenu() {
 
                     <!-- Admin-only link, visas endast om användaren är admin -->
                     ${
-                        currentUser && currentUser.role === "admin"
+                        currentUser && currentUser.role === 'admin'
                             ? `
                             <li class="menu__item" id="adminLink">
                                 <a id="adminLink" class="menu__link" href="./order-overview.html" aria-label="Navigate to admin order overview page">
@@ -85,7 +85,7 @@ function renderHamburgerMenu() {
                                 </a>
                             </li>
                             `
-                            : ""
+                            : ''
                     }
 
                     <!-- Logga ut-länk visas endast om det finns en inloggad användare med ett username-->
@@ -98,7 +98,7 @@ function renderHamburgerMenu() {
                                 </a>
                             </li>
                             `
-                            : ""
+                            : ''
                     }
                 </ul>
             </nav>
@@ -106,11 +106,12 @@ function renderHamburgerMenu() {
     `;
 
     // Lägg till menyn i sidans <body> i början av dokumentet
-    document.body.insertAdjacentHTML("afterbegin", burgerHTML);
+    document.body.insertAdjacentHTML('afterbegin', burgerHTML);
 
     // Anropa funktionen som sätter upp event-listeners för menyn
     setupLogoutButton();
     setupBurgerMenu();
+    openBurgerMenu();
 }
 
 // Funktionen för att initiera hamburger-menyn
@@ -118,23 +119,23 @@ function renderHamburgerMenu() {
 // Funktion som konfigurerar hamburger-menyn efter att dokumentet har laddats
 function setupBurgerMenu() {
     // Hämtar elementet för menu-toggle (checkbox som styr visningen av menyn)
-    const menuToggle = document.querySelector("#menu-toggle");
+    const menuToggle = document.querySelector('#menu-toggle');
     // Hämtar själva menyn som ska visas eller döljas
-    const menu = document.querySelector(".menu__navigation");
+    const menu = document.querySelector('.menu__navigation');
     // Hämtar burger-label (labeln för menykontrollen)
-    const burgerLabel = document.querySelector("#burgerLabel");
+    const burgerLabel = document.querySelector('#burgerLabel');
 
     // Om någon av dessa element inte finns, avbryt funktionen
     if (!menuToggle || !menu || !burgerLabel) return;
 
     // Lägg till en event-lyssnare för när menyn togglas (klickas på)
-    menuToggle.addEventListener("click", toggleAriaLabel);
+    menuToggle.addEventListener('click', toggleAriaLabel);
     // Lägg till en event-lyssnare för att stänga menyn om användaren klickar utanför den
-    document.addEventListener("click", (event) =>
+    document.addEventListener('click', (event) =>
         closeMenuOnClickOutside(event, menuToggle, menu, burgerLabel)
     );
     // Lägg till en event-lyssnare för att hantera tangentbordsinmatning på burgerlabel
-    burgerLabel.addEventListener("keydown", handleKeyboardToggle);
+    burgerLabel.addEventListener('keydown', handleKeyboardToggle);
 }
 
 // Funktion för att stänga menyn om användaren klickar utanför menyn
@@ -145,22 +146,22 @@ function closeMenuOnClickOutside(event, menuToggle, menu, burgerLabel) {
         !burgerLabel.contains(event.target) &&
         !menu.contains(event.target) &&
         !menuToggle.contains(event.target) &&
-        menuToggle.ariaLabel === "open"
+        menuToggle.ariaLabel === 'open'
     ) {
         // Om villkoren stämmer, stäng menyn genom att avmarkera checkboxen och sätt ariaLabel till "closed"
         menuToggle.checked = false;
-        menuToggle.ariaLabel = "closed";
+        menuToggle.ariaLabel = 'closed';
     }
 }
 
 // Funktion som hanterar tangentbordsinteraktion för att toggla menyn
 function handleKeyboardToggle(event) {
     // Om användaren trycker på "Enter" eller mellanslag (space), toggla menyn
-    if (event.key === "Enter" || event.key === " ") {
+    if (event.key === 'Enter' || event.key === ' ') {
         // Förhindra att sidan laddas om vid tryck på Enter
         event.preventDefault();
         // Hämta menuToggle (checkboxen)
-        const menuToggle = document.getElementById("menu-toggle");
+        const menuToggle = document.getElementById('menu-toggle');
         if (menuToggle) {
             // Växla värdet på checkboxen (om den är markerad eller inte)
             menuToggle.checked = !menuToggle.checked;
@@ -169,19 +170,29 @@ function handleKeyboardToggle(event) {
 }
 
 function handleLogout() {
-    saveDataToLocalStorage("currentUser", null);
+    saveDataToLocalStorage('currentUser', null);
 
-    window.location.href = "./index.html";
+    window.location.href = './index.html';
 }
 
 function setupLogoutButton() {
-    const logoutLink = document.querySelector("#logoutLink");
+    const logoutLink = document.querySelector('#logoutLink');
     if (logoutLink) {
-        logoutLink.addEventListener("click", function (event) {
+        logoutLink.addEventListener('click', function (event) {
             event.preventDefault();
             handleLogout();
         });
     }
+}
+
+function openBurgerMenu() {
+    console.log('openBurgerMenu()');
+    document.querySelector('#menu-toggle').addEventListener('click', () => {
+        console.log('hej()');
+        document
+            .querySelector('#menuNavigation')
+            .classList.toggle('menu__navigation--open');
+    });
 }
 
 // Exportera renderHamburgerMenu så den kan användas i andra delar av applikationen
