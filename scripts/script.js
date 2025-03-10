@@ -3,12 +3,14 @@ import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
 } from "./data/localStorage.js";
+import { openNavMenu } from "./components/navMenu.js"
 
 console.log("Script.js loaded");
 
 const path = window.location.pathname;
 
 if (path === "/pages/" || path === "/pages/index.html") {
+    openNavMenu();
     console.log("index.html");
 } else if (path === "/pages/about.html") {
     console.log("about.html");
