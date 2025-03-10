@@ -3,8 +3,8 @@ import {
 	getDataFromLocalStorage,
 	saveDataToLocalStorage,
 } from './data/localStorage.js';
-import { clickLoginBtn } from './utils/utils.js';
-import { openNavMenu } from './components/navMenu.js';
+import { highlightActiveBurgerLink, clickLoginBtn } from './utils/utils.js';
+import { renderHamburgerMenu, openNavMenu } from './components/navMenu.js';
 import { runMenuPage } from './scriptPages/menuPage.js';
 
 console.log('Script.js loaded');
@@ -37,5 +37,7 @@ if (path === '/pages/' || path === '/pages/index.html') {
 	console.log('register.html');
 }
 
+renderHamburgerMenu();
+highlightActiveBurgerLink();
 // calls function that navigates you to menu.html when clicking on "Logga inn" in index page
 // clickLoginBtn();
