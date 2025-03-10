@@ -1,0 +1,5 @@
+function runReceiptPage() {
+
+}
+
+export { runReceiptPage }
