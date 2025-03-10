@@ -185,15 +185,18 @@ function setupLogoutButton() {
     }
 }
 
-function openBurgerMenu() {
-    console.log('openBurgerMenu()');
-    document.querySelector('#menu-toggle').addEventListener('click', () => {
-        console.log('hej()');
+// Funktion för att öppna NavMenu och även skapa animering av strecken
+function openNavMenu() {
+    const navMenuRef = document.querySelector('#navMenu');
+    const navMenuLinesRef = document.querySelector('#navMenuLines');
+
+    navMenuRef.addEventListener('click', () => {
+        // Denna klass gör att de tre stecken blir ett X
+        navMenuLinesRef.classList.toggle('active');
         document
             .querySelector('#menuNavigation')
             .classList.toggle('menu__navigation--open');
     });
 }
 
-// Exportera renderHamburgerMenu så den kan användas i andra delar av applikationen
-export { renderHamburgerMenu };
+export { openNavMenu, renderHamburgerMenu };
