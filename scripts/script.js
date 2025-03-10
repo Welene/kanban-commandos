@@ -12,7 +12,6 @@ console.log('Script.js loaded');
 const path = window.location.pathname;
 
 if (path === '/pages/' || path === '/pages/index.html') {
-	openNavMenu();
 	console.log('index.html');
 } else if (path === '/pages/about.html') {
 	console.log('about.html');
@@ -37,7 +36,7 @@ if (path === '/pages/' || path === '/pages/index.html') {
 	console.log('register.html');
 }
 
+openNavMenu();
 renderHamburgerMenu();
 highlightActiveBurgerLink();
 // calls function that navigates you to menu.html when clicking on "Logga inn" in index page
-// clickLoginBtn();
