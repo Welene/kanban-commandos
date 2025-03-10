@@ -3,6 +3,9 @@
 
 /* Font imports */
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+
+@import url(../styles/indexpage.css);
 
 /* Base */
 * {
@@ -19,11 +22,22 @@
     --black-bg-color: #000;
     --red-bg-color: #eb5757;
     --black-text-color: #000;
+    --weakblack-text-color: #414141;
     --white-text-color: #fff;
 }
 
 /* Utils */
 .content-wrapper {
     width: 100%;
+    padding: 1rem;
 }
 
+.d-none {
+    display: none;
+}
+
+body {
+    font-family: "Fira Sans", sans-serif;
+}
+
+/* ==== INDEX PAGE ==== */
