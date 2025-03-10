@@ -1,4 +1,3 @@
-import { toggleAriaLabel } from '../utils/utils.js';
 import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
@@ -97,8 +96,8 @@ function renderHamburgerMenu() {
 
 // Funktion som konfigurerar hamburger-menyn efter att dokumentet har laddats
 function setupBurgerMenu() {
-    // Hämtar elementet för menu-toggle (checkbox som styr visningen av menyn)
-    const menuToggle = document.querySelector('#menu-toggle');
+    // Hämtar elementet för menu (checkbox som styr visningen av menyn)
+    const menuToggle = document.querySelector('#navMenuLines');
     // Hämtar själva menyn som ska visas eller döljas
     const menu = document.querySelector('.menu__navigation');
     // Hämtar burger-label (labeln för menykontrollen)
@@ -108,29 +107,13 @@ function setupBurgerMenu() {
     if (!menuToggle || !menu || !burgerLabel) return;
 
     // Lägg till en event-lyssnare för när menyn togglas (klickas på)
-    menuToggle.addEventListener('click', toggleAriaLabel);
+
     // Lägg till en event-lyssnare för att stänga menyn om användaren klickar utanför den
     document.addEventListener('click', (event) =>
         closeMenuOnClickOutside(event, menuToggle, menu, burgerLabel)
     );
     // Lägg till en event-lyssnare för att hantera tangentbordsinmatning på burgerlabel
     burgerLabel.addEventListener('keydown', handleKeyboardToggle);
-}
-
-// Funktion för att stänga menyn om användaren klickar utanför menyn
-function closeMenuOnClickOutside(event, menuToggle, menu, burgerLabel) {
-    // Kontrollera om användaren har klickat utanför menyn, labeln eller toggle-knappen
-    // och om menyn är öppen (det vill säga ariaLabel är "open")
-    if (
-        !burgerLabel.contains(event.target) &&
-        !menu.contains(event.target) &&
-        !menuToggle.contains(event.target) &&
-        menuToggle.ariaLabel === 'open'
-    ) {
-        // Om villkoren stämmer, stäng menyn genom att avmarkera checkboxen och sätt ariaLabel till "closed"
-        menuToggle.checked = false;
-        menuToggle.ariaLabel = 'closed';
-    }
 }
 
 // Funktion som hanterar tangentbordsinteraktion för att toggla menyn
@@ -140,7 +123,7 @@ function handleKeyboardToggle(event) {
         // Förhindra att sidan laddas om vid tryck på Enter
         event.preventDefault();
         // Hämta menuToggle (checkboxen)
-        const menuToggle = document.getElementById('menu-toggle');
+        const menuToggle = document.querySelector('#navMenuLines');
         if (menuToggle) {
             // Växla värdet på checkboxen (om den är markerad eller inte)
             menuToggle.checked = !menuToggle.checked;
@@ -164,7 +147,7 @@ function setupLogoutButton() {
     }
 }
 
-// Funktion för att öppna NavMenu och även skapa animering av strecken
+// Funktion för att öppna menyn och även skapa animering av strecken
 function openNavMenu() {
     const navMenuRef = document.querySelector('#navMenu');
     const navMenuLinesRef = document.querySelector('#navMenuLines');
@@ -175,6 +158,12 @@ function openNavMenu() {
         document
             .querySelector('#menuNavigation')
             .classList.toggle('menu__navigation--open');
+
+        // Kontrollerar och ändrar aria-expanded atributet för menyn (nav elementet)
+        document.querySelector('#menuNavigation').ariaExpanded =
+            document.querySelector('#menuNavigation').ariaExpanded === 'true'
+                ? 'false'
+                : 'true';
     });
 }
 

@@ -2,12 +2,6 @@
 
 // Hjälpfunktioner för DOM-manipulering: Funktioner som förenklar att välja element, ändra klasser eller attribut på element, eller hantera händelselyssnare.
 
-function toggleAriaLabel(event) {
-    const menuToggle = event.target;
-    menuToggle.ariaLabel =
-        menuToggle.ariaLabel === 'closed' ? 'open' : 'closed';
-}
-
 /**
  * Funktion för att markera den aktuella sidan i hamburgermenyn.
  * Den lägger till klassen "menu__link--active" på rätt länk beroende på vilken sida användaren befinner sig på.
@@ -58,4 +52,4 @@ export function clickLoginBtn() {
     });
 }
 
-export { toggleAriaLabel, highlightActiveBurgerLink };
+export { highlightActiveBurgerLink };
