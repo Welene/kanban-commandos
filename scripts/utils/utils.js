@@ -8,8 +8,6 @@
  */
 
 function highlightActiveBurgerLink() {
-    console.log('highlightActiveBurgerLink()');
-
     const path = window.location.pathname;
 
     // Lista över sidor och deras motsvarande ID:n i menyn
