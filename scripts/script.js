@@ -11,13 +11,11 @@ console.log('Script.js loaded');
 const path = window.location.pathname;
 
 if (path === '/pages/' || path === '/pages/index.html') {
-    openNavMenu();
     // calls function that navigates you to menu.html when clicking on "Logga in" in index page
     clickLoginBtn();
     console.log('index.html');
 } else if (path === '/pages/about.html') {
     console.log('about.html');
-    openNavMenu();
 } else if (path === '/pages/eta.html') {
     console.log('eta.html');
 } else if (path === '/pages/history.html') {
@@ -38,5 +36,6 @@ if (path === '/pages/' || path === '/pages/index.html') {
     console.log('register.html');
 }
 
+openNavMenu();
 renderHamburgerMenu();
 highlightActiveBurgerLink();
