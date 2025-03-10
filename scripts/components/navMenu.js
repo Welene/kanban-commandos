@@ -10,7 +10,6 @@ function renderHamburgerMenu() {
 
     const burgerHTML = `
         <div class="menu">
-            
 
             <!-- Navigation Burger Menu -->
             <nav id="menuNavigation"
