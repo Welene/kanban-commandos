@@ -9,16 +9,64 @@
 	</head>
 	<body>
 		<div class="content-wrapper">
-			<header></header>
+			<!-- HEADER -->
+			<header class="header" id="header">
+				<button
+					class="header__nav-menu"
+					id="navMenu"
+					aria-label="Open nav menu button"
+				>
+					<span
+						class="header__nav-menu-lines"
+						id="navMenuLines"
+					></span>
+				</button>
+				<a href="index.html" aria-label="Go to landing page">
+					<img
+						class="header__logo"
+						src="../assets/icons/logo.svg"
+						alt="Image logo"
+					/>
+				</a>
+				<button
+					id="basket"
+					class="header__basket-box"
+					aria-label="Open cart button"
+				>
+					<img
+						class="header__basket-icon"
+						src="../assets/icons/basket.svg"
+						alt="Basket icon"
+					/>
+					<span class="header__basket-item-count">16</span>
+				</button>
+			</header>
+
 			<main>
-				<section>
-					<h1>Meny</h1>
-					<select name="filter" id="filterMenu">
-						<option value="filter">filter</option>
-						<option value="wonton">Wonton</option>
-						<option value="dricka">Dricka</option>
-						<option value="dip">Dip</option>
-					</select>
+				<section class="menu-container">
+					<section class="menu-container__top">
+						<h1 class="menu-container__title">Meny</h1>
+						<select
+							class="menu-container__filter"
+							name="filter"
+							id="filterMenu"
+						>
+							<option value="filter">filter</option>
+							<option value="wonton">Wonton</option>
+							<option value="dricka">Dricka</option>
+							<option value="dip">Dip</option>
+						</select>
+					</section>
+
+					<section
+						id="cardContainer"
+						class="menu-container__card-container"
+					>
+						<!-- Korten -->
+					</section>
+					<section class="menu-container__dip-container">
+						<!-- Dipsås -->
+					</section>
 				</section>
 			</main>
 		</div>

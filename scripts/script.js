@@ -5,7 +5,7 @@ import {
 } from './data/localStorage.js';
 import { clickLoginBtn } from './utils/utils.js';
 import { openNavMenu } from './components/navMenu.js';
-import { runMenuPage } from './pages/menu.js';
+import { runMenuPage } from './scriptPages/menuPage.js';
 
 console.log('Script.js loaded');
 
@@ -38,4 +38,4 @@ if (path === '/pages/' || path === '/pages/index.html') {
 }
 
 // calls function that navigates you to menu.html when clicking on "Logga inn" in index page
-clickLoginBtn();
+// clickLoginBtn();
