@@ -7,8 +7,10 @@
 
 .food-menu-container{
     width: 100%;
+    max-height: 80vh;
     margin-top: 2rem;
     border-radius: 10px;
+    overflow-y: auto;
     color: var(--white-text-color);
     background-color: var(--dark-grey-bg-color);
 }
