@@ -1,0 +1,5 @@
+function runRegisterPage() {
+
+}
+
+export { runRegisterPage }
