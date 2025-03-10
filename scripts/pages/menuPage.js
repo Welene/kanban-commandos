@@ -1,0 +1,5 @@
+function runMenuPage() {
+
+}
+
+export { runMenuPage }
