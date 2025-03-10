@@ -8,85 +8,109 @@
         <script type="module" src="../scripts/script.js"></script>
     </head>
     <body>
-        <div class="content-wrapper">
-            <!-- HEADER -->
-            <header class="header" id="header">
-                <button
-                    class="header__nav-menu"
-                    id="navMenu"
-                    aria-label="Open nav menu button"
-                >
-                    <span
-                        class="header__nav-menu-lines"
-                        id="navMenuLines"
-                    ></span>
-                </button>
-                <a href="index.html" aria-label="Go to landing page">
-                    <img
-                        class="header__logo"
-                        src="../assets/icons/logo.svg"
-                        alt="Image logo"
-                    />
-                </a>
-                <button
-                    id="basket"
-                    class="header__basket-box"
-                    aria-label="Open cart button"
-                >
-                    <img
-                        class="header__basket-icon"
-                        src="../assets/icons/basket.svg"
-                        alt="Basket icon"
-                    />
-                    <span class="header__basket-item-count">16</span>
-                </button>
-            </header>
-
-            <section id="overlayBasketBox" class="overlay-basket">
-                <h2 class="overlay-basket__title">Översikt kundvagn</h2>
-                <ul id="basketList" class="basket__list">
-                    <li data="basketItem" class="overlay-basket__item">
-                        <section id="basketItems">
-                            <p id="basketItemTitle">Karlstad</p>
-                            <p id="basketItemCount">x2</p>
-                        </section>
-                        <div class="separator"></div>
-                        <p id="basketItemPrice">27kr</p>
-                    </li>
-                </ul>
-                <section id="basketTotal" class="basket-totalt-box">
-                    <p id="basketTotalTitle">Totalt</p>
-                    <p id="basketTotalAmount">101kr</p>
-                </section>
-                <button
-                    id="basketPreviewOrderBtn"
-                    class="basket-preview-order-btn"
-                >
-                    Förhandsranska beställning
-                </button>
-            </section>
-
-            <main class="content-wrapper__intro-content">
+        <!-- HEADER -->
+        <header class="header" id="header">
+            <button
+                class="header__nav-menu"
+                id="navMenu"
+                aria-label="Open nav menu button"
+            >
+                <span class="header__nav-menu-lines" id="navMenuLines"></span>
+            </button>
+            <a href="index.html" aria-label="Go to landing page">
                 <img
-                    src="../assets/icons/logo-red.svg"
-                    class="content-wrapper__logo"
-                    alt="Yum Yum Gimme Sum logo"
+                    class="header__logo"
+                    src="../assets/icons/logo.svg"
+                    alt="Image logo"
                 />
-                <!-- <h1 class="content-wrapper__heading">Yum Yum Gimme Sum</h1> -->
-                <button id="loginBtn" class="content-wrapper__btn">
-                    LOGGA IN
-                </button>
-                <button id="registerBtn" class="content-wrapper__btn">
-                    REGISTRERA DIG
-                </button>
+            </a>
+            <button
+                id="basket"
+                class="header__basket-box"
+                aria-label="Open cart button"
+            >
+                <img
+                    class="header__basket-icon"
+                    src="../assets/icons/basket.svg"
+                    alt="Basket icon"
+                />
+                <span class="header__basket-item-count">16</span>
+            </button>
+        </header>
 
-                <!-- background img in css -- section in html so that you can add aria-label for better accessibility -->
-                <section
-                    class="content-wrapper__background-container"
-                    aria-label="Background image with wonton, drinks & dips"
-                    role="img"
-                ></section>
-            </main>
-        </div>
+        <!-- <section id="overlayBasket" class="overlay-basket">
+            <h2 id="overlayBasketTitle" class="overlay-basket__title">
+                Översikt kundvagn
+            </h2>
+            <ul id="basketList" class="basket__list">
+                <li data="basketItem" class="basket__list-item">
+                    <section id="basketItem" class="basket__title-box">
+                        <p id="basketItemTitle" class="basket__item">
+                            Karlstad
+                        </p>
+                        <p id="basketItemCount" class="basket__item">x2</p>
+                    </section>
+                    <span class="separator"></span>
+                    <p id="basketItemPrice" class="basket__item">27kr</p>
+                </li>
+                <li data="basketItem" class="basket__list-item">
+                    <section id="basketItem" class="basket__title-box">
+                        <p id="basketItemTitle" class="basket__item">
+                            Karlstad
+                        </p>
+                        <p id="basketItemCount" class="basket__item">x2</p>
+                    </section>
+                    <span class="separator"></span>
+                    <p id="basketItemPrice" class="basket__item">27kr</p>
+                </li>
+                <li data="basketItem" class="basket__list-item">
+                    <section id="basketItem" class="basket__title-box">
+                        <p id="basketItemTitle" class="basket__item">
+                            Karlstad
+                        </p>
+                        <p id="basketItemCount" class="basket__item">x2</p>
+                    </section>
+                    <span class="separator"></span>
+                    <p id="basketItemPrice" class="basket__item">27kr</p>
+                </li>
+                <li data="basketItem" class="basket__list-item">
+                    <section id="basketItem" class="basket__title-box">
+                        <p id="basketItemTitle" class="basket__item">
+                            Karlstad
+                        </p>
+                        <p id="basketItemCount" class="basket__item">x2</p>
+                    </section>
+                    <span class="separator"></span>
+                    <p id="basketItemPrice" class="basket__item">27kr</p>
+                </li>
+            </ul>
+            <section id="basketTotal" class="basket-total-box">
+                <p id="basketTotalTitle" class="basket-total__title">Totalt</p>
+                <p id="basketTotalAmount" class="basket-total__amount">101kr</p>
+            </section>
+            <button id="basketPreviewOrderBtn" class="basket-preview-order-btn">
+                FÖRHANSGRANSKA ORDER
+            </button>
+        </section> -->
+
+        <main class="content-wrapper__intro-content content-wrapper">
+            <img
+                src="../assets/icons/logo-red.svg"
+                class="content-wrapper__logo"
+                alt="Yum Yum Gimme Sum logo"
+            />
+            <!-- <h1 class="content-wrapper__heading">Yum Yum Gimme Sum</h1> -->
+            <button id="loginBtn" class="content-wrapper__btn">LOGGA IN</button>
+            <button id="registerBtn" class="content-wrapper__btn">
+                REGISTRERA DIG
+            </button>
+
+            <!-- background img in css -- section in html so that you can add aria-label for better accessibility -->
+            <section
+                class="content-wrapper__background-container"
+                aria-label="Background image with wonton, drinks & dips"
+                role="img"
+            ></section>
+        </main>
     </body>
 </html>

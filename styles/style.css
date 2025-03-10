@@ -18,9 +18,11 @@
 /* Variables */
 :root {
     --dark-grey-bg-color: #605858;
+    --medium-grey-bg-color: #cfcece;
     --light-grey-bg-color: #eeeeee;
     --white-bg-color: #fff;
     --black-bg-color: #000;
+    --dark-black-btn-bg-color: #353131;
     --red-bg-color: #eb5757;
     --black-text-color: #000;
     --weakblack-text-color: #414141;
@@ -30,8 +32,7 @@
 
 /* Utils */
 .content-wrapper {
-    width: 100%;
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
 }
 
 .d-none {
@@ -114,6 +115,7 @@ body {
     border-color: var(--light-grey-bg-color);
 }
 .header {
+    padding: 1rem;
     width: 100%;
     display: flex;
     flex-direction: row;
