@@ -12,7 +12,7 @@
     position: absolute;
     background-color: var(--white-bg-color);
     width: 100vw;
-    top: 11%;
+    top: 14%;
     z-index: 900;
     overflow-x: auto;
     padding: 1.5rem 0 0 0;
@@ -46,10 +46,11 @@
     color: var(--black-text-color);
     font-size: 1.4rem;
     font-weight: 700;
+    margin-right: .4rem;
 }
 
 .separator {
-    flex-grow: 0.8;
+    flex-grow: 0.9;
     border-bottom: dotted;
     transform: translateY(-6px);
 }
@@ -81,10 +82,18 @@
     bottom: 0;
     background-color: var(--dark-black-btn-bg-color);
     color: var(--white-text-color);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
 }
 
+.basket__empty {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.basket__empty--red {
+    color: var(--red-bg-color);
+}
