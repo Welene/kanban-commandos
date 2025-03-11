@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Om Oss | Yum Yum Gimme Sum Wonton Food Truck</title>
+        <script type="module" src="../scripts/script.js"></script>
         <link rel="stylesheet" href="/styles/style.css" />
         <script type="module" src="../scripts/script.js"></script>
     </head>
@@ -13,31 +14,30 @@
                     <button
                         class="header__nav-menu"
                         id="navMenu"
-                        aria-label="Open nav menu button"
-                    >
+                        aria-label="Open nav menu button">
                         <span
                             class="header__nav-menu-lines"
-                            id="navMenuLines"
-                        ></span>
+                            id="navMenuLines"></span>
                     </button>
                     <a href="index.html" aria-label="Go to landing page">
                         <img
                             class="header__logo"
                             src="../assets/icons/logo-black.svg"
-                            alt="Image logo"
-                        />
+                            alt="Image logo" />
                     </a>
                     <button
                         id="basket"
                         class="header__basket-box"
-                        aria-label="Open cart button"
-                    >
+                        aria-label="Open cart button">
                         <img
                             class="header__basket-icon"
                             src="../assets/icons/basket.svg"
-                            alt="Basket icon"
-                        />
-                        <span class="header__basket-item-count">16</span>
+                            alt="Basket icon" />
+                        <span
+                            id="basketItemCount"
+                            class="header__basket-item-count"
+                            >16</span
+                        >
                     </button>
                 </header>
                 <section id="about" class="about-section">
@@ -85,8 +85,7 @@
                         <img
                             src="../assets/images/YumYumTruck.jpg"
                             alt="Yum Yum Gimme Sum food truck"
-                            aria-label="Bild på en av våra food trucks"
-                        />
+                            aria-label="Bild på en av våra food trucks" />
                     </div>
                 </section>
             </section>
