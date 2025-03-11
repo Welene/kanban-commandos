@@ -3,43 +3,107 @@ import {
     saveDataToLocalStorage,
 } from '../data/localStorage.js';
 
-/*
-Som användare vill jag kunna gå till en kundvagnssida där jag kan se en sammanfattning av min beställning innan jag checkar ut
-Value Points: 5
-Story Points: 4.2
+/**
+ * Funktion som hanterar ordersidan.
+ * Laddar kundvagnen från localStorage, visar beställningen och hanterar utcheckning.
+ */
+function runOrdersPage() {
+    const basket = getDataFromLocalStorage('basket'); // Hämta kundvagnen
+    const container = document.querySelector('#orderSummary'); // Behållare för orderöversikt
+    const totalCostElement = document.querySelector('#totalCost'); // Element för totalkostnad
+    const foodTruckDropdown = document.querySelector('#foodtruckSelect'); // Dropdown för foodtruck
+    const checkoutButton = document.querySelector('#checkoutBtn'); // Knapp för att slutföra order
+    const currentUser = getDataFromLocalStorage('currentUser'); // Hämta aktuell användare
 
+    // Om varukorgen är tom, visa meddelande och sätt totalpriset till 0
+    if (!basket || !basket.items || basket.items.length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        totalCostElement.textContent = 'Total: 0 SEK';
+        return;
+    }
 
-Default header
-/pages/orders.html
+    container.innerHTML = ''; // Rensa tidigare innehåll
+    let totalCost = 0; // Initiera totalkostnaden
 
+    // Loopa igenom alla produkter och skapa orderöversikten
+    basket.items.forEach((item) => {
+        const itemElement = document.createElement('p');
+        itemElement.classList.add('food-menu-container__food-title');
 
-Hämta nyckel "basket" från localStorage
+        // Skapa en rad för varje produkt med namn, antal och pris
+        itemElement.innerHTML = `
+            <span>${item.name} x${item.amount}</span>
+            <span class="dotted-line"></span>
+            <span>${item.price * item.amount} SEK</span>
+        `;
 
+        container.appendChild(itemElement);
+        totalCost += item.price * item.amount; // Lägg till produktens kostnad i totalen
+    });
 
-Visa upp innehållet i en container
+    totalCostElement.textContent = `Total: ${totalCost} SEK`; // Uppdatera totalkostnaden
 
+    // Om användaren inte är inloggad, ändra checkout-knappen till "Logga in"
+    if (!currentUser || !currentUser.username) {
+        checkoutButton.textContent = 'Log in to place an order';
+        checkoutButton.addEventListener('click', () => {
+            window.location.href = '/pages/login.html';
+        });
+        return;
+    }
 
-En drop-down för att välja foodtruck
+    // Om användaren är inloggad, tillåt beställning
+    checkoutButton.textContent = 'PLACE ORDER';
+    checkoutButton.addEventListener('click', () => {
+        // Kontrollera att en foodtruck är vald
+        if (!foodTruckDropdown.value) {
+            alert('Please select a food truck before placing an order.');
+            return;
+        }
+        basket.foodTruck = foodTruckDropdown.value; // Spara vald foodtruck
+        basket.id = generateUniqueId(); // Generera unikt order-ID
 
+        saveDataToLocalStorage('activeReceipt', basket); // Spara aktivt kvitto
 
-Visa totala kostnaden för hela ordern
+        // Lägg till beställningen i användarens kvittohistorik
+        if (!currentUser.receipts) {
+            currentUser.receipts = [];
+        }
+        currentUser.receipts.push(basket);
+        saveDataToLocalStorage('currentUser', currentUser); // Uppdatera currentUser i localStorage
 
+        updateAllUsersReceipts(currentUser.username, basket); // Uppdatera allUsers med orderhistorik
 
-Knapp "Take my money!" som tar dig till #eta.html
+        saveDataToLocalStorage('basket', {}); // Töm varukorgen
 
+        window.location.href = '/pages/eta.html'; // Omdirigera till orderbekräftelsesidan
+    });
+}
 
-Kontroll om det finns en currentUser annars kan man inte lägga en order
+/**
+ * Funktion för att generera ett unikt order-ID.
+ * ID:t börjar med '#' och består av 7 tecken.
+ */
+function generateUniqueId() {
+    return '#' + Math.random().toString(36).substring(2, 9);
+}
 
+/**
+ * Uppdaterar allUsers med det nya kvittot för en specifik användare.
+ * Hittar rätt användare i listan och lägger till det nya kvittot.
+ */
+function updateAllUsersReceipts(username, newReceipt) {
+    const allUsers = getDataFromLocalStorage('allUsers') || []; // Hämta alla användare
 
-Om man inte är inloggad så uppmanas man till detta.
-
-
-ordern läggs om man är inloggad currentUser
-
-
-Inkludera vald food truck i kvittot(?)
-*/
-
-function runOrdersPage() {}
+    // Hitta rätt användare i allUsers
+    const userIndex = allUsers.findIndex((user) => user.username === username);
+    if (userIndex !== -1) {
+        if (!allUsers[userIndex].receipts) {
+            allUsers[userIndex].receipts = []; // Skapa receipts-array om den saknas
+        }
+        allUsers[userIndex].receipts.push(newReceipt); // Lägg till det nya kvittot
+        saveDataToLocalStorage('allUsers', allUsers); // Uppdatera allUsers i localStorage
+    }
+}
 
 export { runOrdersPage };

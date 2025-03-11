@@ -3,35 +3,65 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Orders</title>
+        <link rel="stylesheet" href="../styles/style.css" />
+        <script type="module" src="../scripts/script.js"></script>
+        <title>Orders in Basket</title>
     </head>
     <body>
-        <!-- HEADER -->
-        <header class="header" id="header">
-            <button
-                class="header__nav-menu"
-                id="navMenu"
-                aria-label="Open nav menu button">
-                <span class="header__nav-menu-lines" id="navMenuLines"></span>
-            </button>
-            <a href="index.html" aria-label="Go to landing page">
-                <img
-                    class="header__logo"
-                    src="../assets/icons/logo.svg"
-                    alt="Image logo" />
-            </a>
-            <button
-                id="basket"
-                class="header__basket-box"
-                aria-label="Open cart button">
-                <img
-                    class="header__basket-icon"
-                    src="../assets/icons/basket.svg"
-                    alt="Basket icon" />
-                <span id="basketItemCount" class="header__basket-item-count"
-                    >16</span
+        <div class="content-wrapper">
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <button
+                    class="header__nav-menu"
+                    id="navMenu"
+                    aria-label="Open nav menu button">
+                    <span
+                        class="header__nav-menu-lines"
+                        id="navMenuLines"></span>
+                </button>
+                <a href="index.html" aria-label="Go to landing page">
+                    <img
+                        class="header__logo"
+                        src="../assets/icons/logo.svg"
+                        alt="Image logo" />
+                </a>
+                <button
+                    id="basket"
+                    class="header__basket-box"
+                    aria-label="Open cart button">
+                    <img
+                        class="header__basket-icon"
+                        src="../assets/icons/basket.svg"
+                        alt="Basket icon" />
+                    <span id="basketItemCount" class="header__basket-item-count"
+                        >16</span
+                    >
+                </button>
+            </header>
+            <main id="mainContent" class="main-content">
+                <section
+                    id="orderSummary"
+                    class="main-content__order-summary"></section>
+                <!-- Food truck selection -->
+                <label
+                    class="d-none main-content__select-label"
+                    for="foodtruckSelect"
+                    >Choose a food truck:</label
                 >
-            </button>
-        </header>
+                <select id="foodtruckSelect" class="main-content__truck-select">
+                    <option value="">Select Food Truck</option>
+                    <option value="truck1">Food Truck 1</option>
+                    <option value="truck2">Food Truck 2</option>
+                    <option value="truck3">Food Truck 3</option>
+                </select>
+                <p id="totalCost" class="main-content__total-cost">
+                    Total: 0 SEK
+                </p>
+
+                <button
+                    id="checkoutBtn"
+                    class="main-content__checkout-btn"></button>
+            </main>
+        </div>
     </body>
 </html>
