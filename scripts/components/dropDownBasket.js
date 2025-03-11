@@ -1,7 +1,7 @@
 import { getDataFromLocalStorage } from '../data/localStorage.js'
 import { runOrdersPage } from '../pages/ordersPage.js';
 
-// Här ska funktionen för att öppna en dropdown-vy för när man trycker på kundvagnen skrivas
+// Här ska funktionen för att öppna en dropdown-vy för när man trycker på kundvagnen skrivas.
 function openDropDownBasket() {
     const basketRef = document.querySelector('#basket');
     // En lyssnare på basket-knappen
