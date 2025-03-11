@@ -14,13 +14,14 @@
     align-items: center;
 }
 
-
 .main-wrapper__background-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+
+/* main text content */
 .main-wrapper__status-heading {
     color:white;
     text-align: center;
@@ -29,6 +30,16 @@
     padding: 2rem 4rem;
 }
 
+.main-wrapper__etaText {
+    color: white;
+    font-weight: 500;
+}
+
+.main-wrapper__receiptNumber {
+    color: white;
+}
+
+/* buttons */
 .main-wrapper__btn {
     width: 21rem;
     padding: 1.2rem;
