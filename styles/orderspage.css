@@ -3,6 +3,10 @@
     background-color: var(--light-grey-bg-color);
 }
 
+.order-summary__empty-msg {
+    font-size: 1.5rem;
+    align-self: center;
+}
 .main-content {
     height: 100%;
     display: flex;

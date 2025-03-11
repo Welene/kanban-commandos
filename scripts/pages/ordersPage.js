@@ -17,9 +17,14 @@ function runOrdersPage() {
 
     // Om varukorgen är tom, visa meddelande och sätt totalpriset till 0
     if (!basket || !basket.items || basket.items.length === 0) {
-        container.innerHTML = '<p>Your cart is empty.</p>';
-        totalCostElement.textContent = 'Total: 0 SEK';
-        checkoutButton.classList.add('d-none');
+        container.innerHTML =
+            '<p class="order-summary__empty-msg">Your basket is empty</p>';
+        totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price"> 0 SEK</p>`; // Uppdatera totalkostnaden
+
+        checkoutButton.textContent = ' GO TO MENU';
+        checkoutButton.addEventListener('click', () => {
+            window.location.href = '/pages/menu.html';
+        });
         return;
     }
 
