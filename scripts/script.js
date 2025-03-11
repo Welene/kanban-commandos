@@ -5,7 +5,7 @@ import {
 } from './data/localStorage.js';
 import { highlightActiveBurgerLink, clickLoginBtn } from './utils/utils.js';
 import { renderHamburgerMenu, openNavMenu } from './components/navMenu.js';
-import { runIndexPage } from './pages/indexPage.js'
+import { runIndexPage } from './pages/indexPage.js';
 import { runAboutPage } from './pages/aboutPage.js';
 import { runEtaPage } from './pages/etaPage.js';
 import { runHistoryPage } from './pages/historyPage.js';
@@ -59,5 +59,4 @@ if (path === '/pages/' || path === '/pages/index.html') {
 openNavMenu();
 renderHamburgerMenu();
 highlightActiveBurgerLink();
-
-
+// calls function that navigates you to menu.html when clicking on "Logga inn" in index page
