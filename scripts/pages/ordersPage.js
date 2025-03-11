@@ -53,7 +53,7 @@ function runOrdersPage() {
     if (!currentUser || !currentUser.username) {
         checkoutButton.textContent = 'Log in to place an order';
         checkoutButton.addEventListener('click', () => {
-            window.location.href = '/pages/login.html';
+            window.location.href = '/pages/index.html';
         });
         return;
     }
