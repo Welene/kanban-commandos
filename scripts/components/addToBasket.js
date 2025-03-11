@@ -6,7 +6,7 @@ import {
 /**
  * Hämtar kundvagnens innehåll från localStorage.
  * Om datan är ogiltig eller saknas, returneras en tom kundvagnsstruktur.
- * Felhantering är inkluderad för att undvika krasch vid korrupt eller saknad data.
+ * Felhantering är inkluderad för att undvika krasch vid korrupt eller saknad data
  */
 function getBasketItems() {
     try {
