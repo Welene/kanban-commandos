@@ -67,6 +67,7 @@ function displayReceiptNumber () {
     if (!receiptNumber) {
         console.log('Cannot find any basket id');
     } else {
-        document.getElementById('receiptNumber').textContent = `#${receiptNumber}`;
+        // add # later before $ if that is not in the objekt
+        document.getElementById('receiptNumber').textContent = `${receiptNumber}`;
     }
 }
