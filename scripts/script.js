@@ -1,7 +1,7 @@
 import { fetchProducts, fetchUsers } from './api/api.js';
 import {
-    getDataFromLocalStorage,
-    saveDataToLocalStorage,
+	getDataFromLocalStorage,
+	saveDataToLocalStorage,
 } from './data/localStorage.js';
 import { highlightActiveBurgerLink, clickLoginBtn } from './utils/utils.js';
 import { renderHamburgerMenu, openNavMenu } from './components/navMenu.js';
@@ -22,38 +22,38 @@ console.log('Script.js loaded');
 const path = window.location.pathname;
 
 if (path === '/pages/' || path === '/pages/index.html') {
-    runIndexPage();
-    console.log('index.html');
+	runIndexPage();
+	console.log('index.html');
 } else if (path === '/pages/about.html') {
-    runAboutPage();
-    console.log('about.html');
+	runAboutPage();
+	console.log('about.html');
 } else if (path === '/pages/eta.html') {
-    runEtaPage();
-    console.log('eta.html');
+	runEtaPage();
+	console.log('eta.html');
 } else if (path === '/pages/history.html') {
-    runHistoryPage();
-    console.log('history.html');
+	runHistoryPage();
+	console.log('history.html');
 } else if (path === '/pages/map.html') {
-    runMapPage();
-    console.log('map.html');
+	runMapPage();
+	console.log('map.html');
 } else if (path === '/pages/menu.html') {
-    runMenuPage();
-    console.log('menu.html');
+	runMenuPage();
+	console.log('menu.html');
 } else if (path === '/pages/order-overview.html') {
-    runOrderOverviewPage();
-    console.log('order-overview.html');
+	runOrderOverviewPage();
+	console.log('order-overview.html');
 } else if (path === '/pages/orders.html') {
-    runOrdersPage();
-    console.log('orders.html');
+	runOrdersPage();
+	console.log('orders.html');
 } else if (path === '/pages/profile.html') {
-    runProfilePage();
-    console.log('profile.html');
+	runProfilePage();
+	console.log('profile.html');
 } else if (path === '/pages/receipt.html') {
-    runReceiptPage();
-    console.log('receipt.html');
+	runReceiptPage();
+	console.log('receipt.html');
 } else if (path === '/pages/register.html') {
-    runRegisterPage();
-    console.log('register.html');
+	runRegisterPage();
+	console.log('register.html');
 }
 
 openNavMenu();
