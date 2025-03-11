@@ -1,4 +1,10 @@
 function runEtaPage() {
+    clickEtaBtns()
+}
+
+export { runEtaPage };
+
+function clickEtaBtns () {
     let newOrderBtn = document.getElementById('newOrderBtn');
     let receiptBtn = document.getElementById('receiptBtn');
 
@@ -18,5 +24,3 @@ function runEtaPage() {
         });
     }
 }
-
-export { runEtaPage };
