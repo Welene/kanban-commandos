@@ -59,3 +59,4 @@ if (path === '/pages/' || path === '/pages/index.html') {
 openNavMenu();
 renderHamburgerMenu();
 highlightActiveBurgerLink();
+// calls function that navigates you to menu.html when clicking on "Logga inn" in index page

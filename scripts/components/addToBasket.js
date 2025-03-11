@@ -1,1 +1,58 @@
-// Här ska funktionen för att lägga till produkter i kundvagnen
+/**
+ * Hämtar kundvagnens innehåll från localStorage.
+ * Om datan är ogiltig eller saknas, returneras en tom kundvagnsstruktur.
+ * Felhantering är inkluderad för att undvika krasch vid korrupt eller saknad data.
+ */
+function getBasketItems() {
+    try {
+        // Försök att hämta basket-data från localStorage
+        let basketData = getDataFromLocalStorage('basket');
+
+        // Kontrollera att datan är giltig (måste vara ett objekt och innehålla en array för items)
+        if (
+            !basketData ||
+            typeof basketData !== 'object' ||
+            !Array.isArray(basketData.items)
+        ) {
+            return { id: '', foodTruck: '', items: [] }; // Returnera en tom kundvagn vid ogiltig data
+        }
+
+        return basketData; // Returnera den befintliga kundvagnen om den är korrekt
+    } catch (error) {
+        // Logga felet i konsolen för att underlätta felsökning
+        console.error('Error fetching basket data:', error);
+
+        // Returnera en tom kundvagn om ett fel uppstår
+        return { id: '', foodTruck: '', items: [] };
+    }
+}
+
+/**
+ * Lägger till en produkt i kundvagnen och sparar uppdaterad data i localStorage.
+ *
+ * Om produkten redan finns i kundvagnen ökas dess antal, annars läggs den till som en ny post.
+ */
+export function addToBasket(id, itemName, price) {
+    //hämta nuvarande bakset
+    let basketData = getBasketItems();
+    console.log('Basket data get from localStorage: ' + basketData);
+    // Kolla om varan redan finns i items
+    let existingItem = basketData.items.find((item) => item.id === id);
+
+    if (existingItem) {
+        // Om varan finns, öka antal
+        existingItem.amount += 1;
+    } else {
+        // Annars, lägg till ny vara
+        let itemToAdd = {
+            id: id,
+            name: itemName,
+            amount: 1,
+            price: price,
+        };
+        basketData.items.push(itemToAdd);
+    }
+    console.log('Basket data that`s saved: ' + basketData);
+    // Spara tillbaka basket till localStorage
+    saveDataToLocalStorage('basket', basketData);
+}
