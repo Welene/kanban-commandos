@@ -29,7 +29,7 @@
 }
 .food-menu-container__card-container {
     overflow-y: auto;
-    height: 480px;
+    height: 55vh;
 }
 
 .food-menu-container__inner-grid {

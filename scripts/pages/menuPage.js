@@ -1,5 +1,5 @@
 import { fetchProducts } from '../api/api.js';
-// import { addToBasket } from '../components/addToBasket.js'
+import { addToBasket } from '../components/addToBasket.js';
 
 async function runMenuPage() {
 	const products = await fetchProducts();
@@ -7,8 +7,6 @@ async function runMenuPage() {
 }
 
 function createCards(products, addSecondText, addButton) {
-	console.log(products.items);
-
 	// Unordered list som behållare för alla menyalternativen
 	const unorderedListHTML = document.createElement('ul');
 
@@ -28,7 +26,7 @@ function createCards(products, addSecondText, addButton) {
 			mainParagraphHTML.classList.add('food-menu-container__food-title');
 
 			// Använder span för att dela upp matvaran och priset
-			// Har en extra top span för den punktade linjen
+			// Har en extra span för den punktade linjen
 			mainParagraphHTML.innerHTML = `<span>${item.name}</span><span class="dotted-line"></span><span>${item.price} sek</span>`;
 
 			sectionHTML.appendChild(mainParagraphHTML);
@@ -58,65 +56,84 @@ function createCards(products, addSecondText, addButton) {
 			}
 
 			unorderedListHTML.appendChild(listItemHTML);
-
-			// Dippen fås en egen ruta i botten
 		}
 	});
 
 	const cardContainerRef = document.querySelector('#cardContainer');
 	cardContainerRef.appendChild(unorderedListHTML);
+	// Dippen läggs till i funktionen under.
 	createDipCard(products);
 }
 
+// Skapar dipdelen av menyn
 function createDipCard(products) {
+	// Hämtar elementet från menysidan
 	const dipContainerRef = document.querySelector('#dipContainer');
 
+	// Dipsås plus priset,
 	const paragraphHTML = document.createElement('p');
 	paragraphHTML.classList.add('food-menu-container__food-title');
+
+	// Använder span för att dela upp matvaran och priset
+	// Har en extra span för den punktade linjen
 	paragraphHTML.innerHTML = `<span>Dipsås</span><span class="dotted-line"></span><span>19 sek</span>`;
 
+	// Lägger till knappen
 	const addDipButtonHTML = document.createElement('button');
+	addDipButtonHTML.classList.add('food-menu-container__add-button');
 	addDipButtonHTML.textContent = '+';
 
+	// Ser till att knappen först letar upp alla valda dippsorter före den lägger dem i basket
 	addDipButtonHTML.addEventListener('click', () => {
 		const selectedDips = document.querySelectorAll('.selected-dip');
 		selectedDips.forEach((dip) => {
-			addToBasket(dip.dataset.id, dip.dataset.name, dip.dataset.price);
+			addToBasket(
+				Number(dip.dataset.id),
+				dip.dataset.name,
+				Number(dip.dataset.price)
+			);
 		});
 	});
 
-	addDipButtonHTML.classList.add('food-menu-container__add-button');
-
+	// Behållare för texten och lägg till-knappen
 	const sectionHTML = document.createElement('section');
 	sectionHTML.className =
 		'food-menu-container__inner-grid food-menu-container__inner-grid--border-top';
 
+	// Lägger till texten och lägg till-knappen i behållaren
 	sectionHTML.appendChild(paragraphHTML);
 	sectionHTML.appendChild(addDipButtonHTML);
 	dipContainerRef.appendChild(sectionHTML);
 
+	// Ny behållare för dipvalen
 	const sectionDipHTML = document.createElement('section');
 	sectionDipHTML.classList.add('food-menu-container__dip-button-container');
 
+	// Alla dipsorter får sin egna knapp
 	products.items.forEach((item) => {
 		if (item.type === 'dip') {
 			const buttonHTML = document.createElement('button');
 			buttonHTML.textContent = item.name;
 			buttonHTML.classList.add('food-menu-container__dip-button');
+
+			// Dataset för att spara informationen om varje dipsort
 			buttonHTML.dataset.id = item.id;
 			buttonHTML.dataset.name = item.name;
 			buttonHTML.dataset.price = item.price;
 
+			// Gör så markerade knappar blir mörkladgda samt får klassen "selected-dip"
+			// Alla knappar som togglar "selected-dip" är de som lägg till-knappen kommer leta efter
 			buttonHTML.addEventListener('click', () => {
 				buttonHTML.classList.toggle('selected-dip');
 			});
+
+			// Lägger till varje dipsort i den nya dipbehållaren
 			sectionDipHTML.appendChild(buttonHTML);
 		}
 	});
+
+	// Dipbehållaren läggs in i huvudcontainern för dipen.
 	dipContainerRef.appendChild(sectionDipHTML);
 }
 
-function addToBasket(one, two, three) {
-	console.log('I am added to basket! ' + one + two + three);
-}
 export { runMenuPage };
