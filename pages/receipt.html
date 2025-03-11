@@ -1,9 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Receipt | Yum Yum Gimme Sum Wonton Food Truck</title>
+        <link rel="stylesheet" href="/styles/style.css" />
+        <script type="module" src="/scripts/script.js"></script>
     </head>
-    <body></body>
+    <header class="header" id="header">
+        <button
+            class="header__nav-menu"
+            id="navMenu"
+            aria-label="Open nav menu button"
+        >
+            <span class="header__nav-menu-lines" id="navMenuLines"></span>
+        </button>
+        <a href="index.html" aria-label="Go to landing page">
+            <img
+                class="header__logo"
+                src="../assets/icons/logo.svg"
+                alt="Image logo"
+            />
+        </a>
+        <button
+            id="basket"
+            class="header__basket-box"
+            aria-label="Open cart button"
+        >
+            <img
+                class="header__basket-icon"
+                src="../assets/icons/basket.svg"
+                alt="Basket icon"
+            />
+            <span id="basketItemCount" class="header__basket-item-count"
+                >0</span
+            >
+        </button>
+    </header>
+    <body class="page">
+        <main class="receipt">
+            <figure class="receipt__logo">
+                <img src="../assets/icons/logo-red.svg" alt="Yum Yum Logo" />
+            </figure>
+            <section class="receipt__header">
+                <h1 class="receipt__title">KVITTO</h1>
+                <p class="receipt__id">#4KJWSD234K</p>
+            </section>
+            <section class="receipt__items">
+                <section class="receipt__item">
+                    <section class="receipt__item-info">
+                        <span class="receipt__item-name">KARLSTAD</span>
+                        <span class="receipt__item-count">3 stycken</span>
+                    </section>
+                    <span class="receipt__item-price">27 SEK</span>
+                </section>
+                <section class="receipt__item">
+                    <section class="receipt__item-info">
+                        <span class="receipt__item-name">HO CHI MINH</span>
+                        <span class="receipt__item-count">2 stycken</span>
+                    </section>
+                    <span class="receipt__item-price">18 SEK</span>
+                </section>
+                <section class="receipt__item">
+                    <section class="receipt__item-info">
+                        <span class="receipt__item-name">KINGSTON</span>
+                        <span class="receipt__item-count">2 stycken</span>
+                    </section>
+                    <span class="receipt__item-price">18 SEK</span>
+                </section>
+                <section class="receipt__item">
+                    <section class="receipt__item-info">
+                        <span class="receipt__item-name">SWEET CHILI DIP</span>
+                        <span class="receipt__item-count">1 stycken</span>
+                    </section>
+                    <span class="receipt__item-price">19 SEK</span>
+                </section>
+                <section class="receipt__item">
+                    <section class="receipt__item-info">
+                        <span class="receipt__item-name">GUACAMOLE DIP</span>
+                        <span class="receipt__item-count">1 stycken</span>
+                    </section>
+                    <span class="receipt__item-price">19 SEK</span>
+                </section>
+            </section>
+            <section class="receipt__total">
+                <span class="receipt__total-text">TOTALT</span>
+                <span class="receipt__total-price">101 SEK</span>
+                <p class="receipt__total-note">inkl 20% moms</p>
+            </section>
+        </main>
+        <button class="receipt__button">GÖR EN NY BESTÄLLNING</button>
+    </body>
 </html>
