@@ -1,6 +1,7 @@
 /* style imports */
 @import url('/styles/about.css');
 @import url('/styles/indexpage.css');
+@import url('/styles/menupage.css');
 @import url('/styles/drop-down-basket.css');
 
 /* Font imports */
@@ -28,6 +29,7 @@
     --weakblack-text-color: #414141;
     --white-text-color: #fff;
     --darker-gray-bg-color: #353131;
+    --light-green-bg-color: #8ED8BF;
 }
 
 /* Utils */
