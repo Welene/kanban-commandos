@@ -1,31 +1,30 @@
 /**
- * Hämtar kundvagnen från localStorage.
- *
- * Om det inte finns någon sparad kundvagn eller om den är tom,
- * skapas en ny tom kundvagn med korrekt struktur.
- *
- * Säkerställer också att "items" alltid är en array för att undvika fel.
- *
- *
+ * Hämtar kundvagnens innehåll från localStorage.
+ * Om datan är ogiltig eller saknas, returneras en tom kundvagnsstruktur.
+ * Felhantering är inkluderad för att undvika krasch vid korrupt eller saknad data.
  */
-import {
-    getDataFromLocalStorage,
-    saveDataToLocalStorage,
-} from '../data/localStorage.js';
-
 function getBasketItems() {
-    let basketData = getDataFromLocalStorage('basket');
+    try {
+        // Försök att hämta basket-data från localStorage
+        let basketData = getDataFromLocalStorage('basket');
 
-    // Om basketData saknas eller är en tom array, skapa en ny kundvagn
-    if (!basketData || (Array.isArray(basketData) && basketData.length === 0)) {
-        basketData = { id: '', foodTruck: '', items: [] };
-    }
+        // Kontrollera att datan är giltig (måste vara ett objekt och innehålla en array för items)
+        if (
+            !basketData ||
+            typeof basketData !== 'object' ||
+            !Array.isArray(basketData.items)
+        ) {
+            return { id: '', foodTruck: '', items: [] }; // Returnera en tom kundvagn vid ogiltig data
+        }
 
-    // Säkerställ att items alltid är en array
-    if (!Array.isArray(basketData.items)) {
-        basketData.items = [];
+        return basketData; // Returnera den befintliga kundvagnen om den är korrekt
+    } catch (error) {
+        // Logga felet i konsolen för att underlätta felsökning
+        console.error('Error fetching basket data:', error);
+
+        // Returnera en tom kundvagn om ett fel uppstår
+        return { id: '', foodTruck: '', items: [] };
     }
-    return basketData;
 }
 
 /**
