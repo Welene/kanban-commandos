@@ -2,10 +2,6 @@
     --snow-color: #f4f3f1b6;
 }
 
-.content-wrapper__intro-content {
-
-}
-
 /* background color in body */
 .content__main {
     background-color: var(--dark-grey-bg-color);
@@ -49,7 +45,6 @@
     color: var(--snow-color);
     border: 2px solid var(--snow-color);
 }
-
 
 .main-wrapper__btn--grey {
     background-color: var(--darker-gray-bg-color);
