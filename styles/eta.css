@@ -18,8 +18,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
+.main-wrapper__hero {
+    z-index: -1;
+}
 
 /* main text content */
 .main-wrapper__status-heading {
@@ -27,7 +31,10 @@
     text-align: center;
     font-size: 1.8rem;
     letter-spacing: .1rem;
-    padding: 2rem 4rem;
+    width: 17rem;
+    z-index: 1;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
 }
 
 .main-wrapper__etaText {
@@ -37,18 +44,18 @@
 
 .main-wrapper__receiptNumber {
     color: white;
+    margin: 1rem 0rem 1.2rem 0rem;
 }
 
 /* buttons */
 .main-wrapper__btn {
     width: 21rem;
-    padding: 1.2rem;
+    padding: 1.4rem;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-family: "Fira Sans", sans-serif;
     border-radius: .3rem;
     border-style: none;
-    box-shadow: 0px 0px 20px 0px #2e2e2e;
 }
 
 .main-wrapper__btn--transparent {
@@ -60,5 +67,6 @@
 .main-wrapper__btn--grey {
     background-color: var(--darker-gray-bg-color);
     color: white;
+    padding: 1.5rem 0rem 1.6rem 0rem;
 }
 
