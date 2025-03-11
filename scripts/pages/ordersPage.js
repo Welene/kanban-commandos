@@ -19,6 +19,7 @@ function runOrdersPage() {
     if (!basket || !basket.items || basket.items.length === 0) {
         container.innerHTML = '<p>Your cart is empty.</p>';
         totalCostElement.textContent = 'Total: 0 SEK';
+        checkoutButton.classList.add('d-none');
         return;
     }
 
@@ -41,7 +42,7 @@ function runOrdersPage() {
         totalCost += item.price * item.amount; // Lägg till produktens kostnad i totalen
     });
 
-    totalCostElement.textContent = `Total: ${totalCost} SEK`; // Uppdatera totalkostnaden
+    totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price">${totalCost} SEK</p>`; // Uppdatera totalkostnaden
 
     // Om användaren inte är inloggad, ändra checkout-knappen till "Logga in"
     if (!currentUser || !currentUser.username) {

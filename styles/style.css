@@ -3,6 +3,7 @@
 @import url('/styles/about.css');
 @import url('/styles/indexpage.css');
 @import url('/styles/menupage.css');
+@import url('/styles/orderspage.css');
 
 /* Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
@@ -27,7 +28,7 @@
     --weakblack-text-color: #414141;
     --white-text-color: #fff;
     --darker-gray-bg-color: #353131;
-    --light-green-bg-color: #8ED8BF;
+    --light-green-bg-color: #8ed8bf;
 }
 
 /* Utils */
@@ -176,7 +177,9 @@ body {
     border: none;
     cursor: pointer;
 }
-
+.header__basket-box--border {
+    border: 2px solid #cccccc;
+}
 .header__basket-item-count {
     position: absolute;
     background-color: var(--red-bg-color);
