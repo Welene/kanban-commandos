@@ -22,6 +22,8 @@
 }
 
 .main-wrapper__hero {
+    min-height: 362px;
+    min-width: 390px;
     z-index: -1;
 }
 
@@ -33,7 +35,7 @@
     letter-spacing: .1rem;
     width: 17rem;
     z-index: 1;
-    margin-top: -2rem;
+    margin-top: -1.8rem;
     margin-bottom: 1rem;
 }
 
@@ -45,6 +47,7 @@
 .main-wrapper__receiptNumber {
     color: white;
     margin: 1rem 0rem 1.2rem 0rem;
+    letter-spacing: .05rem;
 }
 
 /* buttons */
