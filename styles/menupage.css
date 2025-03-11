@@ -7,10 +7,8 @@
 
 .food-menu-container{
     width: 100%;
-    max-height: 80vh;
     margin-top: 2rem;
     border-radius: 10px;
-    overflow-y: auto;
     color: var(--white-text-color);
     background-color: var(--dark-grey-bg-color);
 }
@@ -27,6 +25,72 @@
 
 .food-menu-container__filter {
     flex: 1;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
-/* .food-menu-container__card-container{} */
+.food-menu-container__card-container {
+    overflow-y: auto;
+    height: 480px;
+}
+
+.food-menu-container__inner-grid {
+    padding: 0.5rem 1rem;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 0.8rem;
+    list-style-type: none;
+    border-bottom: 1px solid rgb(147, 140, 140);
+}
+
+.food-menu-container__inner-grid--border-top {
+    border-bottom: none;
+    border-top: 1px solid rgb(147, 140, 140);
+}
+
+.food-menu-container__food-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.dotted-line {
+    flex-grow: 0.8;
+    border-bottom: dotted;
+    transform: translateY(6px);
+}
+
+.food-menu-container__food-content {
+    font-size: 0.8rem;
+}
+
+.food-menu-container__add-button {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 2.5rem;
+}
+
+.food-menu-container__inner-grid:hover {
+    background-color: rgb(118, 111, 111);
+}
+
+.food-menu-container__dip-button {
+    padding: 0.5rem;
+    border: none;
+    text-transform: lowercase;
+    color: var(--white-text-color);
+    background-color: rgb(118, 111, 111);
+}
+
+.food-menu-container__dip-button-container {
+    padding: 0rem 1rem 1rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.selected-dip {
+    background-color: #353131;
+}
