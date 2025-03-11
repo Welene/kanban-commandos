@@ -2,6 +2,12 @@
     position: relative;
 }
 
+.overlay-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
 .overlay-basket {
     position: absolute;
     background-color: var(--white-bg-color);
@@ -43,23 +49,9 @@
 }
 
 .separator {
-    /* margin: 0 .5rem;
-    align-self: end;
-    width: 100%;
-    height: 1rem;
-    background: repeating-radial-gradient(
-        circle,
-        black 0%,
-        black 1px,
-        transparent 1px,
-        transparent 6px
-        );
-        background-size: 8px 8px;
-        background-repeat: repeat-x;
-    margin-top: 1rem; */
-    flex-grow: .8;
+    flex-grow: 0.8;
     border-bottom: dotted;
-    /* border-bottom-width: 3px; */
+    transform: translateY(-6px);
 }
 
 .basket-total-box {
@@ -84,11 +76,15 @@
     font-weight: 700;
 }
 
-.basket-preview-order-btn {
+.basket-preview-order-nav {
     padding: 1rem;
     bottom: 0;
     background-color: var(--dark-black-btn-bg-color);
     color: var(--white-text-color);
     font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
