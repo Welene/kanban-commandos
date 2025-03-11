@@ -72,3 +72,20 @@ function displayReceiptNumber () {
         document.getElementById('receiptNumber').textContent = `${receiptNumber}`;
     }
 }
+
+
+
+
+// WROTE THIS DIRECTLY INTO CONSOLE TO TEST MY FUNCTIONS
+
+// localStorage.setItem('basket', JSON.stringify({
+//     id: '#4kjwsdf234k',  
+//     foodTruck: '#1241',
+//     items: [
+//         { id: 1, namn: 'Paris', amount: 2, price: 19 },
+//         { id: 2, namn: 'Namn', amount: 2, price: 19 },
+//         { id: 3, namn: 'Name', amount: 2, price: 19 }
+//     ]
+// }));
+
+
