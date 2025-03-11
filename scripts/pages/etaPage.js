@@ -1,3 +1,4 @@
+// does not call calculateEtc function because that function is used/called within displayEtaText function 
 function runEtaPage() {
     clickEtaBtns()
     displayEtaText()
