@@ -10,8 +10,9 @@
 .main-wrapper__intro-content {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
     align-items: center;
+    gap: 1.2rem;
+    
 }
 
 .main-wrapper__background-container {
@@ -29,25 +30,25 @@
 
 /* main text content */
 .main-wrapper__status-heading {
-    color:white;
+    width: 17rem;
+    margin-top: -1.8rem;
+    margin-bottom: 1rem;
     text-align: center;
     font-size: 1.8rem;
     letter-spacing: .1rem;
-    width: 17rem;
+    color:white;
     z-index: 1;
-    margin-top: -1.8rem;
-    margin-bottom: 1rem;
 }
 
 .main-wrapper__etaText {
-    color: white;
     font-weight: 500;
+    color: white;
 }
 
 .main-wrapper__receiptNumber {
-    color: white;
     margin: 1rem 0rem 1.2rem 0rem;
     letter-spacing: .05rem;
+    color: white;
 }
 
 /* buttons */
