@@ -1,0 +1,76 @@
+.content-wrapper__max-height {
+    height: 85vh;
+    background-color: var(--light-grey-bg-color);
+}
+
+.order-summary__empty-msg {
+    font-size: 1.5rem;
+    align-self: center;
+}
+.main-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 0.5rem 0;
+    font-weight: 800;
+    justify-content: space-between;
+}
+
+.main-content__order-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 0.5rem 0;
+    max-height: 390px;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+.main-content__truck-select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 2px solid #cccccc;
+    margin-top: 1rem;
+    width: 50%;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.break-line-4 {
+    border: 2px solid #cccccc;
+    border-radius: 14px;
+}
+.break-line-1 {
+    border: 1px solid #cccccc;
+    border-radius: 14px;
+}
+
+.main-content__bottom-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.main-content__total-cost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #c1c1c1c1;
+    border-radius: 4px;
+    color: var(--weakblack-text-color);
+}
+
+.total-cost__title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.total-cost__price {
+    font-size: 2rem;
+}
+
+.main-content__checkout-btn {
+    width: 100%;
+}
