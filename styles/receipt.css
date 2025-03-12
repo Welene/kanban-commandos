@@ -16,7 +16,7 @@
     background: var(--white-bg-color);
     padding:1rem 0rem 0rem 0rem;
     border-radius: 10px;
-    width: 90%;
+    width: 95%;
     min-height: 30.25rem;
     max-width: 25rem;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -104,5 +104,5 @@
 }
 
 .main-wrapper__btn--receipt {
-    width: 90%;
+    width: 95%;
 } 
