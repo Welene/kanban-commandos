@@ -3,6 +3,7 @@
 @import url('/styles/map.css');
 @import url('/styles/about.css');
 @import url('/styles/indexpage.css');
+@import url('/styles/receipt.css');
 @import url('/styles/menupage.css');
 @import url('/styles/orderspage.css');
 @import url('/styles/drop-down-basket.css');
@@ -24,6 +25,7 @@
     --dark-grey-bg-color: #605858;
     --medium-grey-bg-color: #cfcece;
     --light-grey-bg-color: #eeeeee;
+    --grey-bg-color:#C2C1C1;
     --white-bg-color: #fff;
     --black-bg-color: #000;
     --dark-black-btn-bg-color: #353131;
