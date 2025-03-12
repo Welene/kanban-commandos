@@ -1,3 +1,7 @@
+:root {
+    --red-bg-color-transparent: #eb5757d0;
+}
+
 .index {
     display: flex;
     align-items: center;
@@ -64,4 +68,12 @@
     box-shadow: 0px 0px 20px 0px #2e2e2e;
     position: relative;
     bottom: 2rem;
+}
+
+
+
+/* LOGIN FORM STYLING */
+.content-wrapper__btn--red {
+    background-color: var(--red-bg-color-transparent);
+    color: white;
 }
