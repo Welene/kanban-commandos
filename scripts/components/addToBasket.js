@@ -40,7 +40,6 @@ function getBasketItems() {
 export function addToBasket(id, itemName, price) {
     //hämta nuvarande bakset
     let basketData = getBasketItems();
-    console.log('Basket data get from localStorage: ' + basketData.items);
     // Kolla om varan redan finns i items
     let existingItem = basketData.items.find((item) => item.id === id);
 
@@ -57,31 +56,30 @@ export function addToBasket(id, itemName, price) {
         };
         basketData.items.push(itemToAdd);
     }
-    console.log('Basket data that`s saved: ' + basketData);
     // Spara tillbaka basket till localStorage
     saveDataToLocalStorage('basket', basketData);
     // Lägger till den röda cirkeln på basket med antal items i basket
-    addToBasketCount()
+    addToBasketCount();
 }
 
 // Funktion för att skapa röda cirkeln med siffra för hur många items som finns i varukorgen
 function addToBasketCount() {
-    // Hämtar hem nuvarande basketCount från localStorage om det finns 
-    let basketItemCounts = getDataFromLocalStorage('basketCount')
+    // Hämtar hem nuvarande basketCount från localStorage om det finns
+    let basketItemCounts = getDataFromLocalStorage('basketCount');
     const basketRef = document.querySelector('#basket');
-    
+
     // Adderar en till item till nuvarande siffra
     basketItemCounts++;
 
     // Skapar själva röda cirkeln och stoppar in nuvarande basketItemCounts i den
-    const basketItemCountHTML =`                       <span
+    const basketItemCountHTML = `                       <span
         id="basketItemCount"
         class="header__basket-item-count"
-    >${basketItemCounts}</span>`
+    >${basketItemCounts}</span>`;
 
     // Stoppar in den sist i headern
     basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);
 
     // Uppdaterar localStorage med nya basketItemCount
-    saveDataToLocalStorage('basketCount', basketItemCounts);  
+    saveDataToLocalStorage('basketCount', basketItemCounts);
 }
