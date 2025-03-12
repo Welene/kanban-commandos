@@ -1,5 +1,6 @@
 :root {
     --red-bg-color-transparent: #eb5757d0;
+    --white-bg-color-transparent: rgba(221, 221, 221, 0.829);
 }
 
 .index {
@@ -72,8 +73,69 @@
 
 
 
-/* LOGIN FORM STYLING */
+/* LOGIN FORM "page" STYLING */
+
+.content-wrapper__login-container {
+    min-width: 100%;
+    margin: 4rem 0rem 4rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-align: center;
+    padding: .5rem;
+    background-color: var(--white-bg-color-transparent);
+    border-radius: .3rem;
+}
+
+.content-wrapper__heading-login {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+}
+
+.content-wrapper__input-section {
+    text-align: left;
+    padding: 1rem;
+}
+
+.content-wrapper__name-heading {
+    margin-bottom: .3rem;
+    margin-top: .5rem;
+}
+
+.content-wrapper__name-field {
+    border-style: none;
+    border-radius: .3rem;
+    padding: 1.2rem;
+    width: 100%;
+}
+
+.content-wrapper__password-heading {
+    margin-bottom: .3rem;
+    margin-top: 2rem;
+}
+
+.content-wrapper__password-field {
+    border-style: none;
+    border-radius: .3rem;
+    padding: 1.2rem;
+    width: 100%;
+    margin-bottom: 2.5rem;
+}
+
 .content-wrapper__btn--red {
     background-color: var(--red-bg-color-transparent);
     color: white;
 }
+
+.content-wrapper__back-btn {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    border-style: none;
+    border-radius: .3rem;
+    padding: .4rem 1rem .4rem 0rem;
+    rotate: 180deg;
+    opacity: .8;
+}
+
+/* fiks sånn at margin-top ikke gjør at bildet blir større, siste knappen skal ligge nederst */
