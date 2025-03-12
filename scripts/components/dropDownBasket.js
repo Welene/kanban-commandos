@@ -47,7 +47,9 @@ function createOverlayDropDownBasket() {
     // Anropar funktion för att kunna stänga basket
     closeOverlayBasketListener();
     // Kontroll om varukorgen är tom och då skrivs 'Tom varukorg'-meddelande
-    isBasketEmpty()
+    isBasketEmpty();
+    // Skapar en papperskorg för att tömma basket om det finns items i basket
+    createEmptyBasketElem();
 }
 
 // Funktion som skapar varje enskilda produkt som lagt in i basket
@@ -76,15 +78,15 @@ function createBasketItem() {
             totalAmount += itemPrice;
             
             let basketItemsHTML = `
-                <li data="basketItem" class="basket__list-item">
-                    <section id="basketItem" class="basket__title-box">
-                        <p id="basketItemTitle" class="basket__item">
+                <li data-basketItemId="basketItem" class="basket__list-item">
+                    <section class="basket__title-box">
+                        <p data-itemTitleId="basketItemTitle" class="basket__item">
                             ${basketItems.items[i].name}
                         </p>
-                        <p id="basketItemCount" class="basket__item">x${basketItems.items[i].amount}</p>
+                        <p data-basketItemCountId="basketItemCount" class="basket__item">x${basketItems.items[i].amount}</p>
                     </section>
                     <span class="separator"></span>
-                    <p id="basketItemPrice" class="basket__item">${itemPrice} kr</p>
+                    <p data-basketItemPriceId="basketItemPrice" class="basket__item">${itemPrice} kr</p>
                 </li>
                 `;
             // Lägger in produkten i basket
@@ -100,6 +102,32 @@ function createBasketItem() {
         basketListRef.insertAdjacentHTML('beforeend', emptyHTML);
 
         basketTotalAmountRef.textContent = `${totalAmount} kr`;
+    }
+}
+
+function createEmptyBasketElem() {
+    const basketItemRef = document.querySelector('[data-basketitemid = "basketItem"]');
+    const basketListRef = document.querySelector('#basketList');
+    
+    if(basketItemRef) {
+        console.log('hr');
+        const emptyBasketHTML = `
+        <section id="emptyBasket" class="empty-basket-box">
+            <img
+                id="emptyBasketImg"
+                class="empty-basket-box__trash-can"
+                src="../assets/icons/trash-can.svg"
+                alt="Bin icon"
+            />
+            <p
+                id="emptyBasketParagraph"
+                class="empty-basket-box__paragraph">
+                    Töm varukorg
+            </p>
+        </section>
+        `;
+
+    basketListRef.insertAdjacentHTML('afterend', emptyBasketHTML);
     }
 }
 

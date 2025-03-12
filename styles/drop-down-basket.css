@@ -97,3 +97,14 @@
 .basket__empty--red {
     color: var(--red-bg-color);
 }
+
+.empty-basket-box {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+}
+
+.empty-basket-box__paragraph {
+    text-align: bottom;
+    color: var(--red-bg-color)
+}
