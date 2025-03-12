@@ -40,7 +40,7 @@ function getBasketItems() {
 export function addToBasket(id, itemName, price) {
     //hämta nuvarande bakset
     let basketData = getBasketItems();
-    console.log('Basket data get from localStorage: ' + basketData);
+    console.log('Basket data get from localStorage: ' + basketData.items);
     // Kolla om varan redan finns i items
     let existingItem = basketData.items.find((item) => item.id === id);
 
