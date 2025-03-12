@@ -44,15 +44,26 @@
 				</button>
 			</header>
 			<main class="map">
-				<h1 class="map__title">Truck karta</h1>
+				<h1 class="map__title">Hitta en foodtruck nära dig!</h1>
+				<select
+					class="map__selection-foodtrucks"
+					name="food trucks"
+					id="selectionFoodtrucks"
+				>
+					<option value="välj en adress">välj en adress</option>
+					<option value="bergvik">Bergvik</option>
+					<option value="stora torget">Stora Torget</option>
+					<option value="sundsta-alvkullegymnasiet">
+						Sundsta-Älvkullegymnasiet
+					</option>
+				</select>
 				<section class="map__img-container">
-					<img id="map" src="../assets/icons/logo-red.svg" alt="" />
+					<img
+						id="mapFoodtruck"
+						src="../assets/maps/bergvik.jpg"
+						alt="Karta med foodtruck bredvid Bergvik köpcenter"
+					/>
 				</section>
-				<ul class="map__address-container">
-					<li class="map__address">Bergvik</li>
-					<li class="map__address">Stora Torget</li>
-					<li class="map__address">Sundsta-Älvkullegymnasiet</li>
-				</ul>
 			</main>
 		</div>
 	</body>
