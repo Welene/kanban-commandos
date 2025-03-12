@@ -60,4 +60,28 @@ export function addToBasket(id, itemName, price) {
     console.log('Basket data that`s saved: ' + basketData);
     // Spara tillbaka basket till localStorage
     saveDataToLocalStorage('basket', basketData);
+    // Lägger till den röda cirkeln på basket med antal items i basket
+    addToBasketCount()
+}
+
+// Funktion för att skapa röda cirkeln med siffra för hur många items som finns i varukorgen
+function addToBasketCount() {
+    // Hämtar hem nuvarande basketCount från localStorage om det finns 
+    let basketItemCounts = getDataFromLocalStorage('basketCount')
+    const basketRef = document.querySelector('#basket');
+    
+    // Adderar en till item till nuvarande siffra
+    basketItemCounts++;
+
+    // Skapar själva röda cirkeln och stoppar in nuvarande basketItemCounts i den
+    const basketItemCountHTML =`                       <span
+        id="basketItemCount"
+        class="header__basket-item-count"
+    >${basketItemCounts}</span>`
+
+    // Stoppar in den sist i headern
+    basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);
+
+    // Uppdaterar localStorage med nya basketItemCount
+    saveDataToLocalStorage('basketCount', basketItemCounts);  
 }

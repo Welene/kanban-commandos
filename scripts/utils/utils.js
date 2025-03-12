@@ -1,3 +1,6 @@
+import { getDataFromLocalStorage } from '../data/localStorage.js'
+
+
 // Funktionsverktyg: Exempelvis funktioner för att randominisera nummer, formatera text eller manipulera strängar.
 
 // Hjälpfunktioner för DOM-manipulering: Funktioner som förenklar att välja element, ändra klasser eller attribut på element, eller hantera händelselyssnare.
@@ -50,4 +53,20 @@ export function clickLoginBtn() {
     });
 }
 
-export { highlightActiveBurgerLink };
+function doesBasketItemCountsExist() {
+    let basketItemCounts = getDataFromLocalStorage('basketCount')
+
+    if (basketItemCounts > 0) {
+        // Skapar själva röda cirkeln och stoppar in nuvarande basketItemCounts i den
+        const basketItemCountHTML =`<span
+        id="basketItemCount"
+        class="header__basket-item-count"
+         >${basketItemCounts}</span>`;
+
+    // Stoppar in den sist i headern
+    basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);
+    }
+}
+
+
+export { highlightActiveBurgerLink, doesBasketItemCountsExist };
