@@ -113,7 +113,6 @@ function createEmptyBasketElem() {
     
     // Elementet som skapas med en kontroll om det finns någon vara i varukorgen
     if(basketItemRef) {
-        console.log('hr');
         const emptyBasketHTML = `
         <section id="emptyBasket" class="empty-basket-box">
             <img
@@ -140,19 +139,27 @@ function createEmptyBasketElem() {
 // Lyssnare för att tömma varukorgen
 function emptyBasketListener() {
     const emptyBasketRef = document.querySelector('#emptyBasket');
-    const basketItemAllRef = document.querySelectorAll('[data-basketitemid = "basketItem"]')
+    const basketItemAllRef = document.querySelectorAll('[data-basketitemid = "basketItem"]');
+    const basketTotalAmountRef = document.querySelector('#basketTotalAmount');
 
-    emptyBasketRef.addEventListener('click', () => {
-        // Kör funktionen för att tömma varukorgen och localStorage
-        emptyBasket();
-        // Loopar genom att items som finns i varukorgen och tar bort samtliga element
-        basketItemAllRef.forEach(item => item.remove());
-        // Kontroll för att få fram meddelande om att varukorgen är tom
-        isBasketEmpty();
-        // Nedanstående två rader tar bort röda cirkeln runt varukorgen
-        const basketItemCountRef = document.querySelector('#basketItemCount');
-        basketItemCountRef.remove();
-    })
+    // Kontroll om själva elementet med papperskorgen finns på dropdown basket
+    if(emptyBasketRef) {
+        emptyBasketRef.addEventListener('click', () => {
+            // Kör funktionen för att tömma varukorgen och localStorage
+            emptyBasket();
+            // Loopar genom att items som finns i varukorgen och tar bort samtliga element
+            basketItemAllRef.forEach(item => item.remove());
+            // Kontroll för att få fram meddelande om att varukorgen är tom
+            isBasketEmpty();
+            // Nedanstående två rader tar bort röda cirkeln runt varukorgen
+            const basketItemCountRef = document.querySelector('#basketItemCount');
+            basketItemCountRef.remove();
+            // Tar bort papperskorgen och 'TÖM VARUKORG'
+            emptyBasketRef.remove();
+            // Ändrar så att Totalsumman blir 0
+            basketTotalAmountRef.textContent = '0 kr';
+        })
+    }
 }
 
 // Funktion för att stänga basket när man clickar utanför basket
@@ -172,7 +179,7 @@ function closeOverlayBasketListener() {
 function isBasketEmpty() {
     const basketPreviewOrderNavRef = document.querySelector('#basketPreviewOrderNav');
     const basketTotalAmountRef = document.querySelector('#basketTotalAmount');
-    const basketListRef = document.querySelector('#basketList')
+    const basketListRef = document.querySelector('#basketList');
 
     // Lyssnare på 'Förhandsgranska order'
     basketPreviewOrderNavRef.addEventListener('click', () => {
