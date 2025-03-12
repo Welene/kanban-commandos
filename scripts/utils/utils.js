@@ -55,6 +55,8 @@ export function clickLoginBtn() {
 
 function doesBasketItemCountsExist() {
     let basketItemCounts = getDataFromLocalStorage('basketCount')
+    const basketRef = document.querySelector('#basket');
+    
 
     if (basketItemCounts > 0) {
         // Skapar själva röda cirkeln och stoppar in nuvarande basketItemCounts i den
@@ -69,9 +71,8 @@ function doesBasketItemCountsExist() {
 }
 
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist };
 export function generateUniqueId() {
     return '#' + Math.random().toString(36).substring(2, 9);
 }
 
-export { highlightActiveBurgerLink };
+export { highlightActiveBurgerLink, doesBasketItemCountsExist };
