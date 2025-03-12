@@ -67,7 +67,7 @@
 .content-wrapper__info-section {
     display: flex;
     flex-direction: column;
-    background-color: rgba(223, 74, 74, 0.8);
+    background-color: rgba(95, 95, 95, 0.856);
     color: var(--white-text-color);
     border-radius: 4px;
     margin-bottom: 2rem;
