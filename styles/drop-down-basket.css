@@ -1,0 +1,99 @@
+.position {
+    position: relative;
+}
+
+.overlay-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.overlay-basket {
+    position: absolute;
+    background-color: var(--white-bg-color);
+    width: 100vw;
+    top: 14%;
+    z-index: 900;
+    overflow-x: auto;
+    padding: 1.5rem 0 0 0;
+    display: grid;
+    grid-template-rows: 30px 300px 1fr 1fr;
+}
+
+.overlay-basket__title {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.basket__list {
+    margin: 1.5rem 0;
+    list-style: none;
+    width: 100%;
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.basket__list-item, .basket__title-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.basket__item {
+    color: var(--black-text-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-right: .4rem;
+}
+
+.separator {
+    flex-grow: 0.9;
+    border-bottom: dotted;
+    transform: translateY(-6px);
+}
+
+.basket-total-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 2rem;
+    background-color: var(--medium-grey-bg-color);
+}
+
+.basket-total__title {
+    color: var(--black-text-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.basket-total__amount {
+    color: var(--black-text-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.basket-preview-order-nav {
+    padding: 1rem;
+    bottom: 0;
+    background-color: var(--dark-black-btn-bg-color);
+    color: var(--white-text-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.basket__empty {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.basket__empty--red {
+    color: var(--red-bg-color);
+}

@@ -16,6 +16,7 @@ import { runOrdersPage } from './pages/ordersPage.js';
 import { runProfilePage } from './pages/profilePage.js';
 import { runReceiptPage } from './pages/receiptPage.js';
 import { runRegisterPage } from './pages/registerPage.js';
+import { openDropDownBasket } from './components/dropDownBasket.js'
 
 console.log('Script.js loaded');
 
@@ -59,4 +60,7 @@ if (path === '/pages/' || path === '/pages/index.html') {
 openNavMenu();
 renderHamburgerMenu();
 highlightActiveBurgerLink();
+openDropDownBasket()
+
+
 // calls function that navigates you to menu.html when clicking on "Logga inn" in index page

@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="sv">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Meny</title>
-		<link rel="stylesheet" href="../styles/style.css" />
-		<script type="module" src="../scripts/script.js"></script>
-	</head>
-	<body>
-		<div class="content-wrapper leaf-background">
-			<!-- HEADER -->
-			<header class="header" id="header">
-				<button
-					class="header__nav-menu"
-					id="navMenu"
-					aria-label="Open nav menu button"
-				>
-					<span
-						class="header__nav-menu-lines"
-						id="navMenuLines"
-					></span>
-				</button>
-				<a href="index.html" aria-label="Go to landing page">
-					<img
-						class="header__logo"
-						src="../assets/icons/logo.svg"
-						alt="Image logo"
-					/>
-				</a>
-				<button
-					id="basket"
-					class="header__basket-box"
-					aria-label="Open cart button"
-				>
-					<img
-						class="header__basket-icon"
-						src="../assets/icons/basket.svg"
-						alt="Basket icon"
-					/>
-					<span id="basketItemCount" class="header__basket-item-count"
-						>16</span
-					>
-				</button>
-			</header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Meny</title>
+        <link rel="stylesheet" href="../styles/style.css" />
+        <script type="module" src="../scripts/script.js"></script>
+    </head>
+    <body>
+        <div class="content-wrapper leaf-background">
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <button
+                    class="header__nav-menu"
+                    id="navMenu"
+                    aria-label="Open nav menu button"
+                >
+                    <span
+                        class="header__nav-menu-lines"
+                        id="navMenuLines"
+                    ></span>
+                </button>
+                <a href="menu.html" aria-label="Go to landing page">
+                    <img
+                        class="header__logo"
+                        src="../assets/icons/logo-black-transparent.svg"
+                        alt="Image logo"
+                    />
+                </a>
+                <button
+                    id="basket"
+                    class="header__basket-box"
+                    aria-label="Open cart button"
+                >
+                    <img
+                        class="header__basket-icon"
+                        src="../assets/icons/basket.svg"
+                        alt="Basket icon"
+                    />
+                    <span id="basketItemCount" class="header__basket-item-count"
+                        >16</span
+                    >
+                </button>
+            </header>
 
-			<main>
-				<section class="food-menu-container">
-					<section class="food-menu-container__top">
-						<h1 class="food-menu-container__title">Meny</h1>
-						<select
-							class="food-menu-container__filter"
-							name="filter"
-							id="filterMenu"
-						>
-							<option value="filter">filter</option>
-							<option value="wonton">Wonton</option>
-							<option value="dricka">Dricka</option>
-							<option value="dip">Dip</option>
-						</select>
-					</section>
+            <main>
+                <section class="food-menu-container">
+                    <section class="food-menu-container__top">
+                        <h1 class="food-menu-container__title">Meny</h1>
+                        <select
+                            class="food-menu-container__filter"
+                            name="filter"
+                            id="filterMenu"
+                        >
+                            <option value="filter">filter</option>
+                            <option value="wonton">Wonton</option>
+                            <option value="dricka">Dricka</option>
+                            <option value="dip">Dip</option>
+                        </select>
+                    </section>
 
-					<section
-						id="cardContainer"
-						class="food-menu-container__card-container"
-					>
-						<!-- Korten -->
-					</section>
-					<section
-						id="dipContainer"
-						class="food-menu-container__dip-container"
-					>
-						<!-- Dipsås -->
-					</section>
-				</section>
-			</main>
-		</div>
-	</body>
+                    <section
+                        id="cardContainer"
+                        class="food-menu-container__card-container"
+                    >
+                        <!-- Korten -->
+                    </section>
+                    <section
+                        id="dipContainer"
+                        class="food-menu-container__dip-container"
+                    >
+                        <!-- Dipsås -->
+                    </section>
+                </section>
+            </main>
+        </div>
+    </body>
 </html>
