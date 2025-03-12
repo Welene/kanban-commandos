@@ -51,7 +51,7 @@ function runOrdersPage() {
 
     // Om användaren inte är inloggad, ändra checkout-knappen till "Logga in"
     if (!currentUser || !currentUser.username) {
-        checkoutButton.textContent = 'Log in to place an order';
+        checkoutButton.textContent = 'Log in to place order';
         checkoutButton.addEventListener('click', () => {
             window.location.href = '/pages/index.html';
         });
