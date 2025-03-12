@@ -12,8 +12,7 @@ export { runIndexPage };
 function handleLoginClick() {
     // when you click on the 'LOGGA IN' button on the landingPage (#loginBtn) it will do the following:
     document.querySelector('#loginBtn').addEventListener('click', () => {
-        let isLoggedIn = localStorage.getItem('users');
-
+        let isLoggedIn = localStorage.getItem('user');
         if (isLoggedIn) {
             window.location.href = 'menu.html';
             return;
