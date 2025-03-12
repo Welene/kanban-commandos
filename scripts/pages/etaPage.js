@@ -1,8 +1,13 @@
+import { doesBasketItemCountsExist } from "../utils/utils.js";
+
 // does not call calculateEtc function because that function is used/called within displayEtaText function 
 function runEtaPage() {
     clickEtaBtns()
     displayEtaText()
     displayReceiptNumber()
+    
+    // Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
+    doesBasketItemCountsExist()
 }
 
 export { runEtaPage };
