@@ -4,9 +4,10 @@
 }
 
 .map__selection-foodtrucks {
-    margin: 1rem 0;
-    font-size: 1.2rem;
     width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    font-size: 1.2rem;
 }
 
 .map__img-container {
@@ -15,17 +16,4 @@
 
 .map__img {
     width: 100%;
-}
-
-.map__address-container {
-    list-style-type: none;
-}
-
-.map__address {
-    padding-top: 1rem;
-}
-
-.map__address-button{
-    width: 100%;
-    font-size: 1.2rem;
 }
