@@ -3,6 +3,7 @@ import {
     saveDataToLocalStorage,
 } from '../data/localStorage.js';
 
+import { generateUniqueId } from '../utils/utils.js';
 /**
  * Funktion som hanterar ordersidan.
  * Laddar kundvagnen från localStorage, visar beställningen och hanterar utcheckning.
@@ -69,7 +70,7 @@ function runOrdersPage() {
         basket.foodTruck = foodTruckDropdown.value; // Spara vald foodtruck
         basket.id = generateUniqueId(); // Generera unikt order-ID
 
-        saveDataToLocalStorage('activeReceipt', basket); // Spara aktivt kvitto
+        saveDataToLocalStorage('receipt', basket); // Spara aktivt kvitto
 
         // Lägg till beställningen i användarens kvittohistorik
         if (!currentUser.receipts) {
@@ -87,19 +88,11 @@ function runOrdersPage() {
 }
 
 /**
- * Funktion för att generera ett unikt order-ID.
- * ID:t börjar med '#' och består av 7 tecken.
- */
-function generateUniqueId() {
-    return '#' + Math.random().toString(36).substring(2, 9);
-}
-
-/**
  * Uppdaterar allUsers med det nya kvittot för en specifik användare.
  * Hittar rätt användare i listan och lägger till det nya kvittot.
  */
 function updateAllUsersReceipts(username, newReceipt) {
-    const allUsers = getDataFromLocalStorage('allUsers') || []; // Hämta alla användare
+    const allUsers = getDataFromLocalStorage('users') || []; // Hämta alla användare
 
     // Hitta rätt användare i allUsers
     const userIndex = allUsers.findIndex((user) => user.username === username);
@@ -108,7 +101,7 @@ function updateAllUsersReceipts(username, newReceipt) {
             allUsers[userIndex].receipts = []; // Skapa receipts-array om den saknas
         }
         allUsers[userIndex].receipts.push(newReceipt); // Lägg till det nya kvittot
-        saveDataToLocalStorage('allUsers', allUsers); // Uppdatera allUsers i localStorage
+        saveDataToLocalStorage('users', allUsers); // Uppdatera users i localStorage
     }
 }
 
