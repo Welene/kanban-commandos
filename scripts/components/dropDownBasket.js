@@ -166,7 +166,7 @@ function emptyBasketListener() {
             // Ändrar så att Totalsumman blir 0
             basketTotalAmountRef.textContent = '0 kr';
 
-            //emptyBasketOrdersPage(); är detta rätt ställe Lam?
+            //emptyBasketOrdersPage(); är detta rätt ställe Lam? Jag lade till import koden så du vet
         });
     }
 }
