@@ -1,4 +1,4 @@
-import { getDataFromLocalStorage } from '../data/localStorage.js'
+import { getDataFromLocalStorage, saveDataToLocalStorage } from '../data/localStorage.js'
 
 
 // Funktionsverktyg: Exempelvis funktioner för att randominisera nummer, formatera text eller manipulera strängar.
@@ -75,4 +75,15 @@ export function generateUniqueId() {
     return '#' + Math.random().toString(36).substring(2, 9);
 }
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist };
+// Funktion för att tömma hela varukorgen
+function emptyBasket() {
+    // Töm varukorgen
+    saveDataToLocalStorage('basket', {}); 
+
+    // Töm basketCount (countern för hur många saker som finns i basket)
+    saveDataToLocalStorage('basketCount', 0); 
+}
+
+
+export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket };
+

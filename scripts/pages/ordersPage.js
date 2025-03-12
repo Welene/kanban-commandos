@@ -2,7 +2,7 @@ import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
 } from '../data/localStorage.js';
-import { generateUniqueId, doesBasketItemCountsExist } from '../utils/utils.js';
+import { generateUniqueId, doesBasketItemCountsExist, emptyBasket } from '../utils/utils.js';
 
 /**
  * Funktion som hanterar ordersidan.
@@ -84,9 +84,8 @@ function runOrdersPage() {
 
         updateAllUsersReceipts(currentUser.username, basket); // Uppdatera allUsers med orderhistorik
 
-        saveDataToLocalStorage('basket', {}); // Töm varukorgen
-
-        saveDataToLocalStorage('basketCount', 0); // Töm basketCount (countern för hur många saker som finns i basket)
+        // Anropar funktion som tömmer hela basket
+        emptyBasket();
 
         window.location.href = '/pages/eta.html'; // Omdirigera till orderbekräftelsesidan
     });
