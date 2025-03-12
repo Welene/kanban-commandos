@@ -83,7 +83,7 @@ function runOrdersPage() {
 
         saveDataToLocalStorage('basket', {}); // Töm varukorgen
 
-        saveDataToLocalStorage('basketCount', 0); // Töm basketCount
+        saveDataToLocalStorage('basketCount', 0); // Töm basketCount (countern för hur många saker som finns i basket)
 
         window.location.href = '/pages/eta.html'; // Omdirigera till orderbekräftelsesidan
     });
