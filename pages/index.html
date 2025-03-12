@@ -6,48 +6,33 @@
         <title>Yum Yum Gimme sum</title>
         <link rel="stylesheet" href="../styles/style.css" />
         <script type="module" src="../scripts/script.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     </head>
     <body class="position">
         <div class="content-wrapper">
-            <!-- HEADER -->
-            <header class="header" id="header">
-                <button
-                    class="header__nav-menu"
-                    id="navMenu"
-                    aria-label="Open nav menu button"
-                >
-                    <span
-                        class="header__nav-menu-lines"
-                        id="navMenuLines"
-                    ></span>
-                </button>
-                <a href="menu.html" aria-label="Go to landing page">
-                    <img
-                        class="header__logo"
-                        src="../assets/icons/logo-black-transparent.svg"
-                        alt="Image logo"
-                    />
-                </a>
-                <button
-                    id="basket"
-                    class="header__basket-box"
-                    aria-label="Open cart button"
-                >
-                    <img
-                        class="header__basket-icon"
-                        src="../assets/icons/basket.svg"
-                        alt="Basket icon"
-                    />
-                </button>
-            </header>
-
             <main class="content-wrapper__intro-content">
                 <img
                     src="../assets/icons/logo-red.svg"
                     class="content-wrapper__logo"
-                    alt="Yum Yum Gimme Sum logo"
-                />
+                    alt="Yum Yum Gimme Sum logo" />
                 <!-- <h1 class="content-wrapper__heading">Yum Yum Gimme Sum</h1> -->
+
+                <section class="content-wrapper__info-section">
+                    <h1 class="info-section__title">
+                        Välkommen till <br />Yum Yum Gimmie Sum
+                    </h1>
+                    <p class="info-section__text">
+                        Vi är en passionerad food truck som levererar
+                        fantastiska wontons direkt till din mage!
+                    </p>
+                    <h2 class="info-section__subtitle">Redo att käka?</h2>
+                    <p class="info-section__text">
+                        Logga in eller registrera dig för att beställa!
+                    </p>
+                </section>
+
                 <button id="loginBtn" class="content-wrapper__btn">
                     LOGGA IN
                 </button>
@@ -59,8 +44,7 @@
                 <section
                     class="content-wrapper__background-container"
                     aria-label="Background image with wonton, drinks & dips"
-                    role="img"
-                ></section>
+                    role="img"></section>
             </main>
         </div>
     </body>
