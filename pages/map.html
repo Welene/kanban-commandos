@@ -58,13 +58,22 @@
 						Sundsta-Älvkullegymnasiet
 					</option>
 				</select>
-				<section class="map__img-container">
+				<section id="imgContainer" class="map__img-container d-none">
+					<p id="foodTruckName" class="map__foodtruck-name">
+						Bengts Wontons
+					</p>
 					<img
 						id="mapImg"
 						class="map__img"
 						src="../assets/maps/placeholder.jpg"
 						alt="Placeholder karta över Karlstad"
 					/>
+
+					<div
+						id="mapMarker"
+						class="map__map-marker"
+						aria-hidden="true"
+					></div>
 				</section>
 			</main>
 		</div>
