@@ -97,3 +97,19 @@
 .basket__empty--red {
     color: var(--red-bg-color);
 }
+
+.empty-basket-box {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem 1.5rem 1.2rem 0;
+}
+
+.empty-basket-box__trash-can {
+    width: 8%;
+}
+
+.empty-basket-box__paragraph {
+    align-self: flex-end;
+    padding: .5rem 0 .2rem .2rem;
+    color: var(--red-bg-color)
+}
