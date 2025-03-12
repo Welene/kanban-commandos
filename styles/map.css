@@ -10,9 +10,11 @@
 }
 
 .map__img-container {
-    width: auto;
-    height: 60vh;
-    overflow: hidden;
+    margin-top: 3rem;
+}
+
+.map__img {
+    width: 100%;
 }
 
 .map__address-container {
