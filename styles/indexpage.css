@@ -67,7 +67,7 @@
 .content-wrapper__info-section {
     display: flex;
     flex-direction: column;
-    background-color: rgba(95, 95, 95, 0.856);
+    background-color: rgba(70, 70, 70, 0.856);
     color: var(--white-text-color);
     border-radius: 4px;
     margin-bottom: 2rem;
@@ -77,13 +77,19 @@
     letter-spacing: 0.1ch;
     word-spacing: 0.2ch;
     box-shadow: 0px 0px 20px 0px #2e2e2e;
+    width: 21rem;
 }
 
 .info-section__subtitle {
+    margin-top: 1rem;
     font-size: 1rem;
 }
 
 .info-section__text {
     font-weight: 200;
     font-size: 1rem;
+}
+
+.info-section__text--strong {
+    color: rgb(255, 106, 106);
 }
