@@ -2,8 +2,8 @@ import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
 } from '../data/localStorage.js';
+import { generateUniqueId, doesBasketItemCountsExist } from '../utils/utils.js';
 
-import { generateUniqueId } from '../utils/utils.js';
 /**
  * Funktion som hanterar ordersidan.
  * Laddar kundvagnen från localStorage, visar beställningen och hanterar utcheckning.
@@ -15,6 +15,9 @@ function runOrdersPage() {
     const foodTruckDropdown = document.querySelector('#foodtruckSelect'); // Dropdown för foodtruck
     const checkoutButton = document.querySelector('#checkoutBtn'); // Knapp för att slutföra order
     const currentUser = getDataFromLocalStorage('currentUser'); // Hämta aktuell användare
+    
+    // Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
+    doesBasketItemCountsExist()
 
     // Om varukorgen är tom, visa meddelande och sätt totalpriset till 0
     if (!basket || !basket.items || basket.items.length === 0) {
