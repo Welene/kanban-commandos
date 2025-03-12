@@ -161,7 +161,3 @@ function handleLoginClick() {
         main.appendChild(backBtn);
     });
 }
-
-
-
-
