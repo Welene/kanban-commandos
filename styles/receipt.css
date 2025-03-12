@@ -10,6 +10,10 @@
     padding: 0 1rem 1rem 1rem;
 }
 
+.emptyReciept {
+    text-align: center;
+}
+
 .receipt {
     display: flex;
     flex-direction: column;
