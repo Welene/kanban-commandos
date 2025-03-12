@@ -1,0 +1,45 @@
+.map__title {
+    text-transform: uppercase;
+    font-size: 2rem;   
+}
+
+.map__selection-foodtrucks {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.map__img-container {
+    position: relative;
+}
+
+.map__img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.map__foodtruck-name {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;    
+    background-color: var(--medium-grey-bg-color);
+}
+
+.map__map-marker {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 2px solid black;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: red;
+}
