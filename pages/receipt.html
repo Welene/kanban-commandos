@@ -38,6 +38,7 @@
         </button>
     </header>
     <body class="page">
+        <!-- Reciept Head -->
         <main class="receipt">
             <figure class="receipt__logo">
                 <img src="../assets/icons/logo-red.svg" alt="Yum Yum Logo" />
@@ -46,49 +47,66 @@
                 <h1 class="receipt__title">KVITTO</h1>
                 <p class="receipt__id">#4KJWSD234K</p>
             </section>
+            <!-- Reciept Items -->
             <section class="receipt__items">
                 <section class="receipt__item">
                     <section class="receipt__item-info">
                         <span class="receipt__item-name">KARLSTAD</span>
                         <span class="receipt__item-count">3 stycken</span>
                     </section>
+                    <span class="dotted-line dotted-line--receipt"></span>
                     <span class="receipt__item-price">27 SEK</span>
                 </section>
+                <!-- Second Item -->
                 <section class="receipt__item">
                     <section class="receipt__item-info">
                         <span class="receipt__item-name">HO CHI MINH</span>
                         <span class="receipt__item-count">2 stycken</span>
                     </section>
+                    <span class="dotted-line dotted-line--receipt"></span>
                     <span class="receipt__item-price">18 SEK</span>
                 </section>
+                <!-- Third Item -->
                 <section class="receipt__item">
                     <section class="receipt__item-info">
                         <span class="receipt__item-name">KINGSTON</span>
                         <span class="receipt__item-count">2 stycken</span>
                     </section>
+                    <span class="dotted-line dotted-line--receipt"></span>
                     <span class="receipt__item-price">18 SEK</span>
                 </section>
+                <!-- Forth Item -->
                 <section class="receipt__item">
                     <section class="receipt__item-info">
                         <span class="receipt__item-name">SWEET CHILI DIP</span>
                         <span class="receipt__item-count">1 stycken</span>
                     </section>
+                    <span class="dotted-line dotted-line--receipt"></span>
                     <span class="receipt__item-price">19 SEK</span>
                 </section>
+                <!-- Fifth Item -->
                 <section class="receipt__item">
                     <section class="receipt__item-info">
                         <span class="receipt__item-name">GUACAMOLE DIP</span>
                         <span class="receipt__item-count">1 stycken</span>
                     </section>
+                    <span class="dotted-line dotted-line--receipt"></span>
                     <span class="receipt__item-price">19 SEK</span>
                 </section>
             </section>
+            <!-- Total Summ Section -->
             <section class="receipt__total">
                 <span class="receipt__total-text">TOTALT</span>
                 <span class="receipt__total-price">101 SEK</span>
                 <p class="receipt__total-note">inkl 20% moms</p>
             </section>
         </main>
-        <button class="receipt__button">GÖR EN NY BESTÄLLNING</button>
+        <!-- Button for new order -->
+        <button
+            id="newOrderBtn"
+            class="main-wrapper__btn main-wrapper__btn--grey main-wrapper__btn--receipt"
+        >
+            GÖR EN NY BESTÄLLNING
+        </button>
     </body>
 </html>

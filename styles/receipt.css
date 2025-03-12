@@ -11,11 +11,14 @@
 }
 
 .receipt {
+    display: flex;
+    flex-direction: column;
     background: var(--white-bg-color);
     padding:1rem 0rem 0rem 0rem;
     border-radius: 10px;
     width: 90%;
-    max-width: 400px;
+    min-height: 30.25rem;
+    max-width: 25rem;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -27,7 +30,7 @@
 .receipt__logo {
     width: 3,1rem;
     height: 3.75rem;
-    justify-self: center;
+    align-self: center;
     margin-bottom: .5rem;
 }
 
@@ -49,6 +52,7 @@
 .receipt__items {
     border-top: 2px solid var(--light-grey-bg-color);
     padding-top: 1rem;
+    flex-grow: 1;
 }
 
 .receipt__item {
@@ -77,14 +81,15 @@
 }
 
 .receipt__total {
-    background: var(--light-grey-bg-color);
+    background: var(--grey-bg-color);
     padding: 1rem;
     width: 100%;
     text-align: center;
     margin-top: 1rem;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .receipt__total-note {
@@ -93,19 +98,11 @@
     margin-top: 0.3rem;;
 }
 
-.receipt__button {
-    width: 100%;
-    padding: 1rem;
-    background: var(--black-bg-color);
-    color: var(--white-text-color);
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
+.dotted-line--receipt {
+    align-self:flex-start;
+    padding-top: .5rem;
 }
 
-.receipt__button:hover {
-    background: var(--darker-gray-bg-color);
-}
+.main-wrapper__btn--receipt {
+    width: 90%;
+} 
