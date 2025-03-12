@@ -10,11 +10,10 @@
 }
 
 .about__title {
-    padding: 1rem;
+    padding: .5rem;
     font-family: 'Rowdies', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--black-text-color);
-    margin-bottom: 1rem;
 }
 
 .about__description {
