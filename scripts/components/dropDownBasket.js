@@ -1,5 +1,6 @@
 import { getDataFromLocalStorage } from '../data/localStorage.js'
 import { runOrdersPage } from '../pages/ordersPage.js';
+import { emptyBasket } from '../utils/utils.js';
 
 // Här ska funktionen för att öppna en dropdown-vy för när man trycker på kundvagnen skrivas.
 function openDropDownBasket() {
@@ -26,7 +27,7 @@ function createOverlayDropDownBasket() {
     <section id="overlayBackground" class="overlay-background">
             <article id="overlayBasket" class="overlay-basket">
                 <h2 id="overlayBasketTitle" class="overlay-basket__title">
-                    Översikt kundvagn
+                    Översikt varukorg
                 </h2>
                 <ul id="basketList" class="basket__list"></ul>
                 <section id="basketTotal" class="basket-total-box">
@@ -105,10 +106,12 @@ function createBasketItem() {
     }
 }
 
+// Skapar en papperskorg för tömma varukorgen om varor är tillagda
 function createEmptyBasketElem() {
     const basketItemRef = document.querySelector('[data-basketitemid = "basketItem"]');
     const basketListRef = document.querySelector('#basketList');
     
+    // Elementet som skapas med en kontroll om det finns någon vara i varukorgen
     if(basketItemRef) {
         console.log('hr');
         const emptyBasketHTML = `
@@ -122,13 +125,34 @@ function createEmptyBasketElem() {
             <p
                 id="emptyBasketParagraph"
                 class="empty-basket-box__paragraph">
-                    Töm varukorg
+                    TÖM VARUKORG
             </p>
         </section>
         `;
 
+    // Den läggs in efter elementen med alla tillagda items i basket
     basketListRef.insertAdjacentHTML('afterend', emptyBasketHTML);
     }
+    // Lyssnare på töm-varukorgselementet
+    emptyBasketListener()
+}
+
+// Lyssnare för att tömma varukorgen
+function emptyBasketListener() {
+    const emptyBasketRef = document.querySelector('#emptyBasket');
+    const basketItemAllRef = document.querySelectorAll('[data-basketitemid = "basketItem"]')
+
+    emptyBasketRef.addEventListener('click', () => {
+        // Kör funktionen för att tömma varukorgen och localStorage
+        emptyBasket();
+        // Loopar genom att items som finns i varukorgen och tar bort samtliga element
+        basketItemAllRef.forEach(item => item.remove());
+        // Kontroll för att få fram meddelande om att varukorgen är tom
+        isBasketEmpty();
+        // Nedanstående två rader tar bort röda cirkeln runt varukorgen
+        const basketItemCountRef = document.querySelector('#basketItemCount');
+        basketItemCountRef.remove();
+    })
 }
 
 // Funktion för att stänga basket när man clickar utanför basket
