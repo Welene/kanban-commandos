@@ -7,7 +7,7 @@
 }
 
 .content-wrapper__background-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-image: url('../assets/hero/hero-a-blur.jpg');
     background-size: cover;
