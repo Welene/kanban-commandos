@@ -12,6 +12,9 @@ function runEtaPage() {
 
 export { runEtaPage };
 
+
+// HER MÅ JEG GJØRE SÅNN AT DEN IKKE NAVIGERER TIL MENU.HTML AUTOMATISK
+// SJEKK OM MAN ER LOGGET INN (SJEKKES PÅ RAD 96 CA, SÅ TRENGER IKKE TO, FINN EN LØSNING)
 function clickEtaBtns() {
     let newOrderBtn = document.getElementById('newOrderBtn');
     let receiptBtn = document.getElementById('receiptBtn');
