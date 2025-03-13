@@ -44,7 +44,9 @@ function highlightActiveBurgerLink() {
     });
 }
 
-export function clickLoginBtn() {
+
+// do not need this function anymore, but keeping it just in case for now
+/* export function clickLoginBtn() {
     let loginButton = document.getElementById('loginBtn');
 
     loginButton.addEventListener('click', () => {
@@ -53,7 +55,7 @@ export function clickLoginBtn() {
             'navigated to main.html page after clicking on login button'
         );
     });
-}
+} */
 
 function doesBasketItemCountsExist() {
     let basketItemCounts = getDataFromLocalStorage('basketCount');
