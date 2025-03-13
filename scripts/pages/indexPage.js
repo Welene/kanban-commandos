@@ -1,9 +1,7 @@
 // import { clickLoginBtn } from '../utils/utils.js'
-import { getDataFromLocalStorage } from "../data/localStorage";
+// import { getDataFromLocalStorage } from "../data/localStorage";
 
 function runIndexPage() {
-    // calls function that navigates you to menu.html when clicking on "Logga inn" in index page
-    // clickLoginBtn();
     handleLoginClick(); 
     handleRegisterIndexClick();
 }
@@ -14,7 +12,7 @@ export { runIndexPage };
 function handleLoginClick() {
     // when you click on the 'LOGGA IN' button on the landingPage (#loginBtn) it will do the following:
     document.querySelector('#loginBtn').addEventListener('click', () => {
-        let isLoggedIn = getDataFromLocalStorage('user');
+        let isLoggedIn = localStorage.getItem('user');
         // I HAVE TO STORE USER AND THEN GET USER USING THE getDatablabla function and the saveDataToblabla function
         if (isLoggedIn) {
             window.location.href = 'menu.html';
