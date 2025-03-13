@@ -1,81 +1,69 @@
 <!DOCTYPE html>
 <html lang="sv">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../styles/style.css" />
-		<script type="module" src="../scripts/script.js"></script>
-		<title>Truckkarta</title>
-	</head>
-	<body>
-		<div class="content-wrapper leaf-background">
-			<!-- HEADER -->
-			<header class="header" id="header">
-				<button
-					class="header__nav-menu"
-					id="navMenu"
-					aria-label="Open nav menu button"
-				>
-					<span
-						class="header__nav-menu-lines"
-						id="navMenuLines"
-					></span>
-				</button>
-				<a href="menu.html" aria-label="Go to landing page">
-					<img
-						class="header__logo"
-						src="../assets/icons/logo-black-transparent.svg"
-						alt="Image logo"
-					/>
-				</a>
-				<button
-					id="basket"
-					class="header__basket-box"
-					aria-label="Open cart button"
-				>
-					<img
-						class="header__basket-icon"
-						src="../assets/icons/basket.svg"
-						alt="Basket icon"
-					/>
-					<span
-						id="basketItemCount"
-						class="header__basket-item-count"
-					></span>
-				</button>
-			</header>
-			<main class="map">
-				<h1 class="map__title">Hitta en foodtruck nära dig!</h1>
-				<select
-					class="map__selection-foodtrucks"
-					name="food trucks"
-					id="selectionFoodtruck"
-				>
-					<option selected disabled hidden>välj en adress</option>
-					<option value="bergvik">Bergvik</option>
-					<option value="stora-torget">Stora Torget</option>
-					<option value="sundsta-alvkullegymnasiet">
-						Sundsta-Älvkullegymnasiet
-					</option>
-				</select>
-				<section id="imgContainer" class="map__img-container d-none">
-					<p id="foodTruckName" class="map__foodtruck-name">
-						Bengts Wontons
-					</p>
-					<img
-						id="mapImg"
-						class="map__img"
-						src="../assets/maps/placeholder.jpg"
-						alt="Placeholder karta över Karlstad"
-					/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../styles/style.css" />
+        <script type="module" src="../scripts/script.js"></script>
+        <title>Truckkarta</title>
+    </head>
+    <body>
+        <div class="content-wrapper leaf-background">
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <button
+                    class="header__nav-menu"
+                    id="navMenu"
+                    aria-label="Open nav menu button">
+                    <span
+                        class="header__nav-menu-lines"
+                        id="navMenuLines"></span>
+                </button>
+                <a href="menu.html" aria-label="Go to landing page">
+                    <img
+                        class="header__logo"
+                        src="../assets/icons/logo-black-transparent.svg"
+                        alt="Image logo" />
+                </a>
+                <button
+                    id="basket"
+                    class="header__basket-box"
+                    aria-label="Open cart button">
+                    <img
+                        class="header__basket-icon"
+                        src="../assets/icons/basket.svg"
+                        alt="Basket icon" />
+                </button>
+            </header>
+            <main class="map">
+                <h1 class="map__title">Hitta en foodtruck nära dig!</h1>
+                <select
+                    class="map__selection-foodtrucks"
+                    name="food trucks"
+                    id="selectionFoodtruck">
+                    <option selected disabled hidden>välj en adress</option>
+                    <option value="bergvik">Bergvik</option>
+                    <option value="stora-torget">Stora Torget</option>
+                    <option value="sundsta-alvkullegymnasiet">
+                        Sundsta-Älvkullegymnasiet
+                    </option>
+                </select>
+                <section id="imgContainer" class="map__img-container d-none">
+                    <p id="foodTruckName" class="map__foodtruck-name">
+                        Bengts Wontons
+                    </p>
+                    <img
+                        id="mapImg"
+                        class="map__img"
+                        src="../assets/maps/placeholder.jpg"
+                        alt="Placeholder karta över Karlstad" />
 
-					<div
-						id="mapMarker"
-						class="map__map-marker"
-						aria-hidden="true"
-					></div>
-				</section>
-			</main>
-		</div>
-	</body>
+                    <div
+                        id="mapMarker"
+                        class="map__map-marker"
+                        aria-hidden="true"></div>
+                </section>
+            </main>
+        </div>
+    </body>
 </html>
