@@ -52,13 +52,13 @@ function runOrdersPage() {
     totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price">${totalCost} SEK</p>`; // Uppdatera totalkostnaden
 
     // Om användaren inte är inloggad, ändra checkout-knappen till "Logga in"
-    if (!currentUser || !currentUser.username) {
+    /* if (!currentUser || !currentUser.username) {
         checkoutButton.textContent = 'Log in to place order';
         checkoutButton.addEventListener('click', () => {
             window.location.href = '/pages/index.html';
         });
         return;
-    }
+    } */
 
     // Om användaren är inloggad, tillåt beställning
     checkoutButton.textContent = 'PLACE ORDER';
@@ -103,8 +103,8 @@ function updateAllUsersReceipts(username, newReceipt) {
             allUsers[userIndex].receipts = []; // Skapa receipts-array om den saknas
         }
         allUsers[userIndex].receipts.push(newReceipt); // Lägg till det nya kvittot
-        saveDataToLocalStorage('users', allUsers); // Uppdatera users i localStorage
     }
+    saveDataToLocalStorage('users', allUsers); // Uppdatera users i localStorage
 }
 
 export { runOrdersPage };
