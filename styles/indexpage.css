@@ -185,13 +185,21 @@
 
 .content-wrapper__back-btn {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    
+    min-width: 100%;
     border-style: none;
     border-radius: .3rem;
     padding: .4rem 1rem .4rem 0rem;
-    rotate: 180deg;
     opacity: .8;
 }
 
+
+.content-wrapper__back-btn-icon {
+    display: flex;
+    justify-items: flex-end;
+    rotate: 180deg;
+    margin-left: 1rem;
+    height: 35px;
+    width: 35px;
+}
 /* fiks sånn at margin-top ikke gjør at bildet blir større, siste knappen skal ligge nederst */

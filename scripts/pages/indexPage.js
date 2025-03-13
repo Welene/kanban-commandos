@@ -76,11 +76,12 @@ function handleLoginClick() {
         let backSymbol = document.createElement('img');
         backSymbol.src = '../assets/icons/back-symbol.svg';
         backSymbol.alt = 'Navigate back symbol, an arrow pointing to the left';
+        backSymbol.classList.add('content-wrapper__back-btn-icon');
 
 
         // puts all of the elements in the html, in the written order
         main.appendChild(backgroundContainer);
-        backBtn.appendChild(backSymbol);
+        
         inputSection.appendChild(nameText);
         inputSection.appendChild(nameField);
         inputSection.appendChild(passwordText);
@@ -91,6 +92,8 @@ function handleLoginClick() {
         main.appendChild(loginContainer);
         main.appendChild(btnRed);
         main.appendChild(backBtn);
+        backBtn.appendChild(backSymbol);
         
+        // content-wrapper__back-btn-icon
     });
 }
