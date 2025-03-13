@@ -20,33 +20,33 @@ Var och en svarar på frågorna nedan, 1 person antecknar
 
 ### Person 1 Stefan
 
--
--
--
+-   
+-   
+-   
 
 ### Person 2 Robin
 
--
--
--
+-   
+-   
+-   
 
 ### Person 3 Lam
 
--
--
--
+-   
+-   
+-   
 
 ### Person 4 David
 
--
--
--
+-   
+-   
+-   
 
 ### Person 5 Helene
 
--
--
--
+-   
+-   
+-   
 
 ### Övrigt
 

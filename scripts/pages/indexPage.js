@@ -6,6 +6,11 @@ function runIndexPage() {
     handleRegisterIndexClick();
     handleBackBtnClick();
 }
+// import { clickLoginBtn, handleRegisterIndexClick } from '../utils/utils.js'
+// function runIndexPage() {
+//     clickLoginBtn();
+//     handleRegisterIndexClick();
+// }
 
 export { runIndexPage };
 

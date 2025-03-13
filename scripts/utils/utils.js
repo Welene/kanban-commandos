@@ -120,4 +120,15 @@ export function emptyBasketOrdersPage() {
     }
 }
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket };
+function handleRegisterIndexClick() {
+    document.getElementById("registerBtn").addEventListener("click", function() {
+        window.location.href = "register.html";
+    });
+}
+function buttonAddLinkToMenu(htmlRef) {
+    htmlRef.addEventListener('click', () => {
+        window.location.href = '/pages/menu.html';
+    });
+}
+
+export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, buttonAddLinkToMenu, handleRegisterIndexClick };
