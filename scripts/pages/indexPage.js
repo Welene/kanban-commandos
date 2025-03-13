@@ -29,44 +29,61 @@ function handleLoginClick() {
         let main = document.querySelector('.content-wrapper__intro-content');
         main.innerHTML = '';
 
+        let backgroundContainer = document.createElement('section');
+        backgroundContainer.classList.add('content-wrapper__background-container');
+        backgroundContainer.setAttribute('aria-label', 'Background image with wonton, drinks & dips');
+        backgroundContainer.setAttribute('role', 'img');
+
         let loginContainer = document.createElement('section');
-        loginContainer.classList.add('login-container');
+        loginContainer.classList.add('content-wrapper__login-container');
 
         let headingLogin = document.createElement('h1');
-        headingLogin.classList.add('heading-login');
+        headingLogin.classList.add('content-wrapper__heading-login');
         headingLogin.textContent = 'LOGGA IN';
 
         let quote = document.createElement('p');
-        quote.classList.add('quote');
+        quote.classList.add('content-wrapper__quote');
         quote.textContent = 'UPPLEV ÄKTA MATGLÄDJE';
 
         let inputSection = document.createElement('section');
-        inputSection.classList.add('input-section');
+        inputSection.classList.add('content-wrapper__input-section');
 
         let nameField = document.createElement('input');
-        nameField.classList.add('name-field');
+        nameField.classList.add('content-wrapper__name-field');
         nameField.type = 'text';
         nameField.setAttribute('aria-label', 'Input field for nickname');
 
+        let nameText = document.createElement('p');
+        nameText.classList.add('content-wrapper__name-heading');
+        nameText.textContent = 'NAMN';
+
         let passwordField = document.createElement('input');
-        passwordField.classList.add('password-field');
+        passwordField.classList.add('content-wrapper__password-field');
         passwordField.type = 'password';
         passwordField.setAttribute('aria-label', 'Input field for password');
 
+        let passwordText = document.createElement('p');
+        passwordText.classList.add('content-wrapper__password-heading');
+        passwordText.textContent = 'LÖSENORD';
+
         let btnRed = document.createElement('button');
-        btnRed.classList.add('btn', 'btn--red');
+        btnRed.classList.add('content-wrapper__btn', 'content-wrapper__btn--red');
         btnRed.textContent = 'LOGGA IN';
 
         let backBtn = document.createElement('button');
-        backBtn.classList.add('back-btn');
+        backBtn.classList.add('content-wrapper__back-btn');
 
         let backSymbol = document.createElement('img');
         backSymbol.src = '../assets/icons/back-symbol.svg';
         backSymbol.alt = 'Navigate back symbol, an arrow pointing to the left';
 
+
         // puts all of the elements in the html, in the written order
+        main.appendChild(backgroundContainer);
         backBtn.appendChild(backSymbol);
+        inputSection.appendChild(nameText);
         inputSection.appendChild(nameField);
+        inputSection.appendChild(passwordText);
         inputSection.appendChild(passwordField);
         loginContainer.appendChild(headingLogin);
         loginContainer.appendChild(quote);
@@ -74,5 +91,6 @@ function handleLoginClick() {
         main.appendChild(loginContainer);
         main.appendChild(btnRed);
         main.appendChild(backBtn);
+        
     });
 }
