@@ -1,4 +1,4 @@
-import { doesBasketItemCountsExist, randomNumber } from '../utils/utils.js';
+import { doesBasketItemCountsExist } from '../utils/utils.js';
 import { getDataFromLocalStorage, saveDataToLocalStorage } from '../data/localStorage.js'
 import { fetchUsers } from '../api/api.js';
     
@@ -30,38 +30,34 @@ async function displayCurrentUser() {
         profileUserNameRef.textContent = `${users.users[0].username}`;
     }
 
-    changeProfileImg();
+    changeProfileImgListener();
 }
 
-function changeProfileImg() {
+// Funktion för att byta profilbild
+function changeProfileImgListener() {
     const profileChangeImgBtnRef = document.querySelector('#profileChangeImgBtn');
     const profileImgRef = document.querySelector('#profileImg');
 
     profileChangeImgBtnRef.addEventListener('click', () => {
-        let randomNr = randomNumber(0, 6)
-        console.log(randomNr);
+        // Hämtar en random img för profil
+        let newImg = generateRandomProfileImage();
+
         const currentImage = profileImgRef.src;
         console.log(currentImage);
         
-        // Kontroll så att det är samma bild som finns på profilen
-        while (currentImage === `${userImages[randomNr]}`) {
-            // Om det är samma så randominseras ett nytt nr
-            console.log('samma bild');
-            
-            randomNr = randomNumber(0, 6)
-            console.log('new' + randomNr);
-            console.log(`${userImages[randomNr]}`);
-            
+        // Kontroll så att ifall det är samma bild som finns på profilen
+        while (currentImage === newImg) {
+            // Om det är samma så randominseras en ny bild
+            newImg = generateRandomProfileImage();            
         }
         // Om det är en ny bild så ersätts det med en ny.
-        profileImgRef.src = `${userImages[randomNr]}`;
-        console.log(userImages[randomNr]);
-        
+        profileImgRef.src = newImg;        
     })
 }
 
-// Array med olika profilbilder
-const userImages = ['https://randomuser.me/api/portraits/men/1.jpg', 'https://randomuser.me/api/portraits/men/2.jpg', 'https://randomuser.me/api/portraits/men/3.jpg', 'https://randomuser.me/api/portraits/men/4.jpg', 'https://randomuser.me/api/portraits/men/5.jpg', 'https://randomuser.me/api/portraits/men/6.jpg', 'https://randomuser.me/api/portraits/men/7.jpg'];
-
+function generateRandomProfileImage() {
+    const randomNumber = Math.floor(Math.random() * 6) + 1; // Slumpar mellan 1-6
+    return `https://randomuser.me/api/portraits/men/${randomNumber}.jpg`;
+}
 
 export { runProfilePage }

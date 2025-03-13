@@ -44,25 +44,61 @@
             <!-- main section -->
             <main class="main__profile">
                 <h1 id="profileTitle" class="profile__title">DIN PROFIL</h1>
-                <section id="profileImgBox" class="profile__img-box">
-                    <img
-                        id="profileImg"
-                        class="profile__img"
-                        src=""
-                        alt="Image of profile"
-                    />
-                    <button
-                        id="profileChangeImgBtn"
-                        class="profile__change-img-btn"
-                    >
-                        SLUMPA PROFILBILD
-                    </button>
+                <section id="profileInfoBox" class="profile__info-box">
+                    <section id="profileImgBox" class="profile__img-box">
+                        <img
+                            id="profileImg"
+                            class="profile__img"
+                            src=""
+                            alt="Image of profile"
+                        />
+                        <button
+                            id="profileChangeImgBtn"
+                            class="profile__change-img-btn"
+                        >
+                            SLUMPA PROFILBILD
+                        </button>
+                    </section>
+                    <section class="profile__user-info-box">
+                        <h2 id="profileUserName" class="profile__user-name"></h2>
+                        <p id="profileEmail" class="profile__email">j***@airbean.com</p>
+                    </section>
                 </section>
-                <section id="profileInfoBox" class="profile-info-box">
-                    <h2 id="profileUserName" class="profile__user-name">
-                        NAMN HÄR
-                    </h2>
+                <form>                    
+                    <section class="form__container form__container--no-padding">    
+                        <hr />
+                        <h3 class="form__subtitle">ÄNDRA UPPGIFTER</h3>
+                        <label for="email"><b>EMAIL</b></label>
+                        <input
+                            type="text"
+                            placeholder="Ange Email"
+                            name="email"
+                            id="email"
+                            required
+                        />
+    
+                        <label for="psw"><b>NYTT LÖSENORD</b></label>
+                        <input
+                            type="password"
+                            placeholder="Ange Lösenord"
+                            name="psw"
+                            id="psw"
+                            required
+                        />
+    
+                        <label for="psw-repeat"><b>BEKRÄFTA LÖSENORD</b></label>
+                        <input
+                            type="password"
+                            placeholder="Upprepa Lösenord"
+                            name="psw-repeat"
+                            id="psw-repeat"
+                            required
+                        />
+                        <hr />
+                    </section>
+                </form>
                 </section>
+                <button class="main-wrapper__btn main-wrapper__btn--white main-wrapper__btn--scaledwn">SPARA</button>
             </main>
         </div>
     </body>
