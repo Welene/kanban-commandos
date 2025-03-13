@@ -157,16 +157,16 @@ function emptyBasketListener() {
             basketItemAllRef.forEach((item) => item.remove());
             // Kontroll för att få fram meddelande om att varukorgen är tom
             isBasketEmpty();
-            // Nedanstående två rader tar bort röda cirkeln runt varukorgen
+            // Nedanstående två rader tar bort röda cirkeln runt basket
             const basketItemCountRef =
                 document.querySelector('#basketItemCount');
             basketItemCountRef.remove();
-            // Tar bort papperskorgen och 'TÖM VARUKORG'
+            // Tar bort papperskorgen och 'TÖM VARUKORG' i basket
             emptyBasketRef.remove();
-            // Ändrar så att Totalsumman blir 0
+            // Ändrar så att Totalsumman blir 0 i basket
             basketTotalAmountRef.textContent = '0 kr';
-
-            //emptyBasketOrdersPage(); är detta rätt ställe Lam? Jag lade till import koden så du vet
+            // Tömmer även innehållet i orders.html
+            emptyBasketOrdersPage();
         });
     }
 }
