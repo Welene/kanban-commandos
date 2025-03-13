@@ -5,7 +5,7 @@
 // https://santosnr6.github.io/Data/yumyumusers.json
 
 async function fetchAPI(link) {
-    console.log("fetchAPI()");
+    console.log('fetchAPI()');
 
     try {
         const response = await fetch(link);
@@ -19,21 +19,21 @@ async function fetchAPI(link) {
         }
         return data;
     } catch (error) {
-        console.log("Error fetching data:", error.message);
+        console.log('Error fetching data:', error.message);
         return [];
     }
 }
 // Hämtar Producs från API
 async function fetchProducts() {
     const products = await fetchAPI(
-        "https://santosnr6.github.io/Data/yumyumproducts.json"
+        'https://santosnr6.github.io/Data/yumyumproducts.json'
     );
     return products;
 }
 // Hämtar Users fårn API
 async function fetchUsers() {
     const users = await fetchAPI(
-        "https://santosnr6.github.io/Data/yumyumusers.json"
+        'https://santosnr6.github.io/Data/yumyumusers.json'
     );
     return users;
 }

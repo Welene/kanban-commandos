@@ -1,0 +1,118 @@
+/* Ändrad Header då den inte ska ha kundvagn */
+.header-register {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Pilen i header */
+.header__back-btn {
+    position: absolute;
+    left: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header__back-btn img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.header__logo {
+    max-width: 100px;
+}
+
+/* H1 titel  */
+.regiser__title {
+    text-align: center;
+    color:var(--white-text-color);
+}
+
+/* Form Styling */
+.form__container {
+    padding: 16px;
+    color: var(--white-text-color);
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: var(--white-bg-color);
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: var(--white-bg-color);
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+
+.main-wrapper__btn--scaledwn {
+width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Styling för error/succee meddelanden */
+.message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 9999;
+    width: 300px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    animation: fadeInOut 4s ease forwards;
+}
+
+.message.error {
+    background-color: #f44336;
+}
+
+.message.success {
+    background-color: #4caf50;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
