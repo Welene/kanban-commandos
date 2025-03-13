@@ -13,6 +13,7 @@ function handleLoginClick() {
     // when you click on the 'LOGGA IN' button on the landingPage (#loginBtn) it will do the following:
     document.querySelector('#loginBtn').addEventListener('click', () => {
         let isLoggedIn = localStorage.getItem('user');
+        // let isLoggedIn = localStorage.getDataFromLocalStorage('user');
         // I HAVE TO STORE USER AND THEN GET USER USING THE getDatablabla function and the saveDataToblabla function
         if (isLoggedIn) {
             window.location.href = 'menu.html';
