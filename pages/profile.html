@@ -1,0 +1,66 @@
+!<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Yum Yum Gimme sum</title>
+        <link rel="stylesheet" href="../styles/style.css" />
+        <script type="module" src="../scripts/script.js"></script>
+    </head>
+    <body class="content__main">
+        <div class="content-wrapper">
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <button
+                    class="header__nav-menu"
+                    id="navMenu"
+                    aria-label="Open nav menu button"
+                >
+                    <span
+                        class="header__nav-menu-lines"
+                        id="navMenuLines"
+                    ></span>
+                </button>
+                <a href="menu.html" aria-label="Go to landing page">
+                    <img
+                        class="header__logo"
+                        src="../assets/icons/logo.svg"
+                        alt="Image logo"
+                    />
+                </a>
+                <button
+                    id="basket"
+                    class="header__basket-box"
+                    aria-label="Open cart button"
+                >
+                    <img
+                        class="header__basket-icon"
+                        src="../assets/icons/basket.svg"
+                        alt="Basket icon"
+                    />
+                </button>
+            </header>
+
+            <!-- main section -->
+            <main>
+                <section id="profileImgBox" class="profile__img-box">
+                    <h1 id="profileTitle" class="profile__title">DIN PROFIL</h1>
+                    <img
+                        id="profileImg"
+                        class="profile__img"
+                        src="https://randomuser.me/api/portraits/men/3.jpg"
+                        alt="Image of profile"
+                    />
+                    <p id="profileChangeImg" class="profiel__change-img">
+                        ÄNDRA BILD
+                    </p>
+                </section>
+                <section id="profileInfoBox" class="profile-info-box">
+                    <h2 id="profileUserName" class="profile__user-name">
+                        NAMN HÄR
+                    </h2>
+                </section>
+            </main>
+        </div>
+    </body>
+</html>
