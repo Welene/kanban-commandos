@@ -160,6 +160,7 @@ function setFilterMenu() {
 				item.classList.add('d-none');
 			}
 		});
+		filterMenuRef.blur();
 	});
 }
 

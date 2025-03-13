@@ -26,7 +26,20 @@
 .food-menu-container__filter {
     flex: 1;
     font-size: 1.5rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('../assets/icons/back-symbol.svg') no-repeat right 10px center;
+    background-color: white;
+    background-size: 20px;
 }
+
+.food-menu-container__filter:focus {
+    background: url('../assets/icons/back-symbol-down.svg') no-repeat right 5px center;
+    background-color: white;
+    background-size: 30px;
+}
+
 .food-menu-container__card-container {
     overflow-y: auto;
     height: 55vh;
