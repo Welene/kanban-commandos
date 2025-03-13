@@ -7,7 +7,20 @@
     width: 100%;
     margin: 1rem 0;
     padding: 1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('../assets/icons/back-symbol.svg') no-repeat right 15px center;
+    background-color: white;
+    background-size: 20px;
     font-size: 1.2rem;
+}
+
+.map__selection-foodtrucks:focus {
+    background: url('../assets/icons/back-symbol-down.svg') no-repeat right 10px center;
+    background-color: white;
+    background-size: 30px;
+    tra
 }
 
 .map__img-container {
