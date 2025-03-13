@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
     <head>
         <meta charset="UTF-8" />
@@ -42,18 +42,21 @@
             </header>
 
             <!-- main section -->
-            <main>
+            <main class="main__profile">
+                <h1 id="profileTitle" class="profile__title">DIN PROFIL</h1>
                 <section id="profileImgBox" class="profile__img-box">
-                    <h1 id="profileTitle" class="profile__title">DIN PROFIL</h1>
                     <img
                         id="profileImg"
                         class="profile__img"
-                        src="https://randomuser.me/api/portraits/men/3.jpg"
+                        src=""
                         alt="Image of profile"
                     />
-                    <p id="profileChangeImg" class="profiel__change-img">
-                        ÄNDRA BILD
-                    </p>
+                    <button
+                        id="profileChangeImgBtn"
+                        class="profile__change-img-btn"
+                    >
+                        SLUMPA PROFILBILD
+                    </button>
                 </section>
                 <section id="profileInfoBox" class="profile-info-box">
                     <h2 id="profileUserName" class="profile__user-name">

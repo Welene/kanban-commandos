@@ -118,4 +118,10 @@ export function emptyBasketOrdersPage() {
     }
 }
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket };
+// Funktion för att slumpa fram ett heltal där man får ange minsta värde och högsta värde som argument
+function randomNumber(min, max) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomNumber;
+}
+
+export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, randomNumber};
