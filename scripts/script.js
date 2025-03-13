@@ -71,8 +71,6 @@ if (path === '/pages/' || path === '/pages/index.html') {
     console.log('receipt.html');
 } else if (path === '/pages/register.html') {
     runRegisterPage();
-    renderHamburgerMenu();
-    openDropDownBasket();
     console.log('register.html');
 }
 

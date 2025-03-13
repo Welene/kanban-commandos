@@ -118,4 +118,10 @@ export function emptyBasketOrdersPage() {
     }
 }
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket };
+function handleRegisterIndexClick() {
+    document.getElementById("registerBtn").addEventListener("click", function() {
+        window.location.href = "register.html";
+    });
+}
+
+export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, handleRegisterIndexClick };
