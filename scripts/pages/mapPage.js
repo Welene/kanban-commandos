@@ -45,6 +45,8 @@ function changeMap() {
 			mapMarkerRef.style.top = '53%';
 			mapMarkerRef.style.left = '43%';
 		}
+		// Avmarkerar select-elementet så CSS kan byta tillbaka mellan pilikonerna.
+		selectionFoodtruckRef.blur();
 	});
 }
 
