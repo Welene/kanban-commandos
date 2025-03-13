@@ -123,5 +123,10 @@ function handleRegisterIndexClick() {
         window.location.href = "register.html";
     });
 }
+function buttonAddLinkToMenu(htmlRef) {
+    htmlRef.addEventListener('click', () => {
+        window.location.href = '/pages/menu.html';
+    });
+}
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, handleRegisterIndexClick };
+export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, buttonAddLinkToMenu, handleRegisterIndexClick };
