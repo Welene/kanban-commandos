@@ -103,8 +103,8 @@ function updateAllUsersReceipts(username, newReceipt) {
             allUsers[userIndex].receipts = []; // Skapa receipts-array om den saknas
         }
         allUsers[userIndex].receipts.push(newReceipt); // Lägg till det nya kvittot
-        saveDataToLocalStorage('users', allUsers); // Uppdatera users i localStorage
     }
+    saveDataToLocalStorage('users', allUsers); // Uppdatera users i localStorage
 }
 
 export { runOrdersPage };
