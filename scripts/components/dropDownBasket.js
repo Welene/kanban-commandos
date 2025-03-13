@@ -1,5 +1,6 @@
 import { getDataFromLocalStorage } from '../data/localStorage.js'
 import { runOrdersPage } from '../pages/ordersPage.js';
+import { emptyBasket } from '../utils/utils.js';
 
 // Här ska funktionen för att öppna en dropdown-vy för när man trycker på kundvagnen skrivas.
 function openDropDownBasket() {
@@ -26,7 +27,7 @@ function createOverlayDropDownBasket() {
     <section id="overlayBackground" class="overlay-background">
             <article id="overlayBasket" class="overlay-basket">
                 <h2 id="overlayBasketTitle" class="overlay-basket__title">
-                    Översikt kundvagn
+                    Översikt varukorg
                 </h2>
                 <ul id="basketList" class="basket__list"></ul>
                 <section id="basketTotal" class="basket-total-box">
@@ -47,7 +48,9 @@ function createOverlayDropDownBasket() {
     // Anropar funktion för att kunna stänga basket
     closeOverlayBasketListener();
     // Kontroll om varukorgen är tom och då skrivs 'Tom varukorg'-meddelande
-    isBasketEmpty()
+    isBasketEmpty();
+    // Skapar en papperskorg för att tömma basket om det finns items i basket
+    createEmptyBasketElem();
 }
 
 // Funktion som skapar varje enskilda produkt som lagt in i basket
@@ -76,15 +79,15 @@ function createBasketItem() {
             totalAmount += itemPrice;
             
             let basketItemsHTML = `
-                <li data="basketItem" class="basket__list-item">
-                    <section id="basketItem" class="basket__title-box">
-                        <p id="basketItemTitle" class="basket__item">
+                <li data-basketItemId="basketItem" class="basket__list-item">
+                    <section class="basket__title-box">
+                        <p data-itemTitleId="basketItemTitle" class="basket__item">
                             ${basketItems.items[i].name}
                         </p>
-                        <p id="basketItemCount" class="basket__item">x${basketItems.items[i].amount}</p>
+                        <p data-basketItemCountId="basketItemCount" class="basket__item">x${basketItems.items[i].amount}</p>
                     </section>
                     <span class="separator"></span>
-                    <p id="basketItemPrice" class="basket__item">${itemPrice} kr</p>
+                    <p data-basketItemPriceId="basketItemPrice" class="basket__item">${itemPrice} kr</p>
                 </li>
                 `;
             // Lägger in produkten i basket
@@ -100,6 +103,62 @@ function createBasketItem() {
         basketListRef.insertAdjacentHTML('beforeend', emptyHTML);
 
         basketTotalAmountRef.textContent = `${totalAmount} kr`;
+    }
+}
+
+// Skapar en papperskorg för tömma varukorgen om varor är tillagda
+function createEmptyBasketElem() {
+    const basketItemRef = document.querySelector('[data-basketitemid = "basketItem"]');
+    const basketListRef = document.querySelector('#basketList');
+    
+    // Elementet som skapas med en kontroll om det finns någon vara i varukorgen
+    if(basketItemRef) {
+        const emptyBasketHTML = `
+        <section id="emptyBasket" class="empty-basket-box">
+            <img
+                id="emptyBasketImg"
+                class="empty-basket-box__trash-can"
+                src="../assets/icons/trash-can.svg"
+                alt="Bin icon"
+            />
+            <p
+                id="emptyBasketParagraph"
+                class="empty-basket-box__paragraph">
+                    TÖM VARUKORG
+            </p>
+        </section>
+        `;
+
+    // Den läggs in efter elementen med alla tillagda items i basket
+    basketListRef.insertAdjacentHTML('afterend', emptyBasketHTML);
+    }
+    // Lyssnare på töm-varukorgselementet
+    emptyBasketListener()
+}
+
+// Lyssnare för att tömma varukorgen
+function emptyBasketListener() {
+    const emptyBasketRef = document.querySelector('#emptyBasket');
+    const basketItemAllRef = document.querySelectorAll('[data-basketitemid = "basketItem"]');
+    const basketTotalAmountRef = document.querySelector('#basketTotalAmount');
+
+    // Kontroll om själva elementet med papperskorgen finns på dropdown basket
+    if(emptyBasketRef) {
+        emptyBasketRef.addEventListener('click', () => {
+            // Kör funktionen för att tömma varukorgen och localStorage
+            emptyBasket();
+            // Loopar genom att items som finns i varukorgen och tar bort samtliga element
+            basketItemAllRef.forEach(item => item.remove());
+            // Kontroll för att få fram meddelande om att varukorgen är tom
+            isBasketEmpty();
+            // Nedanstående två rader tar bort röda cirkeln runt varukorgen
+            const basketItemCountRef = document.querySelector('#basketItemCount');
+            basketItemCountRef.remove();
+            // Tar bort papperskorgen och 'TÖM VARUKORG'
+            emptyBasketRef.remove();
+            // Ändrar så att Totalsumman blir 0
+            basketTotalAmountRef.textContent = '0 kr';
+        })
     }
 }
 
@@ -120,7 +179,7 @@ function closeOverlayBasketListener() {
 function isBasketEmpty() {
     const basketPreviewOrderNavRef = document.querySelector('#basketPreviewOrderNav');
     const basketTotalAmountRef = document.querySelector('#basketTotalAmount');
-    const basketListRef = document.querySelector('#basketList')
+    const basketListRef = document.querySelector('#basketList');
 
     // Lyssnare på 'Förhandsgranska order'
     basketPreviewOrderNavRef.addEventListener('click', () => {
