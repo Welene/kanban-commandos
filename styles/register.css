@@ -1,3 +1,4 @@
+/* Ändrad Header då den inte ska ha kundvagn */
 .header-register {
     padding: 1rem;
     width: 100%;
@@ -8,6 +9,7 @@
     position: relative;
 }
 
+/* Pilen i header */
 .header__back-btn {
     position: absolute;
     left: 1rem;
@@ -29,11 +31,13 @@
     max-width: 100px;
 }
 
+/* H1 titel  */
 .regiser__title {
     text-align: center;
     color:var(--white-text-color);
 }
 
+/* Form Styling */
 .form__container {
     padding: 16px;
     color: var(--white-text-color);
@@ -60,13 +64,55 @@ hr {
     margin-bottom: 25px;
 }
 
-.signin {
-    background-color: #f1f1f1;
-    text-align: center;
-}
 
 .main-wrapper__btn--scaledwn {
 width: 90%;
     display: block;
     margin: 0 auto;
+}
+
+/* Styling för error/succee meddelanden */
+.message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 9999;
+    width: 300px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    animation: fadeInOut 4s ease forwards;
+}
+
+.message.error {
+    background-color: #f44336;
+}
+
+.message.success {
+    background-color: #4caf50;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
 }
