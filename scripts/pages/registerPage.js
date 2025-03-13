@@ -1,12 +1,12 @@
 import { registerUser } from '../components/register.js';
-import { fetchUsers } from '../api/api.js'; // Importera fetchUsers för att hämta användardata
+import { fetchUsers } from '../api/api.js';
 
 function runRegisterPage() {
     document.addEventListener('DOMContentLoaded', async () => {
         const form = document.querySelector('form');
 
         // Hämta användardata från API innan registreringen
-        let apiUsers = await fetchUsers(); // Hämta användardata från API
+        let apiUsers = await fetchUsers();
 
         console.log('API users:', apiUsers); // Logga hela objektet för att kontrollera
 
