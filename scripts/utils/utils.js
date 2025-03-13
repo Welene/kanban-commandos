@@ -66,7 +66,7 @@ function doesBasketItemCountsExist() {
         const basketItemCountHTML = `<span
         id="basketItemCount"
         class="header__basket-item-count"
-         >${basketItemCounts}</span>`;
+        >${basketItemCounts}</span>`;
 
         // Stoppar in den sist i headern
         basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);

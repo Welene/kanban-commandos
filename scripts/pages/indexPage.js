@@ -3,7 +3,8 @@
 function runIndexPage() {
     // calls function that navigates you to menu.html when clicking on "Logga inn" in index page
     // clickLoginBtn();
-    handleLoginClick();
+    handleLoginClick(); 
+    handleRegisterIndexClick();
 }
 
 export { runIndexPage };
@@ -93,7 +94,12 @@ function handleLoginClick() {
         main.appendChild(btnRed);
         main.appendChild(backBtn);
         backBtn.appendChild(backSymbol);
-        
-        // content-wrapper__back-btn-icon
+    });
+}
+
+
+function handleRegisterIndexClick() {
+    document.getElementById("registerBtn").addEventListener("click", function() {
+        window.location.href = "register.html";
     });
 }
