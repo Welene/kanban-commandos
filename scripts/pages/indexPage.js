@@ -4,6 +4,7 @@
 function runIndexPage() {
     handleLoginClick(); 
     handleRegisterIndexClick();
+    handleBackBtnClick();
 }
 
 export { runIndexPage };
@@ -74,6 +75,7 @@ function handleLoginClick() {
 
         let backBtn = document.createElement('button');
         backBtn.classList.add('content-wrapper__back-btn');
+        backBtn.id = 'backBtn';
 
         let backSymbol = document.createElement('img');
         backSymbol.src = '../assets/icons/back-symbol.svg';
@@ -95,12 +97,22 @@ function handleLoginClick() {
         main.appendChild(btnRed);
         main.appendChild(backBtn);
         backBtn.appendChild(backSymbol);
+
+        handleBackBtnClick();
     });
 }
 
-
 function handleRegisterIndexClick() {
-    document.getElementById("registerBtn").addEventListener("click", function() {
-        window.location.href = "register.html";
+    document.getElementById('registerBtn').addEventListener('click', function() {
+        window.location.href = 'register.html';
     });
+}
+
+function handleBackBtnClick() {
+    let backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    }
 }
