@@ -1,5 +1,7 @@
-import { getDataFromLocalStorage, saveDataToLocalStorage } from '../data/localStorage.js'
-
+import {
+    getDataFromLocalStorage,
+    saveDataToLocalStorage,
+} from '../data/localStorage.js';
 
 // Funktionsverktyg: Exempelvis funktioner för att randominisera nummer, formatera text eller manipulera strängar.
 
@@ -54,22 +56,20 @@ export function clickLoginBtn() {
 }
 
 function doesBasketItemCountsExist() {
-    let basketItemCounts = getDataFromLocalStorage('basketCount')
+    let basketItemCounts = getDataFromLocalStorage('basketCount');
     const basketRef = document.querySelector('#basket');
-    
 
     if (basketItemCounts > 0) {
         // Skapar själva röda cirkeln och stoppar in nuvarande basketItemCounts i den
-        const basketItemCountHTML =`<span
+        const basketItemCountHTML = `<span
         id="basketItemCount"
         class="header__basket-item-count"
          >${basketItemCounts}</span>`;
 
-    // Stoppar in den sist i headern
-    basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);
+        // Stoppar in den sist i headern
+        basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);
     }
 }
-
 
 export function generateUniqueId() {
     return '#' + Math.random().toString(36).substring(2, 9);
@@ -78,12 +78,44 @@ export function generateUniqueId() {
 // Funktion för att tömma hela varukorgen
 function emptyBasket() {
     // Töm varukorgen
-    saveDataToLocalStorage('basket', {}); 
+    saveDataToLocalStorage('basket', {});
 
     // Töm basketCount (countern för hur många saker som finns i basket)
-    saveDataToLocalStorage('basketCount', 0); 
+    saveDataToLocalStorage('basketCount', 0);
 }
 
+/**
+ * Hanterar en tom kundkorg på ordersidan genom att:
+ * - Visa ett meddelande att korgen är tom.
+ * - Uppdatera totalkostnaden till 0 SEK.
+ * - Ändra texten på checkout-knappen till "GO TO MENU" och länka till menyn.
+ *
+ * Funktionen inkluderar felhantering och kontrollerar att nödvändiga element finns
+ * innan den försöker uppdatera dem.
+ */
+export function emptyBasketOrdersPage() {
+    const container = document.querySelector('#orderSummary'); // Behållare för orderöversikt
+    const totalCostElement = document.querySelector('#totalCost'); // Element för totalkostnad
+    const checkoutButton = document.querySelector('#checkoutBtn'); // Knapp för att slutföra order
+
+    // Kontrollera att orderöversikten finns innan vi uppdaterar den
+    if (container) {
+        container.innerHTML =
+            '<p class="order-summary__empty-msg">Your basket is empty</p>';
+    }
+
+    // Kontrollera att totalpriset finns innan vi uppdaterar det
+    if (totalCostElement) {
+        totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price"> 0 SEK</p>`;
+    }
+
+    // Kontrollera att checkout-knappen finns innan vi ändrar text och lägger till eventlyssnare
+    if (checkoutButton) {
+        checkoutButton.textContent = 'GO TO MENU';
+        checkoutButton.addEventListener('click', () => {
+            window.location.href = '/pages/menu.html';
+        });
+    }
+}
 
 export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket };
-

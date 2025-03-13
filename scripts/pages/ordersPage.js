@@ -2,7 +2,12 @@ import {
     getDataFromLocalStorage,
     saveDataToLocalStorage,
 } from '../data/localStorage.js';
-import { generateUniqueId, doesBasketItemCountsExist, emptyBasket } from '../utils/utils.js';
+import {
+    generateUniqueId,
+    doesBasketItemCountsExist,
+    emptyBasket,
+    emptyBasketOrdersPage,
+} from '../utils/utils.js';
 
 /**
  * Funktion som hanterar ordersidan.
@@ -15,20 +20,13 @@ function runOrdersPage() {
     const foodTruckDropdown = document.querySelector('#foodtruckSelect'); // Dropdown för foodtruck
     const checkoutButton = document.querySelector('#checkoutBtn'); // Knapp för att slutföra order
     const currentUser = getDataFromLocalStorage('currentUser'); // Hämta aktuell användare
-    
+
     // Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
-    doesBasketItemCountsExist()
+    doesBasketItemCountsExist();
 
     // Om varukorgen är tom, visa meddelande och sätt totalpriset till 0
     if (!basket || !basket.items || basket.items.length === 0) {
-        container.innerHTML =
-            '<p class="order-summary__empty-msg">Your basket is empty</p>';
-        totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price"> 0 SEK</p>`; // Uppdatera totalkostnaden
-
-        checkoutButton.textContent = ' GO TO MENU';
-        checkoutButton.addEventListener('click', () => {
-            window.location.href = '/pages/menu.html';
-        });
+        emptyBasketOrdersPage();
         return;
     }
 
