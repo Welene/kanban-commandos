@@ -1,12 +1,13 @@
 import { fetchProducts } from '../api/api.js';
 import { addToBasket } from '../components/addToBasket.js';
-import { doesBasketItemCountsExist } from "../utils/utils.js";
+import { doesBasketItemCountsExist } from '../utils/utils.js';
 
 async function runMenuPage() {
 	const products = await fetchProducts();
 	createCards(products, true, true);
-    // Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
-    doesBasketItemCountsExist()
+	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
+	doesBasketItemCountsExist();
+	setFilterMenu();
 }
 
 function createCards(products, addSecondText, addButton) {
@@ -19,7 +20,7 @@ function createCards(products, addSecondText, addButton) {
 		if (item.type === 'wonton' || item.type === 'drink') {
 			//Varje menykort är en list item
 			const listItemHTML = document.createElement('li');
-			listItemHTML.classList.add('food-menu-container__inner-grid');
+			listItemHTML.className = `food-menu-container__inner-grid ${item.type}`;
 
 			// Används för att förvara texterna i
 			const sectionHTML = document.createElement('section');
@@ -137,6 +138,29 @@ function createDipCard(products) {
 
 	// Dipbehållaren läggs in i huvudcontainern för dipen.
 	dipContainerRef.appendChild(sectionDipHTML);
+}
+
+// Ser till så filterfunktionen fungerar
+function setFilterMenu() {
+	// Sätter en eventListener på drop down-menyn
+	const filterMenuRef = document.querySelector('#filterMenu');
+	filterMenuRef.addEventListener('change', (selection) => {
+		// Letar upp alla menykort
+		const menuItems = document.querySelectorAll(
+			'.food-menu-container__inner-grid'
+		);
+
+		// Tar först bort 'd-none' från alla korten (om de finns)
+		// Lägger därefter till 'd-none' till de menykort som matchar värdet på menyvalet
+		// Värdet är speglat så menyval 'wonton' ger värdet 'drink' och vice versa
+		menuItems.forEach((item) => {
+			item.classList.remove('d-none');
+
+			if (item.classList.contains(`${selection.target.value}`)) {
+				item.classList.add('d-none');
+			}
+		});
+	});
 }
 
 export { runMenuPage };
