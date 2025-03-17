@@ -16,13 +16,41 @@ export { runIndexPage };
 
 // function that handles a click on the 'LOGGA IN' button on the index/landing page
 function handleLoginClick() {
-	// when you click on the 'LOGGA IN' button on the landingPage (#loginBtn) it will do the following:
 	document.querySelector('#loginBtn').addEventListener('click', () => {
-		let isLoggedIn = localStorage.getItem('user');
-		// let isLoggedIn = localStorage.getDataFromLocalStorage('user');
-		// I HAVE TO STORE USER AND THEN GET USER USING THE getDatablabla function and the saveDataToblabla function
+		let currentUser = localStorage.getItem('currentUser');
+		let users = localStorage.getItem('users');
+
+		// ? = if else shorthand, checks if currentUser and user exists
+		currentUser = currentUser ? JSON.parse(currentUser) : null;
+		users = users ? JSON.parse(users) : [];
+
+		let isLoggedIn =
+			currentUser &&
+			users.some((user) => user.username === currentUser.username);
+		// checks "user" array, if ANY username is === currentUser username then some() returns back true, then you are indeed logged in
+
+		// So if you are logged in --> then we do this
 		if (isLoggedIn) {
-			window.location.href = 'menu.html';
+			let username = currentUser.username;
+			let capsCurrentUser = username.toUpperCase();
+			let main = document.querySelector(
+				'.content-wrapper__intro-content'
+			);
+			// if user is logged in after clicking the "Logga in" btn, then main AKA all the elements in main gets removed, swapped out with welcomeMsg h1 down here V V V
+			main.innerHTML = '';
+
+			let welcomeMsg = document.createElement('h1');
+			// Writes out capsCurrentUser which is username just with big letters only
+			welcomeMsg.textContent = `VÄLKOMMEN ${capsCurrentUser}!`;
+			welcomeMsg.classList.add('content-wrapper__welcome-msg');
+
+			// shows the new main content on page if logged in
+			main.appendChild(welcomeMsg);
+
+			// Timeout that shows välkommen + current username in a h1 before navigating to the menu
+			setTimeout(() => {
+				window.location.href = 'menu.html';
+			}, 4500);
 			return;
 		}
 
