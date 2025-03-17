@@ -5,6 +5,7 @@ function runIndexPage() {
 	handleLoginClick();
 	handleRegisterIndexClick();
 	handleBackBtnClick();
+	checkIfLoggedIn();
 }
 // import { clickLoginBtn, handleRegisterIndexClick } from '../utils/utils.js'
 // function runIndexPage() {
@@ -14,7 +15,28 @@ function runIndexPage() {
 
 export { runIndexPage };
 
+// Function sends you directly to menu.html if you are logged in to begin with
+function checkIfLoggedIn() {
+	let currentUser = localStorage.getItem('currentUser');
+	let users = localStorage.getItem('users');
+
+	// Parse the user data from localStorage
+	currentUser = currentUser ? JSON.parse(currentUser) : null;
+	users = users ? JSON.parse(users) : [];
+
+	// Check if the user is logged in
+	let isLoggedIn =
+		currentUser &&
+		users.some((user) => user.username === currentUser.username);
+
+	// If logged in, redirect to the menu page
+	if (isLoggedIn) {
+		window.location.href = 'menu.html';
+	}
+}
+
 // function that handles a click on the 'LOGGA IN' button on the index/landing page
+// checks if you are logged in: if not - goes to login form - so you can log in (no error msg or msg telling you to register if you don't have a user yet)
 function handleLoginClick() {
 	document.querySelector('#loginBtn').addEventListener('click', () => {
 		let currentUser = localStorage.getItem('currentUser');
