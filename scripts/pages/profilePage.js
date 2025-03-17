@@ -1,15 +1,17 @@
-import { doesBasketItemCountsExist, maskEmail } from '../utils/utils.js';
+import {
+	doesBasketItemCountsExist,
+	maskEmail,
+	showMessage,
+} from '../utils/utils.js';
 import {
 	getDataFromLocalStorage,
 	saveDataToLocalStorage,
 } from '../data/localStorage.js';
-import { fetchUsers } from '../api/api.js';
 import { generateRandomProfileImage } from '../components/register.js';
 import {
 	validateUsernameAndEmail,
 	isEmailExists,
 } from '../components/validate.js';
-import { showMessage } from '../components/register.js';
 
 function runProfilePage() {
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
@@ -82,17 +84,64 @@ async function saveNewProfileListener() {
 		const profilePswRepeat = document.querySelector('#profilePswRepeat');
 		const profileImgRef = document.querySelector('#profileImg');
 
-		if (emailInput && passwordInput)
-			// Om användaren gör en input för email
-			emailInput(currentUser, profileEmailInputRef, profileImgRef.src);
+		// Kontroll ifall användaren har skrivit input i samtliga fält
+		if (
+			profileEmailInputRef.value !== '' &&
+			profilePswRef.value !== '' &&
+			profilePswRepeat.value !== ''
+		) {
+			// Kontroll om validering av Email är sann
+			if (
+				isEmailInputValid(currentUser, profileEmailInputRef) === true &&
+				isPasswordInputValid(
+					profilePswRef.value,
+					profilePswRepeat.value
+				)
+			) {
+				// Då kommer emailen att sparas
+				emailInput(
+					currentUser,
+					profileEmailInputRef,
+					profileImgRef.src
+				);
 
-		// Om användaren gör en input för password
-		passwordInput(
-			currentUser,
-			profilePswRef,
-			profilePswRepeat,
-			profileImgRef
-		);
+				// Då kommer passworden att sparas
+				passwordInput(
+					currentUser,
+					profilePswRef,
+					profilePswRepeat,
+					profileImgRef
+				);
+			}
+		}
+		// Om användaren bara fyller i email
+		else if (
+			profileEmailInputRef.value !== '' &&
+			profilePswRef.value === '' &&
+			profilePswRepeat.value === ''
+		) {
+			// Kontroll och sparning av ny email
+			emailInput(currentUser, profileEmailInputRef, profileImgRef.src);
+		}
+		// Om användaren bara fyller i lösenord
+		else if (profilePswRef.value !== '' || profilePswRepeat.value !== '') {
+			// Kontroll och sparning av ny password
+			passwordInput(
+				currentUser,
+				profilePswRef,
+				profilePswRepeat,
+				profileImgRef
+			);
+		}
+		// Om användaren bara byter profilbild så sparas den.
+		else if (currentUser.profile_image !== profileImgRef.src) {
+			saveUserLocalStorage(currentUser, profileImgRef.src);
+			showMessage('Din nya profilbild är sparad!', 'success');
+			// Rensning av eventuella borders
+			profileEmailInputRef.style.border = '';
+			profilePswRef.style.border = '';
+			profilePswRepeat.style.border = '';
+		}
 	});
 }
 
@@ -104,7 +153,7 @@ function passwordInput(
 	profileImgRef
 ) {
 	// Validering så att lösenorden stämmer
-	if (profilePswRef.value !== '') {
+	if (profilePswRef.value !== '' || profilePswRepeat !== '') {
 		if (
 			isPasswordInputValid(
 				profilePswRef.value,
@@ -119,11 +168,6 @@ function passwordInput(
 			saveUserLocalStorage(currentUser, profileImgRef.src);
 			showMessage('Dina nya uppgifter är sparade', 'success');
 		}
-	}
-
-	if (profileImgRef.src !== currentUser.profile_image) {
-		saveUserLocalStorage(currentUser, profileImgRef.src);
-		showMessage('Din nya profilbild är ändrad!', 'success');
 	}
 }
 
@@ -164,6 +208,7 @@ function saveUserLocalStorage(currentUser, profileImgRef) {
 	const usersUpdate = users.map((user) =>
 		user.username === newUser.username ? newUser : user
 	);
+	// Här sparas nya 'currentUsers' i 'users'
 	saveDataToLocalStorage('users', usersUpdate);
 }
 
