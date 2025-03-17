@@ -202,7 +202,7 @@
 }
 /* fiks sånn at margin-top ikke gjør at bildet blir større, siste knappen skal ligge nederst */
 
-/* If-logged-in welcome msg */
+/* If-logged-in welcome-msg */
 .content-wrapper__welcome-msg {
 	font-size: 3rem;
 	text-align: center;
