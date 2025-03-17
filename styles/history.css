@@ -1,0 +1,95 @@
+.history__title {
+	text-align: center;
+	color: var(--white-text-color);
+}
+
+.receipt-resize {
+	min-height: unset;
+	transition: all 0.3s ease;
+	margin-top: 1.5rem;
+	width: 100%;
+}
+
+.receipt-resize.expanded {
+	min-height: 30.25rem;
+}
+
+.receipt__logo--resize {
+	justify-self: center;
+}
+
+.receipt__header {
+	display: flex;
+	flex-direction: column;
+	padding: 0.8rem 1rem;
+	background: var(--white-bg-color);
+	border-radius: 10px;
+}
+
+.receipt__header-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.receipt__title {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.receipt__id {
+	font-size: 0.8rem;
+	color: var(--weakblack-text-color);
+	margin-top: 2px;
+}
+
+.receipt__total-price {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* Anpassa kvittots layout i expanderad vy */
+.receipt-resize.expanded {
+	background: var(--white-bg-color); /* Samma som receipt.css */
+	padding: 1rem 0rem 0rem 0rem;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Justera logotypens placering */
+.receipt__logo--resize {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 0.5rem;
+}
+
+/* Gör varulistan lik kvittosidan */
+.receipt__items {
+	border-top: 2px solid var(--light-grey-bg-color);
+	padding-top: 1rem;
+	flex-grow: 1;
+}
+
+/* Anpassa kvittoartiklar */
+.receipt__item {
+	display: flex;
+	padding: 0rem 1rem 0rem 1rem;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	font-size: 1rem;
+}
+
+/* Anpassa kvittofoten så den ser ut som på kvittosidan */
+.receipt__total {
+	background: var(--grey-bg-color);
+	padding: 1rem;
+	width: 100%;
+	text-align: center;
+	margin-top: 1rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
