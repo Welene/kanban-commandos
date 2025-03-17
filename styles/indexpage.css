@@ -1,6 +1,14 @@
+@import url(register.css);
+
 :root {
 	--red-bg-color-transparent: #eb5757d0;
 	--white-bg-color-transparent: rgba(221, 221, 221, 0.829);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 /* .index {
@@ -34,7 +42,6 @@
 
 	margin-bottom: 8rem;
 	background-color: rgba(29, 29, 29, 0.349);
-	/* box-shadow: 0PX 0PX 10PX 10PX rgba(255, 255, 255, 0.527); */
 	border-radius: 0.3rem;
 	padding: 2.8rem;
 	display: flex;
@@ -204,16 +211,22 @@
 
 /* If-logged-in welcome-msg */
 .content-wrapper__welcome-msg {
-	font-size: 3rem;
+	font-size: 3.2rem;
+	padding: 2rem;
+	margin: 2rem;
+	border-radius: 0.3rem;
 	text-align: center;
-	margin-top: 5rem;
 	color: white;
 	letter-spacing: 0.1rem;
+	background-color: var(--white-bg-color-transparent);
 }
 
 .content-wrapper__welcome-msg-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	height: 100vh;
-	width: 100%;
+	width: 100vw;
 	background-image: url(/assets/bg-images/leafbg.svg);
 	background-color: var(--light-green-bg-color);
 }

@@ -21,7 +21,7 @@ export async function registerUser(event, apiUsers) {
 	// Validering av användarnamn och email
 	const validation = validateUsernameAndEmail(username, email);
 	if (!validation.valid) {
-		showMessage(validation.message, 'error');
+		showMessage(validation.message, '');
 		return;
 	}
 

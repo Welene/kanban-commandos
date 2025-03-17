@@ -19,6 +19,7 @@ function handleLoginClick() {
 	document.querySelector('#loginBtn').addEventListener('click', () => {
 		let currentUser = localStorage.getItem('currentUser');
 		let users = localStorage.getItem('users');
+		// fetch user and currentUser from L.S
 
 		// ? = if else shorthand, checks if currentUser and user exists
 		currentUser = currentUser ? JSON.parse(currentUser) : null;
@@ -56,7 +57,7 @@ function handleLoginClick() {
 			// Timeout that shows välkommen + current username in a h1 before navigating to the menu
 			setTimeout(() => {
 				window.location.href = 'menu.html';
-			}, 450000);
+			}, 2500);
 			return;
 		}
 
