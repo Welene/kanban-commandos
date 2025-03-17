@@ -15,7 +15,7 @@ function generateReceipt() {
 		return;
 	}
 
-	receiptIdElement.textContent = `#${receipt.id}`; // Visa unikt kvitto-ID
+	receiptIdElement.textContent = receipt.id; // Visa unikt kvitto-ID
 	receiptContainer.innerHTML = ''; // Rensa gammalt innehåll
 
 	let totalCost = 0; // Initiera totalpris

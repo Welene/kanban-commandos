@@ -52,13 +52,13 @@ function runOrdersPage() {
     totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price">${totalCost} SEK</p>`; // Uppdatera totalkostnaden
 
     // Om användaren inte är inloggad, ändra checkout-knappen till "Logga in"
-    if (!currentUser || !currentUser.username) {
+    /* if (!currentUser || !currentUser.username) {
         checkoutButton.textContent = 'Log in to place order';
         checkoutButton.addEventListener('click', () => {
             window.location.href = '/pages/index.html';
         });
         return;
-    }
+    } */
 
     // Om användaren är inloggad, tillåt beställning
     checkoutButton.textContent = 'PLACE ORDER';
@@ -74,14 +74,15 @@ function runOrdersPage() {
         saveDataToLocalStorage('receipt', basket); // Spara aktivt kvitto
 
         // Lägg till beställningen i användarens kvittohistorik
-        if (!currentUser.receipts) {
-            currentUser.receipts = [];
+        if (currentUser && currentUser.receipts) {
+            if (!currentUser.receipts) {
+                currentUser.receipts = [];
+            }
+            currentUser.receipts.push(basket);
+            saveDataToLocalStorage('currentUser', currentUser); // Uppdatera currentUser i localStorage
+
+            updateAllUsersReceipts(currentUser.username, basket); // Uppdatera allUsers med orderhistorik
         }
-        currentUser.receipts.push(basket);
-        saveDataToLocalStorage('currentUser', currentUser); // Uppdatera currentUser i localStorage
-
-        updateAllUsersReceipts(currentUser.username, basket); // Uppdatera allUsers med orderhistorik
-
         // Anropar funktion som tömmer hela basket
         emptyBasket();
 

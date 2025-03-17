@@ -1,9 +1,13 @@
 import { generateReceipt } from '../components/createReceipt.js';
-import { doesBasketItemCountsExist } from '../utils/utils.js';
+import {
+	doesBasketItemCountsExist,
+	buttonAddLinkToMenu,
+} from '../utils/utils.js';
 
 function runReceiptPage() {
-    generateReceipt();
-    doesBasketItemCountsExist();
+	generateReceipt();
+	doesBasketItemCountsExist();
+	buttonAddLinkToMenu(document.querySelector('#newOrderBtn'));
 }
 
 export { runReceiptPage };
