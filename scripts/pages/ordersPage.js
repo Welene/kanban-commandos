@@ -75,7 +75,7 @@ function runOrdersPage() {
 		saveDataToLocalStorage('receipt', basket); // Spara aktivt kvitto
 
 		// Lägg till beställningen i användarens kvittohistorik
-		if (currentUser && currentUser.receipts) {
+		if (currentUser) {
 			if (!currentUser.receipts) {
 				currentUser.receipts = [];
 			}

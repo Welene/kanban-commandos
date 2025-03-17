@@ -66,6 +66,7 @@ export async function registerUser(event, apiUsers) {
 		password,
 		profile_image: profileImage,
 		role: 'user',
+		receipts: [],
 	};
 
 	// Lägg till den nya användaren i localStorage
