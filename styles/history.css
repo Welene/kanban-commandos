@@ -1,24 +1,43 @@
-.history__title {
+/* 	 1. SIDA: Layout & Kvitton-Container	 */
+.history-page .history__title {
 	text-align: center;
 	color: var(--white-text-color);
 }
 
-.receipt-resize {
-	min-height: unset;
-	transition: all 0.3s ease;
-	margin-top: 1.5rem;
+.history-page .receiptsContainer {
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.history-page .receiptsList {
 	width: 100%;
 }
 
-.receipt-resize.expanded {
-	min-height: 30.25rem;
+/* 	2. KVITTO: Grundlayout & Expansion	*/
+.history-page .receipt-resize {
+	min-height: unset;
+	width: 100%;
+	margin-top: 1.5rem;
+	align-self: center;
+	transition: all 0.3s ease;
 }
 
-.receipt__logo--resize {
-	justify-self: center;
+.history-page .receipt-resize.expanded {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 30rem;
+	background: var(--white-bg-color);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.receipt__header {
+/* 	3. HEADER: Krympt vy och synlig	*/
+.history-page .receipt__header {
 	display: flex;
 	flex-direction: column;
 	padding: 0.8rem 1rem;
@@ -26,70 +45,92 @@
 	border-radius: 10px;
 }
 
-.receipt__header-top {
+.history-page .receipt__header-top {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 }
 
-.receipt__title {
+.history-page .receipt__title,
+.history-page .receipt__title-expanded {
 	font-size: 1.2rem;
 	font-weight: bold;
 }
 
-.receipt__id {
-	font-size: 0.8rem;
+.history-page .receipt__total-price {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* Döljer totalsumma i header vid expandering */
+.history-page .receipt.expanded .receipt__total-price {
+	display: none;
+}
+
+.history-page .receipt__truck-center {
+	text-align: center;
+	margin-top: 4px;
+}
+
+.history-page .receipt__id,
+.history-page .receipt__truck-name {
+	display: block;
+	font-size: 0.9rem;
 	color: var(--weakblack-text-color);
-	margin-top: 2px;
 }
 
-.receipt__total-price {
-	font-size: 1.2rem;
-	font-weight: bold;
-}
+/*	 4. EXPANDERAD INNEHÅLL: Logga + Varor	*/
 
-/* Anpassa kvittots layout i expanderad vy */
-.receipt-resize.expanded {
-	background: var(--white-bg-color); /* Samma som receipt.css */
-	padding: 1rem 0rem 0rem 0rem;
-	border-radius: 10px;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Justera logotypens placering */
-.receipt__logo--resize {
+/*container för item*/
+.history-page .receipt__items {
 	display: flex;
-	justify-content: center;
-	margin-bottom: 0.5rem;
-}
-
-/* Gör varulistan lik kvittosidan */
-.receipt__items {
-	border-top: 2px solid var(--light-grey-bg-color);
-	padding-top: 1rem;
+	flex-direction: column;
 	flex-grow: 1;
+	padding: 1rem 1rem 0 1rem;
+	box-sizing: border-box;
+	height: 100%;
 }
 
-/* Anpassa kvittoartiklar */
-.receipt__item {
-	display: flex;
-	padding: 0rem 1rem 0rem 1rem;
-	justify-content: space-between;
-	align-items: center;
+.history-page .receipt__item {
+	margin-top: 1rem;
+}
+
+.history-page .receipt__logo--resize {
+	justify-self: center;
+	text-align: center;
 	margin-bottom: 0.5rem;
-	font-size: 1rem;
 }
 
-/* Anpassa kvittofoten så den ser ut som på kvittosidan */
-.receipt__total {
-	background: var(--grey-bg-color);
-	padding: 1rem;
-	width: 100%;
+.history-page .receipt__logo--resize img {
+	width: 50px;
+}
+
+.history-page .receipt__info-expanded {
 	text-align: center;
 	margin-top: 1rem;
-	font-size: 1.2rem;
+}
+
+/*	 5. FOOTER: Totalsumma	 */
+
+/* Dölj footer i krympt läge */
+.history-page .receipt__footer {
+	display: none;
+}
+
+/* Visa footer endast vid expandering */
+.history-page .receipt.expanded .receipt__footer {
+	display: block;
+}
+
+.history-page .receipt__total-history {
+	margin-top: auto;
+	background-color: #ccc;
+	padding: 1rem;
+	text-align: center;
+	border-radius: 0 0 10px 10px;
 	font-weight: bold;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
+	font-size: 1.1rem;
+	width: 100%;
+	box-sizing: border-box;
 }
