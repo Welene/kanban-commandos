@@ -1,0 +1,37 @@
+.grey-background {
+	background-color: var(--dark-grey-bg-color);
+	height: 100vh;
+}
+
+.order-overview {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.order-overview__truck-container {
+	padding: 0.5rem 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 5px;
+	text-transform: uppercase;
+	background-color: var(--light-grey-bg-color);
+}
+
+.order-overview__text-container {
+	text-align: center;
+}
+
+.order-overview__truck-name {
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.order-overview__truck-location {
+	font-size: 0.7rem;
+}
+
+.order-overview__orders {
+	font-size: 0.8rem;
+}
