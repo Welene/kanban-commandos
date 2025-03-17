@@ -55,16 +55,6 @@ function highlightActiveBurgerLink() {
         );
     });
 } */
-export function clickLoginBtn() {
-	let loginButton = document.getElementById('loginBtn');
-
-	loginButton.addEventListener('click', () => {
-		window.location.href = '../pages/menu.html';
-		console.log(
-			'navigated to main.html page after clicking on login button'
-		);
-	});
-}
 
 function doesBasketItemCountsExist() {
 	let basketItemCounts = getDataFromLocalStorage('basketCount');
