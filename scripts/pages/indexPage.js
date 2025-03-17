@@ -37,6 +37,8 @@ function checkIfLoggedIn() {
 
 // function that handles a click on the 'LOGGA IN' button on the index/landing page
 // checks if you are logged in: if not - goes to login form - so you can log in (no error msg or msg telling you to register if you don't have a user yet)
+
+// FUNCTION CAN BE SPLIT IN TWO DIFFERENT ONES: 1) check if logged in 2) create elements --> call create elements function inside logged in, calls if logged in check is TRUE
 function handleLoginClick() {
 	document.querySelector('#loginBtn').addEventListener('click', () => {
 		let currentUser = localStorage.getItem('currentUser');
