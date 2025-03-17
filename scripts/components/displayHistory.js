@@ -9,7 +9,8 @@ export function displayReceipts() {
 		!currentUser.receipts ||
 		currentUser.receipts.length === 0
 	) {
-		receiptsContainer.innerHTML = '<p>You have no receipts yet.</p>';
+		receiptsContainer.innerHTML =
+			'<p class="noHistory">Du har inga kvitton.</p>';
 		return;
 	}
 

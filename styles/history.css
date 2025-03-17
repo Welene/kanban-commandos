@@ -125,7 +125,7 @@
 
 .history-page .receipt__total-history {
 	margin-top: auto;
-	background-color: #ccc;
+	background-color: var(--grey-bg-color);
 	padding: 1rem;
 	text-align: center;
 	border-radius: 0 0 10px 10px;
@@ -133,4 +133,9 @@
 	font-size: 1.1rem;
 	width: 100%;
 	box-sizing: border-box;
+}
+
+.noHistory {
+	text-align: center;
+	color: var(--white-text-color);
 }
