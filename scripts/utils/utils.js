@@ -129,4 +129,11 @@ function buttonAddLinkToMenu(htmlRef) {
     });
 }
 
-export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, buttonAddLinkToMenu, handleRegisterIndexClick };
+// Funktion för att maskera emailadress
+function maskEmail(email) {
+    return email.replace(/^(.)(.*)(@.*)$/, (_, first, middle, domain) => {
+        return first + '***' + domain;
+    });
+}
+
+export { highlightActiveBurgerLink, doesBasketItemCountsExist, emptyBasket, buttonAddLinkToMenu, handleRegisterIndexClick, maskEmail };

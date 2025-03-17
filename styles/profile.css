@@ -1,100 +1,65 @@
 .main__profile {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .profile__title {
-    text-align: center;
-    color: var(--white-text-color);
-    font-size: 2rem;
+	text-align: center;
+	color: var(--white-text-color);
+	font-size: 2rem;
 }
 
 .profile__info-box {
-    display: flex;
-    flex-direction: row;
-    margin: 1rem 0 1rem 0;
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: row;
+	margin: 1rem 0 1rem 0;
 }
 
 .profile__img-box {
-    flex: 45;
-    display: flex;
-    flex-direction: column;
+	flex: 45;
+	display: flex;
+	flex-direction: column;
 }
 
 .profile__img {
-    width: 100%;
-    border-radius: 5px;
+	width: 100%;
+	border-radius: 5px;
 }
 
 .profile__change-img-btn {
-    margin-top: .5rem;
-    padding: .5rem;
-    width: 100%;
-    border: none;
-    font-weight: 600;
-    background-color: var(--medium-grey-bg-color);
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	font-weight: 600;
+	background-color: var(--medium-grey-bg-color);
 }
 
 .profile__change-img-btn:hover {
-    background-color: var(--white-bg-color);
+	background-color: var(--white-bg-color);
 }
 
 .profile__user-info-box {
-    flex: 55;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	flex: 55;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--white-text-color);
+	align-self: center;
 }
 
-.profile__user-name {
-    margin: 2rem 0 .5rem 0;
-    color: white;
-}
-
-.profile__email {
-    color: white;
+.profile__role {
+	margin: 0 0 0.5rem 0;
 }
 
 .form__subtitle {
-    text-align: center;
-    margin-bottom: 1rem;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
 .main-wrapper__btn--white {
-    background-color: var(--white-bg-color);
-    color: var(--black-text-color);
+	background-color: var(--white-bg-color);
+	color: var(--black-text-color);
 }
-
-/* ROBINS KOD */
-
-/* .main-wrapperbtn--scaledwn {
-    width: 90%;
-        display: block;
-        margin: 0 auto;
-    }
-
-.form__container {
-    padding: 16px;
-    color: var(--white-text-color);
-}
-
-input[type=text],
-input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: var(--white-bg-color);
-}
-
-input[type=text]:focus,
-input[type=password]:focus {
-    background-color: var(--white-bg-color);
-    outline: none;
-}
-
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-} */
