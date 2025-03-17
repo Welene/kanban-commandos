@@ -39,18 +39,24 @@ function handleLoginClick() {
 			// if user is logged in after clicking the "Logga in" btn, then main AKA all the elements in main gets removed, swapped out with welcomeMsg h1 down here V V V
 			main.innerHTML = '';
 
+			let welcomeMsgWrapper = document.createElement('section');
+			welcomeMsgWrapper.classList.add(
+				'content-wrapper__welcome-msg-wrapper'
+			);
+
 			let welcomeMsg = document.createElement('h1');
 			// Writes out capsCurrentUser which is username just with big letters only
 			welcomeMsg.textContent = `VÄLKOMMEN ${capsCurrentUser}!`;
 			welcomeMsg.classList.add('content-wrapper__welcome-msg');
 
 			// shows the new main content on page if logged in
-			main.appendChild(welcomeMsg);
+			welcomeMsgWrapper.appendChild(welcomeMsg);
+			main.appendChild(welcomeMsgWrapper);
 
 			// Timeout that shows välkommen + current username in a h1 before navigating to the menu
 			setTimeout(() => {
 				window.location.href = 'menu.html';
-			}, 4500);
+			}, 450000);
 			return;
 		}
 
