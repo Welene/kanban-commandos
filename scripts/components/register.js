@@ -7,6 +7,7 @@ import {
 	isEmailExists,
 	isUserExists,
 } from './validate.js';
+import { showMessage } from '../utils/utils.js';
 
 // Funktion för att registrera användare
 export async function registerUser(event, apiUsers) {
@@ -83,16 +84,6 @@ export async function registerUser(event, apiUsers) {
 	setTimeout(() => {
 		window.location.href = 'menu.html'; // Navigera till meny.html
 	}, 2000); // Vänta 2 sekunder innan navigeringen
-}
-
-// Funktion för att visa error eller success meddelanden
-function showMessage(message, type) {
-	const msgBox = document.createElement('div');
-	msgBox.textContent = message;
-	msgBox.className = `message ${type}`;
-	document.body.appendChild(msgBox);
-
-	setTimeout(() => msgBox.remove(), 3000);
 }
 
 // Funktion för att generera en slumpad profilbild
