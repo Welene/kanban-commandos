@@ -4,26 +4,65 @@ import {
 } from '../data/localStorage.js';
 
 function runOrderOverviewPage() {
-	const myData = getDataFromLocalStorage('users');
+	setFoodtrucksToLocalStorage();
 
-	myData.forEach((user) => {
-		console.log(user.username);
-		console.log(user.receipts);
+	// const bengtTruckRef = document.querySelector('#truck1');
+	// const foodTruckRef = document.querySelector('#truck2');
+	// const superTruckRef = document.querySelector('#truck3');
+	const users = getDataFromLocalStorage('users');
+
+	countOrders(users);
+}
+
+function countOrders(users) {
+	let amountBengtTruck = 0;
+	let amountExpertTruck = 0;
+	let amountSuperTruck = 0;
+
+	// För varje användare kontrolleras varje kvitto
+	users.forEach((user) => {
 		user.receipts.forEach((receipt) => {
-			console.log(receipt.foodTruck);
+			// Kollar igenom alla kvitton och räknar upp hur många ordrar varje foodtruck fått
+			switch (receipt.foodTruck) {
+				case 'truck1':
+					amountBengtTruck++;
+					break;
+
+				case 'truck2':
+					amountExpertTruck++;
+					break;
+
+				case 'truck3':
+					amountSuperTruck++;
+					break;
+			}
 		});
-		console.log('----');
 	});
 }
 
-/* 
-* Behöver localStorage som sparar alla kvitton
-
-* Behöver localStorage som även sparar foodtruck
-
-users -> varje users -> receipts -> spara varje receipt -> kolla vilken foodTruck om användes
-
-*/
+// Kansk
+function setFoodtrucksToLocalStorage() {
+	const foodTrucks = [];
+	foodTrucks.push({
+		name: 'Bengts Wontons',
+		address: 'Bergvik, Karlstad',
+		id: 'truck1',
+		orders: 0,
+	});
+	foodTrucks.push({
+		name: 'Foodtruckexperten',
+		address: 'Stora Torget, Karlstad',
+		id: 'truck2',
+		orders: 0,
+	});
+	foodTrucks.push({
+		name: 'Super Wonton Meals',
+		address: 'Sundsta-Älvkullegymnasiet, Karlstad',
+		id: 'truck3',
+		orders: 0,
+	});
+	saveDataToLocalStorage('foodtrucks', foodTrucks);
+}
 
 /* const newUsers = [
 		{
