@@ -3,7 +3,6 @@ import { checkUserStatus } from '../components/validateUser.js';
 
 // does not call calculateEtc function because that function is used/called within displayEtaText function
 function runEtaPage() {
-	checkUserStatus();
 	clickEtaBtns();
 	displayEtaText();
 	displayReceiptNumber();
@@ -78,6 +77,19 @@ function displayReceiptNumber() {
 			'receiptNumber'
 		).textContent = `${receiptNumber}`;
 	}
+}
+
+// Funktion för att visa vilken foodtruck som maten hämtas hos.
+function displayFoodTruck() {
+	const receipt = JSON.parse(localStorage.getItem('receipt')) || {};
+	const seller = receipt.seller;
+	const location = receipt.location;
+
+	const etaFoodTruckContentRef = document.querySelector(
+		'#etaFoodTruckContent'
+	);
+
+	etaFoodTruckContentRef.textContent = `${location} - ${seller}`;
 }
 
 // WROTE THIS DIRECTLY INTO CONSOLE TO TEST MY FUNCTIONS
