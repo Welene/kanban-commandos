@@ -12,8 +12,10 @@ import {
 	validateUsernameAndEmail,
 	isEmailExists,
 } from '../components/validate.js';
+import { checkUserStatus } from '../components/validateUser.js';
 
 function runProfilePage() {
+	checkUserStatus();
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
 
