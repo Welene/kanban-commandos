@@ -34,7 +34,7 @@ export function displayReceipts() {
 				<span class="receipt__total-price">${totalPrice} SEK</span>
 			</section>
 			<section class="receipt__truck-center">
-				<span class="receipt__id">#${receipt.id}</span>
+				<span class="receipt__id">${receipt.id}</span>
 				<span class="receipt__truck-name">${
 					receipt.foodTruck || 'No truck selected'
 				}</span>
@@ -55,7 +55,7 @@ export function displayReceipts() {
 		receiptInfoExpanded.classList.add('receipt__info-expanded');
 		receiptInfoExpanded.innerHTML = `
 			<strong class="receipt__title-expanded">KVITTO</strong>
-			<span class="receipt__id">#${receipt.id}</span>
+			<span class="receipt__id">${receipt.id}</span>
 			<span class="receipt__truck-name">${
 				receipt.foodTruck || 'No truck selected'
 			}</span>
