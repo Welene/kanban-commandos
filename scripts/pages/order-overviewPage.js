@@ -3,19 +3,50 @@ import {
 	saveDataToLocalStorage,
 } from '../data/localStorage.js';
 
+import {
+	createParagraphElement,
+	createSectionElement,
+} from '../utils/utilsHtml.js';
+
 function runOrderOverviewPage() {
-	setFoodtrucksToLocalStorage();
+	// Då localStorage för food trucks inte finns så är detta en "fullösning" enbart för order-overviewPage.
+	initializeFoodTrucksLocalStorage();
+	const activeFoodTrucks = getDataFromLocalStorage('activeFoodTrucks');
 
-	const users = getDataFromLocalStorage('users');
+	createFoodTruckCards(activeFoodTrucks);
 
-	createFoodTruckCards(users);
-	checkUserReceipts(users);
-
-	expandFoodTruckCard();
+	expandFoodTruckCard(activeFoodTrucks);
 }
 
-function expandFoodTruckCard() {
-	for (let number = 1; number < 4; number++) {
+function createFoodTruckCards(activeFoodTrucks) {
+	const orderOverviewRef = document.querySelector('#orderOverview');
+	activeFoodTrucks.forEach((truck) => {
+		const foodTruckCardHTML = createSectionElement(
+			'order-overview__truck-container',
+			truck.id
+		);
+		foodTruckCardHTML.innerHTML = addCardContent(truck);
+		orderOverviewRef.appendChild(foodTruckCardHTML);
+	});
+}
+
+// Skapar de minimerade korten
+function addCardContent(truck) {
+	const htmlRef = `
+			<section class="order-overview__text-container">
+				<p class="order-overview__truck-name">${truck.seller}</p>
+				<p class="order-overview__truck-location">
+					${truck.location}
+				</p>
+			</section>
+			<p class="order-overview__orders">${truck.orders} ordrar</p>
+		`;
+	return htmlRef;
+}
+
+function expandFoodTruckCard(activeFoodTrucks) {
+	let number = 1;
+	while (number <= activeFoodTrucks.length) {
 		const foodTruckRef = document.querySelector(`#truck${number}`);
 		foodTruckRef.addEventListener('click', () => {
 			/* users.forEach(user => {
@@ -25,14 +56,21 @@ function expandFoodTruckCard() {
             }) */
 			console.log('I am expanded!');
 		});
+		number++;
 	}
 }
 
-//Spara de tre foodtruckarna i localStorage
-
-function checkUserReceipts(users) {
+function initializeFoodTrucksLocalStorage() {
+	// En "fullösning" för att skapa en localStorage för samtliga foodtrucks då detta inte är gjort innan
+	setFoodtrucksToLocalStorage();
 	const activeFoodTrucks = getDataFromLocalStorage('activeFoodTrucks');
 
+	// En till "fullösning" för att uppdatera localStorage med det antal ordrar och kvitton de ska ha.
+	const users = getDataFromLocalStorage('users');
+	checkUserReceipts(users, activeFoodTrucks);
+}
+
+function checkUserReceipts(users, activeFoodTrucks) {
 	// För varje användare kontrolleras varje kvitto
 	// Antalet ordrar i respektive food truck ökas
 	users.forEach((user) => {
@@ -71,11 +109,6 @@ function updateFoodTruckOrders(activeFoodTruck, customerReceipt) {
 	});
 }
 
-function createFoodTruckCards(users) {
-	const orderOverviewRef = document.querySelector('#orderOverview');
-	users.forEach((user) => {});
-}
-
 function setFoodtrucksToLocalStorage() {
 	const activeFoodTrucks = [];
 	activeFoodTrucks.push({
@@ -105,102 +138,3 @@ function setFoodtrucksToLocalStorage() {
 }
 
 export { runOrderOverviewPage };
-
-/* const newUsers = [
-		{
-			username: 'jesperdaking',
-			password: 'fisnils123',
-			role: 'admin',
-			email: 'jesper123@airbean.com',
-			profile_image: 'https://randomuser.me/api/portraits/men/1.jpg',
-			receipts: [
-				{
-					id: '#rz07pq8',
-					foodTruck: 'truck2',
-					items: [{ id: 2, name: 'Bangkok', amount: 1, price: 9 }],
-				},
-			],
-		},
-
-		{
-			username: 'bradpitt',
-			password: 'fightclub9',
-			role: 'user',
-			email: 'bradpitt@coffeeclique.com',
-			profile_image: 'https://randomuser.me/api/portraits/men/2.jpg',
-			receipts: [
-				{
-					id: '#7z2gz58',
-					foodTruck: 'truck1',
-					items: [{ id: 1, name: 'Karlstad', amount: 1, price: 9 }],
-				},
-				{
-					id: '#g42jbr',
-					foodTruck: 'truck3',
-					items: [
-						{ id: 2, name: 'Bangkok', amount: 2, price: 9 },
-						{ id: 1, name: 'Karlstad', amount: 1, price: 9 },
-						{ id: 3, name: 'Ho Chi Minh', amount: 1, price: 9 },
-					],
-				},
-			],
-		},
-		{
-			username: 'fotbollskungen',
-			password: 'legomast3r',
-			role: 'user',
-			email: 'fotbollskungen@brewbuddies.com',
-			profile_image: 'https://randomuser.me/api/portraits/men/3.jpg',
-			receipts: [
-				{
-					id: '#7z2gz58',
-					foodTruck: 'truck1',
-					items: [{ id: 1, name: 'Karlstad', amount: 1, price: 9 }],
-				},
-				{
-					id: '#2iu9hjq',
-					foodTruck: 'truck3',
-					items: [
-						{ id: 1, name: 'Karlstad', amount: 1, price: 9 },
-						{ id: 2, name: 'Bangkok', amount: 1, price: 9 },
-						{ id: 3, name: 'Ho Chi Minh', amount: 1, price: 9 },
-					],
-				},
-				{
-					id: '#9976l2r',
-					foodTruck: 'truck3',
-					items: [
-						{ id: 2, name: 'Bangkok', amount: 2, price: 9 },
-						{ id: 1, name: 'Karlstad', amount: 1, price: 9 },
-						{ id: 3, name: 'Ho Chi Minh', amount: 1, price: 9 },
-					],
-				},
-				{
-					id: '#w0x3a6g',
-					foodTruck: 'truck2',
-					items: [
-						{ id: 2, name: 'Bangkok', amount: 4, price: 9 },
-						{ id: 1, name: 'Karlstad', amount: 5, price: 9 },
-						{ id: 3, name: 'Ho Chi Minh', amount: 3, price: 9 },
-						{ id: 5, name: 'Oaxaca', amount: 4, price: 9 },
-						{ id: 4, name: 'Paris', amount: 2, price: 9 },
-						{ id: 12, name: 'Sprite', amount: 1, price: 19 },
-					],
-				},
-				{
-					id: '#ke8qxvc',
-					foodTruck: 'truck2',
-					items: [{ id: 1, name: 'Karlstad', amount: 1, price: 9 }],
-				},
-				{
-					id: '#isefu7q',
-					foodTruck: 'truck3',
-					items: [
-						{ id: 1, name: 'Karlstad', amount: 1, price: 9 },
-						{ id: 4, name: 'Paris', amount: 1, price: 9 },
-						{ id: 8, name: 'Guacamole', amount: 1, price: 19 },
-					],
-				},
-			],
-		},
-]; */
