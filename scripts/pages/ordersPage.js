@@ -70,6 +70,16 @@ function runOrdersPage() {
 			return;
 		}
 		basket.foodTruck = foodTruckDropdown.value; // Spara vald foodtruck
+		if (basket.foodTruck === 'truck1') {
+			basket.seller = 'Bengts Wontons';
+			basket.location = 'Bergvik, Karlstad';
+		} else if (basket.foodTruck === 'truck2') {
+			basket.seller = 'Foodtruckexperten';
+			basket.location = 'Stora Torget, Karlstad';
+		} else if (basket.foodTruck === 'truck3') {
+			basket.seller = 'Super Wonton Meals';
+			basket.location = 'Sundsta-Älvkullegymnasiet, Karlstad';
+		}
 		basket.id = generateUniqueId(); // Generera unikt order-ID
 
 		saveDataToLocalStorage('receipt', basket); // Spara aktivt kvitto
