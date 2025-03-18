@@ -8,6 +8,7 @@ function runOrderOverviewPage() {
 
 	const users = getDataFromLocalStorage('users');
 
+	createFoodTruckCards(users);
 	checkUserReceipts(users);
 
 	expandFoodTruckCard();
@@ -28,33 +29,6 @@ function expandFoodTruckCard() {
 }
 
 //Spara de tre foodtruckarna i localStorage
-function setFoodtrucksToLocalStorage() {
-	const activeFoodTrucks = [];
-	activeFoodTrucks.push({
-		seller: 'Bengts Wontons',
-		location: 'Bergvik, Karlstad',
-		id: 'truck1',
-		orders: 0,
-		receipts: [],
-	});
-
-	activeFoodTrucks.push({
-		seller: 'Foodtruckexperten',
-		location: 'Stora Torget, Karlstad',
-		id: 'truck2',
-		orders: 0,
-		receipts: [],
-	});
-
-	activeFoodTrucks.push({
-		seller: 'Super Wonton Meals',
-		location: 'Sundsta-Älvkullegymnasiet, Karlstad',
-		id: 'truck3',
-		orders: 0,
-		receipts: [],
-	});
-	saveDataToLocalStorage('activeFoodTrucks', activeFoodTrucks);
-}
 
 function checkUserReceipts(users) {
 	const activeFoodTrucks = getDataFromLocalStorage('activeFoodTrucks');
@@ -95,6 +69,39 @@ function updateFoodTruckOrders(activeFoodTruck, customerReceipt) {
 		id: customerReceipt.id,
 		price: total,
 	});
+}
+
+function createFoodTruckCards(users) {
+	const orderOverviewRef = document.querySelector('#orderOverview');
+	users.forEach((user) => {});
+}
+
+function setFoodtrucksToLocalStorage() {
+	const activeFoodTrucks = [];
+	activeFoodTrucks.push({
+		seller: 'Bengts Wontons',
+		location: 'Bergvik, Karlstad',
+		id: 'truck1',
+		orders: 0,
+		receipts: [],
+	});
+
+	activeFoodTrucks.push({
+		seller: 'Foodtruckexperten',
+		location: 'Stora Torget, Karlstad',
+		id: 'truck2',
+		orders: 0,
+		receipts: [],
+	});
+
+	activeFoodTrucks.push({
+		seller: 'Super Wonton Meals',
+		location: 'Sundsta-Älvkullegymnasiet, Karlstad',
+		id: 'truck3',
+		orders: 0,
+		receipts: [],
+	});
+	saveDataToLocalStorage('activeFoodTrucks', activeFoodTrucks);
 }
 
 export { runOrderOverviewPage };
