@@ -7,6 +7,7 @@ function runEtaPage() {
 	displayEtaText();
 	displayReceiptNumber();
 	doesBasketItemCountsExist();
+	displayFoodTruck();
 }
 
 export { runEtaPage };
