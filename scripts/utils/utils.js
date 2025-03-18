@@ -44,16 +44,17 @@ function highlightActiveBurgerLink() {
 	});
 }
 
-export function clickLoginBtn() {
-	let loginButton = document.getElementById('loginBtn');
+// do not need this function anymore, but keeping it just in case for now
+/* export function clickLoginBtn() {
+    let loginButton = document.getElementById('loginBtn');
 
-	loginButton.addEventListener('click', () => {
-		window.location.href = '../pages/menu.html';
-		console.log(
-			'navigated to main.html page after clicking on login button'
-		);
-	});
-}
+    loginButton.addEventListener('click', () => {
+        window.location.href = '../pages/menu.html';
+        console.log(
+            'navigated to main.html page after clicking on login button'
+        );
+    });
+} */
 
 function doesBasketItemCountsExist() {
 	let basketItemCounts = getDataFromLocalStorage('basketCount');
@@ -64,7 +65,7 @@ function doesBasketItemCountsExist() {
 		const basketItemCountHTML = `<span
         id="basketItemCount"
         class="header__basket-item-count"
-         >${basketItemCounts}</span>`;
+        >${basketItemCounts}</span>`;
 
 		// Stoppar in den sist i headern
 		basketRef.insertAdjacentHTML('beforeend', basketItemCountHTML);

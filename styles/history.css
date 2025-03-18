@@ -23,6 +23,7 @@
 	margin-top: 1.5rem;
 	align-self: center;
 	transition: all 0.3s ease;
+	background: var(--light-grey-bg-color);
 }
 
 .history-page .receipt-resize.expanded {
@@ -30,7 +31,7 @@
 	flex-direction: column;
 	height: 100%;
 	min-height: 30rem;
-	background: var(--white-bg-color);
+	background: var(--light-grey-bg-color);
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -41,7 +42,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 0.8rem 1rem;
-	background: var(--white-bg-color);
+	background: var(--light-grey-bg-color);
 	border-radius: 10px;
 }
 
@@ -90,6 +91,7 @@
 	padding: 1rem 1rem 0 1rem;
 	box-sizing: border-box;
 	height: 100%;
+	display: none;
 }
 
 .history-page .receipt__item {

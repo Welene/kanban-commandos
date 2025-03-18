@@ -5,8 +5,6 @@ function runEtaPage() {
     clickEtaBtns();
     displayEtaText();
     displayReceiptNumber();
-
-    // Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
     doesBasketItemCountsExist();
 }
 
@@ -90,4 +88,5 @@ function displayReceiptNumber() {
 //         { id: 2, namn: 'Namn', amount: 2, price: 19 },
 //         { id: 3, namn: 'Name', amount: 2, price: 19 }
 //     ]
-// }));
+// })); ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
