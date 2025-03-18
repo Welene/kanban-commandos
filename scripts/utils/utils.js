@@ -101,7 +101,7 @@ export function emptyBasketOrdersPage() {
 	// Kontrollera att orderöversikten finns innan vi uppdaterar den
 	if (container) {
 		container.innerHTML =
-			'<p class="order-summary__empty-msg">Your basket is empty</p>';
+			'<p class="order-summary__empty-msg">Din varukorg är tom</p>';
 	}
 
 	// Kontrollera att totalpriset finns innan vi uppdaterar det
@@ -111,7 +111,7 @@ export function emptyBasketOrdersPage() {
 
 	// Kontrollera att checkout-knappen finns innan vi ändrar text och lägger till eventlyssnare
 	if (checkoutButton) {
-		checkoutButton.textContent = 'GO TO MENU';
+		checkoutButton.textContent = 'Gå till menyn';
 		checkoutButton.addEventListener('click', () => {
 			window.location.href = '/pages/menu.html';
 		});
