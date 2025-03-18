@@ -62,7 +62,7 @@ function runOrdersPage() {
     } */
 
 	// Om användaren är inloggad, tillåt beställning
-	checkoutButton.textContent = 'PLACE ORDER';
+	checkoutButton.textContent = 'LÄGG BESTÄLLNING';
 	checkoutButton.addEventListener('click', () => {
 		// Kontrollera att en foodtruck är vald
 		if (!foodTruckDropdown.value) {
