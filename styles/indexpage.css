@@ -230,3 +230,8 @@
 	background-image: url(/assets/bg-images/leafbg.svg);
 	background-color: var(--light-green-bg-color);
 }
+
+.content-wrapper__error-msg {
+	color: red;
+	font-weight: bold;
+}

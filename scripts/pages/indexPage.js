@@ -1,98 +1,61 @@
-// import { clickLoginBtn } from '../utils/utils.js'
-// import { getDataFromLocalStorage } from "../data/localStorage";
-
 function runIndexPage() {
 	handleLoginClick();
 	handleRegisterIndexClick();
 	handleBackBtnClick();
 	checkIfLoggedIn();
 }
-// import { clickLoginBtn, handleRegisterIndexClick } from '../utils/utils.js'
-// function runIndexPage() {
-//     clickLoginBtn();
-//     handleRegisterIndexClick();
-// }
 
 export { runIndexPage };
 
-// Function sends you directly to menu.html if you are logged in to begin with
+// TLDR:
+// function sends you directly to menu.html if you are logged in to begin with
 function checkIfLoggedIn() {
 	let currentUser = localStorage.getItem('currentUser');
 	let users = localStorage.getItem('users');
 
-	// Parse the user data from localStorage
+	// parsing currentUser & user // ? = shortened code
 	currentUser = currentUser ? JSON.parse(currentUser) : null;
 	users = users ? JSON.parse(users) : [];
 
-	// Check if the user is logged in
+	// checking if you are logged in or not
 	let isLoggedIn =
 		currentUser &&
 		users.some((user) => user.username === currentUser.username);
 
-	// If logged in, redirect to the menu page
+	// if you are logged in, you navigate to menu.html directly before you see the index page
 	if (isLoggedIn) {
 		window.location.href = 'menu.html';
 	}
 }
 
-// function that handles a click on the 'LOGGA IN' button on the index/landing page
-// checks if you are logged in: if not - goes to login form - so you can log in (no error msg or msg telling you to register if you don't have a user yet)
+// TLDR:
+// long function that handles a click on the 'LOGGA IN' button on the landing page
+// checks if you are logged in: if not - goes to login form - so you can log in
 
-// FUNCTION CAN BE SPLIT IN TWO DIFFERENT ONES: 1) check if logged in 2) create elements --> call create elements function inside logged in, calls if logged in check is TRUE
+// FUNCTION CAN BE SPLIT IN TWO DIFFERENT ONES:
+// 1) check if logged in 2) create elements --> call create elements function inside logged in, calls if logged in check is TRUE
+// edit: maybe 3 parts now
 function handleLoginClick() {
 	document.querySelector('#loginBtn').addEventListener('click', () => {
 		let currentUser = localStorage.getItem('currentUser');
 		let users = localStorage.getItem('users');
-		// fetch user and currentUser from L.S
 
-		// ? = if else shorthand, checks if currentUser and user exists
 		currentUser = currentUser ? JSON.parse(currentUser) : null;
 		users = users ? JSON.parse(users) : [];
 
+		// checks again if you're logged in
 		let isLoggedIn =
 			currentUser &&
 			users.some((user) => user.username === currentUser.username);
-		// checks "user" array, if ANY username is === currentUser username then some() returns back true, then you are indeed logged in
 
-		// So if you are logged in --> then we do this
+		// if logged in, shows welcome msg and navigates to menu.html (showWelcomeMsg navigates to menu.html)
 		if (isLoggedIn) {
-			let username = currentUser.username;
-			let capsCurrentUser = username.toUpperCase();
-			let main = document.querySelector(
-				'.content-wrapper__intro-content'
-			);
-			// if user is logged in after clicking the "Logga in" btn, then main AKA all the elements in main gets removed, swapped out with welcomeMsg h1 down here V V V
-			main.innerHTML = '';
-
-			let welcomeMsgWrapper = document.createElement('section');
-			welcomeMsgWrapper.classList.add(
-				'content-wrapper__welcome-msg-wrapper'
-			);
-
-			let welcomeMsg = document.createElement('h1');
-			// Writes out capsCurrentUser which is username just with big letters only
-			welcomeMsg.textContent = `VÄLKOMMEN ${capsCurrentUser}!`;
-			welcomeMsg.classList.add('content-wrapper__welcome-msg');
-
-			// shows the new main content on page if logged in
-			welcomeMsgWrapper.appendChild(welcomeMsg);
-			main.appendChild(welcomeMsgWrapper);
-
-			// Timeout that shows välkommen + current username in a h1 before navigating to the menu
-			setTimeout(() => {
-				window.location.href = 'menu.html';
-			}, 2500);
+			showWelcomeMsg(currentUser.username);
 			return;
 		}
 
-		// TLDR:
-		// stores every element fetched by class-name in variable with the same classname (except for the first part, content-wrapper)
-		// first line let main -- empties html elements in main from html file, before continuing to create new elements
-		// only happens if user is NOT logged in
-		// if the user is logged in -- navigates to menu.html page
-
-		// putting aria labels // alt to elements to make it more accessible
-
+		// User is NOT logged in → Show login form dynamically
+		// creates all elements here:
 		let main = document.querySelector('.content-wrapper__intro-content');
 		main.innerHTML = '';
 
@@ -116,6 +79,9 @@ function handleLoginClick() {
 		let quote = document.createElement('p');
 		quote.classList.add('content-wrapper__quote');
 		quote.textContent = 'UPPLEV ÄKTA MATGLÄDJE';
+
+		let errorMsg = document.createElement('p');
+		errorMsg.classList.add('content-wrapper__error-msg');
 
 		let inputSection = document.createElement('section');
 		inputSection.classList.add('content-wrapper__input-section');
@@ -154,25 +120,83 @@ function handleLoginClick() {
 		backSymbol.alt = 'Navigate back symbol, an arrow pointing to the left';
 		backSymbol.classList.add('content-wrapper__back-btn-icon');
 
-		// puts all of the elements in the html, in the written order
+		// fetching all the elements created so it shows up on the page
 		main.appendChild(backgroundContainer);
-
 		inputSection.appendChild(nameText);
 		inputSection.appendChild(nameField);
 		inputSection.appendChild(passwordText);
 		inputSection.appendChild(passwordField);
 		loginContainer.appendChild(headingLogin);
 		loginContainer.appendChild(quote);
+		loginContainer.appendChild(errorMsg);
 		loginContainer.appendChild(inputSection);
 		main.appendChild(loginContainer);
 		main.appendChild(btnRed);
 		main.appendChild(backBtn);
 		backBtn.appendChild(backSymbol);
 
+		// then clicking on the red login button will:
+		btnRed.addEventListener('click', function () {
+			let nameInput = nameField.value;
+			let passwordInput = passwordField.value;
+			// store input field values in variables
+
+			let users = localStorage.getItem('users');
+			users = users ? JSON.parse(users) : [];
+
+			// check if 'user' exists or is found, by checking if nameInput (the value written in) and passwordInput (value) is the same as user.username & password in localStorage
+			let foundUser = users.find(
+				(user) =>
+					user.username === nameInput &&
+					user.password === passwordInput
+			);
+
+			if (foundUser) {
+				// updates localStorage to be the user found in the 'user' array AKA the one that is logged in
+				localStorage.setItem('currentUser', JSON.stringify(foundUser));
+
+				// display none hides errorMsg by default
+				errorMsg.style.display = 'none';
+				showWelcomeMsg(foundUser.username);
+			} else {
+				// errorMsg pops up with this text
+				errorMsg.textContent = 'Oops, vi hittade inget konto';
+				errorMsg.style.display = 'block'; // blocks display none - shows up on page
+			}
+		});
+		// button that navigates back to the original index section (with Logga In & Registrera Dig btn + logo)
 		handleBackBtnClick();
 	});
 }
 
+// TLDR:
+// function to display welcome (username) msg -- before navigating to menu.html
+function showWelcomeMsg(username) {
+	// username will be displayed in CAPS only, name is now/here capsCurrentUser
+	let capsCurrentUser = username.toUpperCase();
+	let main = document.querySelector('.content-wrapper__intro-content');
+	// empties main content to be able to display new welcome content when logging in
+	main.innerHTML = '';
+
+	let welcomeMsgWrapper = document.createElement('section');
+	welcomeMsgWrapper.classList.add('content-wrapper__welcome-msg-wrapper');
+
+	let welcomeMsg = document.createElement('h1');
+	welcomeMsg.textContent = `VÄLKOMMEN ${capsCurrentUser}!`;
+	welcomeMsg.classList.add('content-wrapper__welcome-msg');
+
+	// fetching the elements so they can be displayed on the page
+	welcomeMsgWrapper.appendChild(welcomeMsg);
+	main.appendChild(welcomeMsgWrapper);
+
+	// showing welcomeMsg for 2.5 sec before navigating to menu-page
+	setTimeout(() => {
+		window.location.href = 'menu.html';
+	}, 2500);
+}
+
+// TLDR:
+// clicking on 'Registrera Dig' btn navigates to register.html
 function handleRegisterIndexClick() {
 	document
 		.getElementById('registerBtn')
@@ -181,6 +205,8 @@ function handleRegisterIndexClick() {
 		});
 }
 
+// TLDR:
+// clicking on the back button inside the login form section -- navigates back to original index-page with 'Logga In' & 'Registrera Dig' btn
 function handleBackBtnClick() {
 	let backBtn = document.getElementById('backBtn');
 	if (backBtn) {
