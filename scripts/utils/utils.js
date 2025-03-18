@@ -132,6 +132,13 @@ function buttonAddLinkToMenu(htmlRef) {
 	});
 }
 
+// Funktion för att maskera emailadress
+function maskEmail(email) {
+	return email.replace(/^(.)(.*)(@.*)$/, (_, first, middle, domain) => {
+		return first + '***' + domain;
+	});
+}
+
 // Funktion för att visa error eller success meddelanden
 function showMessage(message, type) {
 	const msgBox = document.createElement('div');
@@ -148,4 +155,5 @@ export {
 	buttonAddLinkToMenu,
 	handleRegisterIndexClick,
 	showMessage,
+	maskEmail,
 };

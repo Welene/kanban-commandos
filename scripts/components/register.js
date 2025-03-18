@@ -66,6 +66,7 @@ export async function registerUser(event, apiUsers) {
 		password,
 		profile_image: profileImage,
 		role: 'user',
+		receipts: [],
 	};
 
 	// Lägg till den nya användaren i localStorage
@@ -91,3 +92,5 @@ function generateRandomProfileImage() {
 	const randomNumber = Math.floor(Math.random() * 6) + 1; // Slumpar mellan 1-6
 	return `https://randomuser.me/api/portraits/men/${randomNumber}.jpg`; // Slumpad bild från randomuser.me
 }
+
+export { generateRandomProfileImage, showMessage };

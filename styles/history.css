@@ -1,0 +1,143 @@
+/* 	 1. SIDA: Layout & Kvitton-Container	 */
+.history-page .history__title {
+	text-align: center;
+	color: var(--white-text-color);
+}
+
+.history-page .receiptsContainer {
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.history-page .receiptsList {
+	width: 100%;
+}
+
+/* 	2. KVITTO: Grundlayout & Expansion	*/
+.history-page .receipt-resize {
+	min-height: unset;
+	width: 100%;
+	margin-top: 1.5rem;
+	align-self: center;
+	transition: all 0.3s ease;
+	background: var(--light-grey-bg-color);
+}
+
+.history-page .receipt-resize.expanded {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 30rem;
+	background: var(--light-grey-bg-color);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 	3. HEADER: Krympt vy och synlig	*/
+.history-page .receipt__header {
+	display: flex;
+	flex-direction: column;
+	padding: 0.8rem 1rem;
+	background: var(--light-grey-bg-color);
+	border-radius: 10px;
+}
+
+.history-page .receipt__header-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.history-page .receipt__title,
+.history-page .receipt__title-expanded {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.history-page .receipt__total-price {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* Döljer totalsumma i header vid expandering */
+.history-page .receipt.expanded .receipt__total-price {
+	display: none;
+}
+
+.history-page .receipt__truck-center {
+	text-align: center;
+	margin-top: 4px;
+}
+
+.history-page .receipt__id,
+.history-page .receipt__truck-name {
+	display: block;
+	font-size: 0.9rem;
+	color: var(--weakblack-text-color);
+}
+
+/*	 4. EXPANDERAD INNEHÅLL: Logga + Varor	*/
+
+/*container för item*/
+.history-page .receipt__items {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	padding: 1rem 1rem 0 1rem;
+	box-sizing: border-box;
+	height: 100%;
+	display: none;
+}
+
+.history-page .receipt__item {
+	margin-top: 1rem;
+}
+
+.history-page .receipt__logo--resize {
+	justify-self: center;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+
+.history-page .receipt__logo--resize img {
+	width: 50px;
+}
+
+.history-page .receipt__info-expanded {
+	text-align: center;
+	margin-top: 1rem;
+}
+
+/*	 5. FOOTER: Totalsumma	 */
+
+/* Dölj footer i krympt läge */
+.history-page .receipt__footer {
+	display: none;
+}
+
+/* Visa footer endast vid expandering */
+.history-page .receipt.expanded .receipt__footer {
+	display: block;
+}
+
+.history-page .receipt__total-history {
+	margin-top: auto;
+	background-color: var(--grey-bg-color);
+	padding: 1rem;
+	text-align: center;
+	border-radius: 0 0 10px 10px;
+	font-weight: bold;
+	font-size: 1.1rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.noHistory {
+	text-align: center;
+	color: var(--white-text-color);
+}
