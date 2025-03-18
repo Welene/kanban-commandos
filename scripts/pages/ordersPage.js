@@ -24,6 +24,8 @@ function runOrdersPage() {
 
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
+	// Funktion för att visa vilken foodtruck varje alternativ är när man väljer i optionsmenyn.
+	displaySelectedTruckListener();
 
 	// Om varukorgen är tom, visa meddelande och sätt totalpriset till 0
 	if (!basket || !basket.items || basket.items.length === 0) {
@@ -117,6 +119,34 @@ function updateAllUsersReceipts(username, newReceipt) {
 		allUsers[userIndex].receipts.push(newReceipt); // Lägg till det nya kvittot
 	}
 	saveDataToLocalStorage('users', allUsers); // Uppdatera users i localStorage
+}
+
+// En lyssnare för att visa vilken foodtruck som tillhör de options som finns att välja
+function displaySelectedTruckListener() {
+	const foodtruckSelectRef = document.querySelector('#foodtruckSelect');
+	foodtruckSelectRef.addEventListener('change', () => {
+		const doesFoodTruckExist = document.querySelector(
+			'.main-content__foodtruck-name'
+		);
+
+		if (doesFoodTruckExist) {
+			doesFoodTruckExist.remove();
+		}
+		const mainTopContentRef = document.querySelector('#mainTopContent');
+		let foodtruck = document.createElement('p');
+		foodtruck.classList.add('main-content__foodtruck-name');
+
+		// Villkor för vilken foodtrucknamn som visas beroende på val
+		if (foodtruckSelectRef.value === 'truck1') {
+			foodtruck.textContent = 'Foodtruck: Bengts Wontons';
+		} else if (foodtruckSelectRef.value === 'truck2') {
+			foodtruck.textContent = 'Foodtruck: Foodtruckexperten';
+		} else if (foodtruckSelectRef.value === 'truck3') {
+			foodtruck.textContent = 'Foodtruck: Super Wonton Meals';
+		}
+
+		mainTopContentRef.appendChild(foodtruck);
+	});
 }
 
 export { runOrdersPage };
