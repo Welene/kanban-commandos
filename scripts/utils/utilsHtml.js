@@ -1,6 +1,9 @@
 function createSectionElement(classes, id) {
 	const section = document.createElement('section');
-	section.className = classes;
+	if (classes) {
+		section.className = classes;
+	}
+
 	if (id) {
 		section.id = id;
 	}
@@ -9,7 +12,10 @@ function createSectionElement(classes, id) {
 
 function createParagraphElement(classes, id) {
 	const paragraph = document.createElement('p');
-	paragraph.className = classes;
+	if (classes) {
+		paragraph.className = classes;
+	}
+
 	if (id) {
 		paragraph.id = id;
 	}

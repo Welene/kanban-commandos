@@ -1,6 +1,7 @@
 .grey-background {
 	background-color: var(--dark-grey-bg-color);
-	height: 100vh;
+	min-height: 100vh;
+	max-height: auto;
 }
 
 .order-overview {
@@ -19,10 +20,24 @@
 	background-color: var(--light-grey-bg-color);
 }
 
+.order-overview__truck-container--flex-dir-column {
+	flex-direction: column;
+}
+
+.order-overview__receipt-summary {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
 .order-overview__text-container {
 	text-align: center;
 }
 
+.dotted-line--order-overview {
+	flex-grow: 0.8;
+	border-bottom: dotted;
+	transform: translateY(-4px);
+}
 .order-overview__truck-name {
 	font-weight: 600;
 	font-size: 1.2rem;
@@ -34,4 +49,16 @@
 
 .order-overview__orders {
 	font-size: 0.8rem;
+}
+
+.order-overview__logo {
+	width: 2rem;
+}
+
+.order-overview__total-container {
+	width: 100%;
+	background-color: var(--medium-grey-bg-color);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }

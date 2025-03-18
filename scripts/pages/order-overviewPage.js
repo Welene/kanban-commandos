@@ -9,8 +9,9 @@ import {
 } from '../utils/utilsHtml.js';
 
 function runOrderOverviewPage() {
-	// Då localStorage för food trucks inte finns så är detta en "fullösning" enbart för order-overviewPage.
+	// Då localStorage för food trucks inte finns så är detta en "fullösning" som både skapar och uppdaterar 'activeFoodTrucks' för order-overviewPage.
 	initializeFoodTrucksLocalStorage();
+
 	const activeFoodTrucks = getDataFromLocalStorage('activeFoodTrucks');
 
 	createFoodTruckCards(activeFoodTrucks);
@@ -18,15 +19,68 @@ function runOrderOverviewPage() {
 	expandFoodTruckCard(activeFoodTrucks);
 }
 
+function expandFoodTruckCard(activeFoodTrucks) {
+	activeFoodTrucks.forEach((truck) => {
+		const foodTruckRef = document.querySelector(`#${truck.id}`);
+
+		foodTruckRef.addEventListener('click', () => {
+			console.log('I am expanded! ' + truck.id);
+
+			foodTruckRef.classList.toggle(
+				'order-overview__truck-container--flex-dir-column'
+			);
+			foodTruckRef.innerHTML = `
+				<img 
+					class="order-overview__logo"
+					src="../assets/icons/logo-red.svg"
+					alt="Image logo" />
+				<section class="order-overview__text-container">
+				<p class="order-overview__truck-name">${truck.seller}</p>
+				<p class="order-overview__truck-location">${truck.location}</p>
+			</section>`;
+
+			let totalIncome = 0;
+
+			truck.receipts.forEach((receipt) => {
+				foodTruckRef.innerHTML += `
+				<p class="order-overview__receipt-summary">
+			  <span>${receipt.id}</span>
+			  <span class="dotted-line--order-overview"></span>
+			  <span>${receipt.price} SEK</span></p>`;
+
+				totalIncome += receipt.price;
+			});
+
+			const totalContainerHTML = createSectionElement(
+				'order-overview__total-container'
+			);
+			foodTruckRef.innerHTML += `
+			<section class="order-overview__total-container">
+				<section>
+					<p class="order-overview__truck-name">Totalt</p>
+					<p class="order-overview__truck-location">
+						inkl 20% moms
+					</p>
+				</section>
+				<p class="order-overview__orders">${totalIncome} SEK</p>
+			</section>
+		`;
+		});
+	});
+}
+
 function createFoodTruckCards(activeFoodTrucks) {
 	const orderOverviewRef = document.querySelector('#orderOverview');
 	activeFoodTrucks.forEach((truck) => {
-		const foodTruckCardHTML = createSectionElement(
+		const outerContainerHTML = createSectionElement();
+		const innerContainerHTML = createSectionElement(
 			'order-overview__truck-container',
 			truck.id
 		);
-		foodTruckCardHTML.innerHTML = addCardContent(truck);
-		orderOverviewRef.appendChild(foodTruckCardHTML);
+
+		innerContainerHTML.innerHTML = addCardContent(truck);
+		outerContainerHTML.appendChild(innerContainerHTML);
+		orderOverviewRef.appendChild(outerContainerHTML);
 	});
 }
 
@@ -42,22 +96,6 @@ function addCardContent(truck) {
 			<p class="order-overview__orders">${truck.orders} ordrar</p>
 		`;
 	return htmlRef;
-}
-
-function expandFoodTruckCard(activeFoodTrucks) {
-	let number = 1;
-	while (number <= activeFoodTrucks.length) {
-		const foodTruckRef = document.querySelector(`#truck${number}`);
-		foodTruckRef.addEventListener('click', () => {
-			/* users.forEach(user => {
-                user.receipts.forEach(receipt => {
-
-                })
-            }) */
-			console.log('I am expanded!');
-		});
-		number++;
-	}
 }
 
 function initializeFoodTrucksLocalStorage() {
