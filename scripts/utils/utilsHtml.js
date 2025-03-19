@@ -21,5 +21,16 @@ function createParagraphElement(classes, id) {
 	}
 	return paragraph;
 }
+function createDivElement(classes, id) {
+	const divider = document.createElement('div');
+	if (classes) {
+		divider.className = classes;
+	}
 
-export { createParagraphElement, createSectionElement };
+	if (id) {
+		divider.id = id;
+	}
+	return divider;
+}
+
+export { createParagraphElement, createSectionElement, createDivElement };

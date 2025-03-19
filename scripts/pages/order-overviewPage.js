@@ -3,33 +3,86 @@ import {
 	saveDataToLocalStorage,
 } from '../data/localStorage.js';
 
-import {
-	createParagraphElement,
-	createSectionElement,
-} from '../utils/utilsHtml.js';
+import { createSectionElement, createDivElement } from '../utils/utilsHtml.js';
 
 function runOrderOverviewPage() {
 	// Då localStorage för food trucks inte finns så är detta en "fullösning" som både skapar och uppdaterar 'activeFoodTrucks' för order-overviewPage.
 	initializeFoodTrucksLocalStorage();
 
-	const activeFoodTrucks = getDataFromLocalStorage('activeFoodTrucks');
-
-	createFoodTruckCards(activeFoodTrucks);
-
-	expandFoodTruckCard(activeFoodTrucks);
+	// Skapar korten för varje foodtruck. Korten har både de minimerade och maximerade innehållet men att dessa togglas mellan med "d-none"
+	createFoodTruckCards();
 }
 
-function expandFoodTruckCard(activeFoodTrucks) {
+// Skapar först kortbehållarna. Därefter lägger man till både de minimerade och maximerade korten i dem.
+// De maximerade börjar med att ha "d-none"
+function createFoodTruckCards() {
+	// Refererar till <main>-elementet
+	const orderOverviewRef = document.querySelector('#orderOverview');
+
+	const activeFoodTrucks = getDataFromLocalStorage('activeFoodTrucks');
+
+	// Varje truck får sitt egna kort
 	activeFoodTrucks.forEach((truck) => {
-		const foodTruckRef = document.querySelector(`#${truck.id}`);
+		//Skapar kortet
+		const cardContainerHTML = createSectionElement(
+			'order-overview__wrapper',
+			truck.id + 'Container'
+		);
 
-		foodTruckRef.addEventListener('click', () => {
-			console.log('I am expanded! ' + truck.id);
+		// Skapar innehållet i både de minimerade och maximerade behållarna
+		// Det som sparas är <section>-element.
+		const minimizedContentHTML = createMinimizedContent(truck);
+		const expandedContentHTML = createExpandedContent(truck);
 
-			foodTruckRef.classList.toggle(
-				'order-overview__truck-container--flex-dir-column'
-			);
-			foodTruckRef.innerHTML = `
+		// EventListener på kortet själv som byter mellan vad som visas
+		cardContainerHTML.addEventListener('click', () => {
+			minimizedContentHTML.classList.toggle('d-none');
+			expandedContentHTML.classList.toggle('d-none');
+		});
+
+		// Lägger in behållarna i kortet
+		cardContainerHTML.appendChild(minimizedContentHTML);
+		cardContainerHTML.appendChild(expandedContentHTML);
+
+		// Lägger kortet i <main>-elementet
+		orderOverviewRef.appendChild(cardContainerHTML);
+	});
+}
+
+// Skapar det minimerade innehållet och returnerar ett <section>-element
+function createMinimizedContent(truck) {
+	const containerHTML = createSectionElement(
+		'order-overview__truck-container',
+		truck.id + 'Minimized'
+	);
+
+	// Lägger till namnet, platsen samt antalet ordrar i containern
+	containerHTML.innerHTML = `
+			<section class="order-overview__text-container">
+				<p class="order-overview__truck-name">${truck.seller}</p>
+				<p class="order-overview__truck-location">
+					${truck.location}
+				</p>
+			</section>
+			<p class="order-overview__orders">${truck.orders} ordrar</p>
+		`;
+	return containerHTML;
+}
+
+// Skapar det maximerade innehållet och returnerar ett <section>-element
+function createExpandedContent(truck) {
+	//Skapar den yttre behållaren
+	const outerContainerHTML = createSectionElement(
+		'order-overview__maximized-card d-none'
+	);
+
+	//skapar den inre behållaren
+	const innerContainerHTML = createDivElement(
+		'order-overview__maximized-content'
+	);
+
+	// Lägger till loggan, namnet på foodtrucken samt platsen inuti den inre behållaren
+	innerContainerHTML.innerHTML = `
 				<img 
 					class="order-overview__logo"
 					src="../assets/icons/logo-red.svg"
@@ -39,63 +92,38 @@ function expandFoodTruckCard(activeFoodTrucks) {
 				<p class="order-overview__truck-location">${truck.location}</p>
 			</section>`;
 
-			let totalIncome = 0;
-
-			truck.receipts.forEach((receipt) => {
-				foodTruckRef.innerHTML += `
+	// Lägger till varje kvitto. Sparar även den totala inkomsten för samtliga kvitton
+	let totalIncome = 0;
+	truck.receipts.forEach((receipt) => {
+		innerContainerHTML.innerHTML += `
 				<p class="order-overview__receipt-summary">
 			  <span>${receipt.id}</span>
 			  <span class="dotted-line--order-overview"></span>
 			  <span>${receipt.price} SEK</span></p>`;
 
-				totalIncome += receipt.price;
-			});
+		// Sparar inkomsten från varje kvitto för att användas senare
+		totalIncome += receipt.price;
+	});
 
-			const totalContainerHTML = createSectionElement(
-				'order-overview__total-container'
-			);
-			foodTruckRef.innerHTML += `
-			<section class="order-overview__total-container">
+	// Lägger den inre behållaren inuti den yttre behållaren
+	outerContainerHTML.appendChild(innerContainerHTML);
+
+	// Lägger till den totala inkomsten
+	// Detta läggs till efter den inre behållaren
+	outerContainerHTML.innerHTML += `
+			<section class="order-overview__maximized-total">
 				<section>
-					<p class="order-overview__truck-name">Totalt</p>
-					<p class="order-overview__truck-location">
-						inkl 20% moms
+					<p class="order-overview__total">Totalt</p>
+					<p class="order-overview__total-tax">
+						Inkl 20% moms
 					</p>
 				</section>
-				<p class="order-overview__orders">${totalIncome} SEK</p>
+				<p class="order-overview__total-cost">${totalIncome} SEK</p>
 			</section>
 		`;
-		});
-	});
-}
 
-function createFoodTruckCards(activeFoodTrucks) {
-	const orderOverviewRef = document.querySelector('#orderOverview');
-	activeFoodTrucks.forEach((truck) => {
-		const outerContainerHTML = createSectionElement();
-		const innerContainerHTML = createSectionElement(
-			'order-overview__truck-container',
-			truck.id
-		);
-
-		innerContainerHTML.innerHTML = addCardContent(truck);
-		outerContainerHTML.appendChild(innerContainerHTML);
-		orderOverviewRef.appendChild(outerContainerHTML);
-	});
-}
-
-// Skapar de minimerade korten
-function addCardContent(truck) {
-	const htmlRef = `
-			<section class="order-overview__text-container">
-				<p class="order-overview__truck-name">${truck.seller}</p>
-				<p class="order-overview__truck-location">
-					${truck.location}
-				</p>
-			</section>
-			<p class="order-overview__orders">${truck.orders} ordrar</p>
-		`;
-	return htmlRef;
+	// Returnerar <section>-elementet outerContainerHTML
+	return outerContainerHTML;
 }
 
 function initializeFoodTrucksLocalStorage() {
@@ -110,7 +138,7 @@ function initializeFoodTrucksLocalStorage() {
 
 function checkUserReceipts(users, activeFoodTrucks) {
 	// För varje användare kontrolleras varje kvitto
-	// Antalet ordrar i respektive food truck ökas
+	// Antalet ordrar i respektive foodtruck ökas
 	users.forEach((user) => {
 		user.receipts.forEach((receipt) => {
 			switch (receipt.foodTruck) {
@@ -136,7 +164,7 @@ function updateFoodTruckOrders(activeFoodTruck, customerReceipt) {
 	// Räknar ut hur totalen för varje kvitto
 	let total = 0;
 	customerReceipt.items.forEach((item) => {
-		total += item.price;
+		total += item.price * item.amount;
 	});
 
 	// Ökar antalet ordrar samt pushar in kvitto-id med totalen
@@ -147,6 +175,7 @@ function updateFoodTruckOrders(activeFoodTruck, customerReceipt) {
 	});
 }
 
+// "Fullösningen" för att se till så nyckeln 'activeFoodTrucks' finns på localStorage. Manuellt skapar innehållet i nyckeln så den finns.
 function setFoodtrucksToLocalStorage() {
 	const activeFoodTrucks = [];
 	activeFoodTrucks.push({
