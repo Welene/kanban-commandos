@@ -211,7 +211,7 @@
 
 /* If-logged-in welcome-msg */
 .content-wrapper__welcome-msg {
-	font-size: 3.2rem;
+	font-size: 11vw;
 	padding: 2rem;
 	margin: 2rem;
 	border-radius: 0.3rem;
