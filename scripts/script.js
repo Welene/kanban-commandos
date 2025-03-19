@@ -81,7 +81,6 @@ if (path === '/pages/' || path === '/pages/index.html') {
 	openDropDownBasket();
 	console.log('receipt.html');
 } else if (path === '/pages/register.html') {
-	checkUserStatus();
 	runRegisterPage();
 	console.log('register.html');
 }
