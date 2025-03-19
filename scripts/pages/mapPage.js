@@ -1,7 +1,9 @@
 import { doesBasketItemCountsExist } from '../utils/utils.js';
+import { checkUserStatus } from '../components/validateUser.js';
 
 function runMapPage() {
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
+	checkUserStatus();
 	doesBasketItemCountsExist();
 	changeMap();
 }

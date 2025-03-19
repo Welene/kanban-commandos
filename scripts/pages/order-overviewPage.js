@@ -5,7 +5,10 @@ import {
 
 import { createSectionElement, createDivElement } from '../utils/utilsHtml.js';
 
+import { checkUserStatus } from '../components/validateUser.js';
+
 function runOrderOverviewPage() {
+	checkUserStatus();
 	// Då localStorage för food trucks inte finns så är detta en "fullösning" som både skapar och uppdaterar 'activeFoodTrucks' för order-overviewPage.
 	initializeFoodTrucksLocalStorage();
 

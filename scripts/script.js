@@ -18,6 +18,7 @@ import { runProfilePage } from './pages/profilePage.js';
 import { runReceiptPage } from './pages/receiptPage.js';
 import { runRegisterPage } from './pages/registerPage.js';
 import { openDropDownBasket } from './components/dropDownBasket.js';
+import { checkUserStatus } from './components/validateUser.js';
 
 console.log('Script.js loaded');
 
