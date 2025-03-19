@@ -4,6 +4,7 @@ import {
 } from '../data/localStorage.js';
 
 import { isUserExists } from '../components/validate.js';
+import { fetchUsers } from '../api/api.js';
 
 function runIndexPage() {
 	handleLoginClick();
@@ -39,13 +40,27 @@ function checkIfLoggedIn() {
 // 1) check if logged in 2) create elements --> call create elements function inside logged in, calls if logged in check is TRUE
 // edit: maybe 3 parts now
 function handleLoginClick() {
-	document.querySelector('#loginBtn').addEventListener('click', () => {
+	document.querySelector('#loginBtn').addEventListener('click', async () => {
 		let currentUser = getDataFromLocalStorage('currentUser');
 		let users = getDataFromLocalStorage('users'); // importer disse fra funksjonens side
+		let apiUsers = await fetchUsers();
+		// Säkerställ att apiUsers är en array, annars ge ett tomt arrayvärde
+
+		if (apiUsers && apiUsers.users && Array.isArray(apiUsers.users)) {
+			apiUsers = apiUsers.users; // Om vi har en användararray under 'users', extrahera den
+		} else {
+			console.log(
+				'API users är inte en array eller saknas, sätter som en tom array.'
+			);
+			apiUsers = []; // Om apiUsers inte innehåller en 'users' array, sätt den till tom
+		}
+
+		const allUsers = [...users, ...apiUsers]; // Slår samman användarna
+		console.log('All users (localStorage + API):', allUsers);
 
 		// checks again if you're logged in
 		let isLoggedIn =
-			currentUser && isUserExists(users, currentUser.username);
+			currentUser && isUserExists(allUsers, currentUser.username);
 
 		// if logged in, shows welcome msg and navigates to menu.html (showWelcomeMsg navigates to menu.html)
 		if (isLoggedIn) {
@@ -144,7 +159,7 @@ function handleLoginClick() {
 			users = users ? JSON.parse(users) : [];
 
 			// check if 'user' exists or is found, by checking if nameInput (the value written in) and passwordInput (value) is the same as user.username & password in localStorage
-			let foundUser = users.find(
+			let foundUser = allUsers.find(
 				(user) =>
 					user.username === nameInput &&
 					user.password === passwordInput
