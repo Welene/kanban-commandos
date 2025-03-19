@@ -9,14 +9,12 @@ import {
 	emptyBasketOrdersPage,
 	showMessage,
 } from '../utils/utils.js';
-import { checkUserStatus } from '../components/validateUser.js';
 
 /**
  * Funktion som hanterar ordersidan.
  * Laddar kundvagnen från localStorage, visar beställningen och hanterar utcheckning.
  */
 function runOrdersPage() {
-	checkUserStatus();
 	const basket = getDataFromLocalStorage('basket'); // Hämta kundvagnen
 	const container = document.querySelector('#orderSummary'); // Behållare för orderöversikt
 	const totalCostElement = document.querySelector('#totalCost'); // Element för totalkostnad
