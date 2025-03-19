@@ -192,7 +192,7 @@ function showWelcomeMsg(username) {
 	// showing welcomeMsg for 2.5 sec before navigating to menu-page
 	setTimeout(() => {
 		window.location.href = 'menu.html';
-	}, 2500000);
+	}, 2500);
 }
 
 // TLDR:
