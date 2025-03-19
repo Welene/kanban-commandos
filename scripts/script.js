@@ -55,7 +55,6 @@ if (path === '/pages/' || path === '/pages/index.html') {
 } else if (path === '/pages/order-overview.html') {
 	runOrderOverviewPage();
 	renderHamburgerMenu();
-	openDropDownBasket();
 	console.log('order-overview.html');
 } else if (path === '/pages/orders.html') {
 	runOrdersPage();
