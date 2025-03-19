@@ -1,10 +1,8 @@
 import { fetchProducts } from '../api/api.js';
 import { addToBasket } from '../components/addToBasket.js';
 import { doesBasketItemCountsExist } from '../utils/utils.js';
-import { checkUserStatus } from '../components/validateUser.js';
 
 async function runMenuPage() {
-	checkUserStatus();
 	const products = await fetchProducts();
 	createCards(products, true, true);
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items

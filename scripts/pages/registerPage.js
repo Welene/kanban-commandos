@@ -1,9 +1,7 @@
 import { registerUser } from '../components/register.js';
 import { fetchUsers } from '../api/api.js';
-import { checkUserStatus } from '../components/validateUser.js';
 
 function runRegisterPage() {
-	checkUserStatus();
 	document.addEventListener('DOMContentLoaded', async () => {
 		const form = document.querySelector('form');
 
