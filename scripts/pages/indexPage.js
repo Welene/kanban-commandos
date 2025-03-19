@@ -1,3 +1,10 @@
+import {
+	getDataFromLocalStorage,
+	saveDataToLocalStorage,
+} from '../data/localStorage.js';
+
+import { isUserExists } from '../components/validate.js';
+
 function runIndexPage() {
 	handleLoginClick();
 	handleRegisterIndexClick();
@@ -10,17 +17,13 @@ export { runIndexPage };
 // TLDR:
 // function sends you directly to menu.html if you are logged in to begin with
 function checkIfLoggedIn() {
-	let currentUser = localStorage.getItem('currentUser');
-	let users = localStorage.getItem('users');
-
-	// parsing currentUser & user // ? = shortened code
-	currentUser = currentUser ? JSON.parse(currentUser) : null;
-	users = users ? JSON.parse(users) : [];
+	let currentUser = getDataFromLocalStorage('currentUser');
+	let users = getDataFromLocalStorage('users'); // importer fra siden denne finnes på
+	console.log('current user:', currentUser);
+	console.log('user:', users);
 
 	// checking if you are logged in or not
-	let isLoggedIn =
-		currentUser &&
-		users.some((user) => user.username === currentUser.username);
+	let isLoggedIn = currentUser && isUserExists(users, currentUser.username);
 
 	// if you are logged in, you navigate to menu.html directly before you see the index page
 	if (isLoggedIn) {
@@ -37,16 +40,12 @@ function checkIfLoggedIn() {
 // edit: maybe 3 parts now
 function handleLoginClick() {
 	document.querySelector('#loginBtn').addEventListener('click', () => {
-		let currentUser = localStorage.getItem('currentUser');
-		let users = localStorage.getItem('users');
-
-		currentUser = currentUser ? JSON.parse(currentUser) : null;
-		users = users ? JSON.parse(users) : [];
+		let currentUser = getDataFromLocalStorage('currentUser');
+		let users = getDataFromLocalStorage('users'); // importer disse fra funksjonens side
 
 		// checks again if you're logged in
 		let isLoggedIn =
-			currentUser &&
-			users.some((user) => user.username === currentUser.username);
+			currentUser && isUserExists(users, currentUser.username);
 
 		// if logged in, shows welcome msg and navigates to menu.html (showWelcomeMsg navigates to menu.html)
 		if (isLoggedIn) {
@@ -153,7 +152,7 @@ function handleLoginClick() {
 
 			if (foundUser) {
 				// updates localStorage to be the user found in the 'user' array AKA the one that is logged in
-				localStorage.setItem('currentUser', JSON.stringify(foundUser));
+				saveDataToLocalStorage('currentUser', foundUser);
 
 				// display none hides errorMsg by default
 				errorMsg.style.display = 'none';
