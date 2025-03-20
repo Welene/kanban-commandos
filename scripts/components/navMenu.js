@@ -59,7 +59,7 @@ function renderHamburgerMenu() {
 						currentUser && currentUser.role === 'admin'
 							? `
                             <li class="menu__item" id="adminLink">
-                                <a id="adminLink" class="menu__link" href="./order-overview.html" aria-label="Navigate to admin order overview page">
+                                <a id="orderOverviewLink" class="menu__link" href="./order-overview.html" aria-label="Navigate to admin order overview page">
                                     Överblick ordrar (Admin)
                                 </a>
                             </li>
@@ -72,7 +72,7 @@ function renderHamburgerMenu() {
 						currentUser && currentUser.role === 'admin'
 							? `
                             <li class="menu__item" id="adminLink">
-                                <a id="adminLink" class="menu__link" href="./editMenu.html" aria-label="Navigate to admin edit menu page">
+                                <a id="editMenuLink" class="menu__link" href="./editMenu.html" aria-label="Navigate to admin edit menu page">
                                     Redigera meny (Admin)
                                 </a>
                             </li>

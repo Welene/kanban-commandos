@@ -32,7 +32,8 @@ function highlightActiveBurgerLink() {
 		{ path: ['/profile.html', '/pages/profile.html'], id: 'profileLink' },
 		{ path: ['/map.html', '/pages/map.html'], id: 'mapLink' },
 		{ path: ['/about.html', '/pages/about.html'], id: 'aboutLink' },
-		{ path: ['/order-overview.html'], id: 'adminLink' }, // Admin-sida
+		{ path: ['/order-overview.html'], id: 'orderOverviewLink' }, // Admin-sida
+		{ path: ['/editMenu.html'], id: 'editMenuLink' }, // Admin-sida
 	];
 
 	menuLinks.forEach(({ path: paths, id }) => {

@@ -18,8 +18,8 @@
 }
 
 .main-wrapper__hero {
-	min-height: 362px;
-	min-width: 390px;
+	height: 307px;
+	width: 330px;
 	z-index: -1;
 }
 
