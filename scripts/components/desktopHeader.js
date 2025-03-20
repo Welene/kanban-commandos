@@ -6,6 +6,7 @@ import {
 	highlightActiveBurgerLink,
 	setupLogoutButton,
 } from '../utils/utils.js';
+import { createOverlayDropDownBasket } from './dropDownBasket.js';
 
 export function renderDesktopHeader() {
 	const currentUser = getDataFromLocalStorage('currentUser');
@@ -119,6 +120,20 @@ function initBasketDesktop() {
 
 		basketButton.appendChild(basketIcon);
 
+		basketButton.addEventListener('click', () => {
+			if (!document.querySelector('#overlayBasket')) {
+				// Funktion som skapar en basket genom DOM
+				createOverlayDropDownBasket();
+			}
+			// Om det finns en id #overlayBasket så ska hela tas bort ifall man klickar igen på basket-knappen
+			else {
+				const overlayBackgroundRef =
+					document.querySelector('#overlayBackground');
+				// Här tas hela elementet bort vid klick av öppen basket
+				overlayBackgroundRef.remove();
+			}
+		});
+
 		function toggleBasketButton() {
 			if (window.innerWidth >= 1000) {
 				if (!document.querySelector('.basket-2')) {
@@ -132,25 +147,6 @@ function initBasketDesktop() {
 					existingButton.remove();
 				}
 			}
-		}
-		let basketItemCounts = getDataFromLocalStorage('basketCount');
-		const basketRef = document.querySelectorAll('#basket');
-		const basketItemCountRef = document.querySelector('#basketItemCount');
-		if (!basketItemCountRef) {
-			const basketItemCountHTML = `
-        <span
-        id="basketItemCount"
-        class="header__basket-item-count"
-        >${basketItemCounts}
-        </span>`;
-
-			// Stoppar in den sist i headern
-			basketRef.forEach((basket) => {
-				basket.insertAdjacentHTML('beforeend', basketItemCountHTML);
-				console.log('hjas');
-			});
-		} else {
-			basketItemCountRef.textContent = basketItemCounts;
 		}
 
 		toggleBasketButton(); // Kör direkt vid laddning

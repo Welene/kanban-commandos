@@ -29,7 +29,7 @@ function openDropDownBasket() {
 }
 
 // Funktion för att skapa hela varukorgen
-function createOverlayDropDownBasket() {
+export function createOverlayDropDownBasket() {
 	const overlayBasketHTML = `
     <section id="overlayBackground" class="overlay-background">
             <article id="overlayBasket" class="overlay-basket">
