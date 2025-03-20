@@ -36,8 +36,8 @@ export function displayReceipts() {
 			<section class="receipt__truck-center">
 				<span class="receipt__id">${receipt.id}</span>
 				<span class="receipt__truck-name">${
-					receipt.foodTruck || 'No truck selected'
-				}</span>
+					receipt.location || 'No truck selected'
+				} - ${receipt.seller}</span>
 			</section>
 		`;
 
@@ -57,8 +57,8 @@ export function displayReceipts() {
 			<strong class="receipt__title-expanded">KVITTO</strong>
 			<span class="receipt__id">${receipt.id}</span>
 			<span class="receipt__truck-name">${
-				receipt.foodTruck || 'No truck selected'
-			}</span>
+				receipt.location || 'No truck selected'
+			} - ${receipt.seller}</span>
 		`;
 		receiptDetails.appendChild(receiptInfoExpanded);
 

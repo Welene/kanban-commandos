@@ -81,6 +81,10 @@
 	color: var(--weakblack-text-color);
 }
 
+.history-page .receipt__truck-name {
+	font-weight: 600;
+}
+
 /*	 4. EXPANDERAD INNEHÅLL: Logga + Varor	*/
 
 /*container för item*/
