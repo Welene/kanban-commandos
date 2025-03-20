@@ -18,6 +18,7 @@ import { runProfilePage } from './pages/profilePage.js';
 import { runReceiptPage } from './pages/receiptPage.js';
 import { runRegisterPage } from './pages/registerPage.js';
 import { openDropDownBasket } from './components/dropDownBasket.js';
+import { runEditMenuPage } from './pages/editMenuPage.js';
 import { checkUserStatus } from './components/validateUser.js';
 
 console.log('Script.js loaded');
@@ -83,6 +84,12 @@ if (path === '/pages/' || path === '/pages/index.html') {
 } else if (path === '/pages/register.html') {
 	runRegisterPage();
 	console.log('register.html');
+	runRegisterPage();
+	console.log('register.html');
+} else if (path === '/pages/editMenu.html') {
+	runEditMenuPage();
+	renderHamburgerMenu();
+	console.log('editMenu.html');
 }
 
 // calls function that navigates you to menu.html when clicking on "Logga inn" in index page

@@ -1,94 +1,112 @@
 import { fetchProducts } from '../api/api.js';
+import { getDataFromLocalStorage } from '../data/localStorage.js';
 import { addToBasket } from '../components/addToBasket.js';
 import { doesBasketItemCountsExist } from '../utils/utils.js';
 
+// Huvudfunktionen för att köra meny-sidan
 async function runMenuPage() {
-	const products = await fetchProducts();
+	let localProducts = getDataFromLocalStorage('menuProducts'); // Hämtar produkter från localStorage
+	let products;
+
+	// Om produkter finns i localStorage, använd dem annars hämta från API
+	if (
+		localProducts &&
+		Array.isArray(localProducts) &&
+		localProducts.length > 0
+	) {
+		const activeItems = localProducts.filter((item) => item.active); // Filtrera bort inaktiva produkter
+		products = { items: activeItems }; // Sätt aktiva produkter
+	} else {
+		const apiData = await fetchProducts(); // Hämta data från API
+		products = { items: apiData.items }; // Sätt produkter från API
+	}
+
+	// Skapa kort för produkterna
 	createCards(products, true, true);
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
+	// Sätt filtermeny för produkterna
 	setFilterMenu();
 }
 
+// Funktion för att skapa kort för varje produkt
 function createCards(products, addSecondText, addButton) {
-	// Unordered list som behållare för alla menyalternativen
-	const unorderedListHTML = document.createElement('ul');
+	const unorderedListHTML = document.createElement('ul'); // Skapar en oordnad lista för alla produkter
 
-	//För varje menyvara körs koden under
+	// Skapa sektioner för Wonton och Drink så att nyskapade lägger sig korrekt
+	const wontonSection = document.createElement('section');
+	wontonSection.classList.add('food-menu-section');
+	const drinkSection = document.createElement('section');
+	drinkSection.classList.add('food-menu-section');
+
+	// Gå igenom alla produkter och skapa kort för varje produkt
 	products.items.forEach((item) => {
-		// Kontrollerar ifall menyvaran är wonton eller drink
-		if (item.type === 'wonton' || item.type === 'drink') {
-			//Varje menykort är en list item
-			const listItemHTML = document.createElement('li');
-			listItemHTML.className = `food-menu-container__inner-grid ${item.type}`;
+		const listItemHTML = document.createElement('li'); // Skapar ett listitem för varje produkt
+		listItemHTML.className = `food-menu-container__inner-grid ${item.type}`; // Sätter rätt klass för typ
 
-			// Används för att förvara texterna i
-			const sectionHTML = document.createElement('section');
+		// Sektion för produktnamn, pris och beskrivning
+		const sectionHTML = document.createElement('section');
+		const mainParagraphHTML = document.createElement('p');
+		mainParagraphHTML.classList.add('food-menu-container__food-title');
+		mainParagraphHTML.innerHTML = `<span>${item.name}</span><span class="dotted-line"></span><span>${item.price} sek</span>`;
+		sectionHTML.appendChild(mainParagraphHTML);
 
-			// Namnet på matvaran plus priset
-			const mainParagraphHTML = document.createElement('p');
-			mainParagraphHTML.classList.add('food-menu-container__food-title');
+		// Om vi ska lägga till beskrivning
+		if (addSecondText === true) {
+			const contentParagraphHTML = document.createElement('p');
+			contentParagraphHTML.classList.add(
+				'food-menu-container__food-content'
+			);
+			contentParagraphHTML.textContent = item.description;
+			sectionHTML.appendChild(contentParagraphHTML);
+		}
+		listItemHTML.appendChild(sectionHTML);
 
-			// Använder span för att dela upp matvaran och priset
-			// Har en extra span för den punktade linjen
-			mainParagraphHTML.innerHTML = `<span>${item.name}</span><span class="dotted-line"></span><span>${item.price} sek</span>`;
+		// Om en knapp ska visas för att lägga till produkten i korgen
+		if (addButton === true) {
+			const buttonHTML = document.createElement('button');
+			buttonHTML.classList.add('food-menu-container__add-button');
+			buttonHTML.textContent = '+';
+			buttonHTML.addEventListener('click', () => {
+				addToBasket(item.id, item.name, item.price); // Lägger till produkten i korgen
+			});
+			listItemHTML.appendChild(buttonHTML);
+		}
 
-			sectionHTML.appendChild(mainParagraphHTML);
-
-			// Om "innehållsförteckningen" ska finnas under matvarunamnet
-			if (addSecondText === true) {
-				const contentParagraphHTML = document.createElement('p');
-				contentParagraphHTML.classList.add(
-					'food-menu-container__food-content'
-				);
-				contentParagraphHTML.textContent = item.description;
-				sectionHTML.appendChild(contentParagraphHTML);
-			}
-			listItemHTML.appendChild(sectionHTML);
-
-			// Lägger till knappen om den behövs
-			if (addButton === true) {
-				const buttonHTML = document.createElement('button');
-				buttonHTML.classList.add('food-menu-container__add-button');
-				buttonHTML.textContent = '+';
-
-				// Gör så knappen lägger in det menyval den befinner sig i
-				buttonHTML.addEventListener('click', () => {
-					addToBasket(item.id, item.name, item.price);
-				});
-				listItemHTML.appendChild(buttonHTML);
-			}
-
-			unorderedListHTML.appendChild(listItemHTML);
+		// Lägg till produkten i rätt sektion beroende på produkttyp
+		if (item.type === 'wonton') {
+			wontonSection.appendChild(listItemHTML);
+		} else if (item.type === 'drink') {
+			drinkSection.appendChild(listItemHTML);
 		}
 	});
 
+	// Lägg till de skapade sektionerna till huvudlistan
+	unorderedListHTML.appendChild(wontonSection);
+	unorderedListHTML.appendChild(drinkSection);
+
 	const cardContainerRef = document.querySelector('#cardContainer');
 	cardContainerRef.appendChild(unorderedListHTML);
-	// Dippen läggs till i funktionen under.
+
+	// Skapa dip-sektionen
 	createDipCard(products);
 }
 
-// Skapar dipdelen av menyn
+// Skapa sektion för dipperna i menyn
 function createDipCard(products) {
-	// Hämtar elementet från menysidan
 	const dipContainerRef = document.querySelector('#dipContainer');
 
-	// Dipsås plus priset,
+	// Skapa text för dipsåsen
 	const paragraphHTML = document.createElement('p');
 	paragraphHTML.classList.add('food-menu-container__food-title');
-
-	// Använder span för att dela upp matvaran och priset
-	// Har en extra span för den punktade linjen
 	paragraphHTML.innerHTML = `<span>Dipsås</span><span class="dotted-line"></span><span>19 sek</span>`;
 
-	// Lägger till knappen
+	// Skapa lägg till-knappen för dipsåsen
 	const addDipButtonHTML = document.createElement('button');
 	addDipButtonHTML.classList.add('food-menu-container__add-button');
 	addDipButtonHTML.textContent = '+';
-
-	// Ser till att knappen först letar upp alla valda dippsorter före den lägger dem i basket
 	addDipButtonHTML.addEventListener('click', () => {
+		// Lägg till valda dippsorter till korgen
 		const selectedDips = document.querySelectorAll('.selected-dip');
 		selectedDips.forEach((dip) => {
 			addToBasket(
@@ -99,68 +117,58 @@ function createDipCard(products) {
 		});
 	});
 
-	// Behållare för texten och lägg till-knappen
+	// Lägg till sektionen för dipsås
 	const sectionHTML = document.createElement('section');
 	sectionHTML.className =
 		'food-menu-container__inner-grid food-menu-container__inner-grid--border-top';
-
-	// Lägger till texten och lägg till-knappen i behållaren
 	sectionHTML.appendChild(paragraphHTML);
 	sectionHTML.appendChild(addDipButtonHTML);
 	dipContainerRef.appendChild(sectionHTML);
 
-	// Ny behållare för dipvalen
+	// Skapa en sektion för dip-knappar
 	const sectionDipHTML = document.createElement('section');
 	sectionDipHTML.classList.add('food-menu-container__dip-button-container');
 
-	// Alla dipsorter får sin egna knapp
+	// Gå igenom alla dipper och skapa knappar för varje
 	products.items.forEach((item) => {
 		if (item.type === 'dip') {
 			const buttonHTML = document.createElement('button');
 			buttonHTML.textContent = item.name;
 			buttonHTML.classList.add('food-menu-container__dip-button');
-
-			// Dataset för att spara informationen om varje dipsort
 			buttonHTML.dataset.id = item.id;
 			buttonHTML.dataset.name = item.name;
 			buttonHTML.dataset.price = item.price;
 
-			// Gör så markerade knappar blir mörkladgda samt får klassen "selected-dip"
-			// Alla knappar som togglar "selected-dip" är de som lägg till-knappen kommer leta efter
+			// Lägg till eller ta bort klassen "selected-dip" när användaren klickar på en dipsort
 			buttonHTML.addEventListener('click', () => {
 				buttonHTML.classList.toggle('selected-dip');
 			});
 
-			// Lägger till varje dipsort i den nya dipbehållaren
+			// Lägg till knappen i dip-container
 			sectionDipHTML.appendChild(buttonHTML);
 		}
 	});
 
-	// Dipbehållaren läggs in i huvudcontainern för dipen.
+	// Lägg till dip-val i dip-behållaren
 	dipContainerRef.appendChild(sectionDipHTML);
 }
 
-// Ser till så filterfunktionen fungerar
+// Funktion för att sätta upp filtermenyn
 function setFilterMenu() {
-	// Sätter en eventListener på drop down-menyn
 	const filterMenuRef = document.querySelector('#filterMenu');
+	// När användaren väljer filter i dropdown-menyn
 	filterMenuRef.addEventListener('change', (selection) => {
-		// Letar upp alla menykort
 		const menuItems = document.querySelectorAll(
 			'.food-menu-container__inner-grid'
 		);
-
-		// Tar först bort 'd-none' från alla korten (om de finns)
-		// Lägger därefter till 'd-none' till de menykort som matchar värdet på menyvalet
-		// Värdet är speglat så menyval 'wonton' ger värdet 'drink' och vice versa
+		// Döljer eller visar produkter baserat på filtreringen
 		menuItems.forEach((item) => {
 			item.classList.remove('d-none');
-
 			if (item.classList.contains(`${selection.target.value}`)) {
 				item.classList.add('d-none');
 			}
 		});
-		filterMenuRef.blur();
+		filterMenuRef.blur(); // Ta bort fokus från dropdown
 	});
 }
 
