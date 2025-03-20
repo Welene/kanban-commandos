@@ -26,7 +26,7 @@
 
 /* Styling för filter-väljaren */
 .edit-card__label-type {
-    margin-left: 30px;
+    margin-left: 50px;
 }
 
 /* Filter-knappen i toppmenyn */
@@ -35,8 +35,8 @@
     padding: 0.5rem 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
-    width: 200px;
-    text-align: center;
+    width: 150px;
+    text-align: left;
     margin-top: .5rem;
     background-color: var(--white-bg-color);
     cursor: pointer;
@@ -255,4 +255,82 @@ input:checked+.slider:before {
 /* Styling för logotypen i headern på redigeringssidan */
 .header__logo-edit {
     margin-left: 3.8rem;
+}
+
+/* Modal bakgrund */
+.modal {
+    display: none;
+    /* Startar med att vara dold */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    /* Se till att modalen ligger över andra element */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal[style*="display: block"] {
+    display: flex;
+    /* Gör modalen synlig när den ska visas */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: var(--grey-bg-color);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Close button */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+.modal-buttons button:hover {
+    opacity: 0.9;
+}
+
+#confirmResetBtn {
+    background-color: #2ecc71;
+    color: var(--black-text-color);
+}
+
+#cancelResetBtn {
+    background-color: #e74c3c;
+    color: var(--black-text-color);
 }
