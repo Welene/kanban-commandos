@@ -25,6 +25,7 @@ async function runMenuPage() {
 	createCards(products, true, true);
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
+	displayDipError();
 	// Sätt filtermeny för produkterna
 	setFilterMenu();
 }
@@ -108,13 +109,20 @@ function createDipCard(products) {
 	addDipButtonHTML.addEventListener('click', () => {
 		// Lägg till valda dippsorter till korgen
 		const selectedDips = document.querySelectorAll('.selected-dip');
-		selectedDips.forEach((dip) => {
-			addToBasket(
-				Number(dip.dataset.id),
-				dip.dataset.name,
-				Number(dip.dataset.price)
-			);
-		});
+
+		if (selectedDips.length === 0) {
+			displayDipError(true);
+		} else {
+			displayDipError(false);
+
+			selectedDips.forEach((dip) => {
+				addToBasket(
+					Number(dip.dataset.id),
+					dip.dataset.name,
+					Number(dip.dataset.price)
+				);
+			});
+		}
 	});
 
 	// Lägg till sektionen för dipsås
@@ -151,6 +159,35 @@ function createDipCard(products) {
 
 	// Lägg till dip-val i dip-behållaren
 	dipContainerRef.appendChild(sectionDipHTML);
+}
+
+// styling and timeout for error msg -- inside the errorContainer
+function displayDipError(show) {
+	let errorContainer = document.querySelector(
+		'.food-menu-container__inner-grid--border-top'
+	);
+
+	let errorMessage = document.querySelector('.error-message');
+
+	if (show) {
+		if (!errorMessage) {
+			errorMessage = document.createElement('p');
+			errorMessage.classList.add('error-message');
+			errorMessage.style.color = '#EB5757';
+			errorMessage.style.fontWeight = 'bold';
+			errorMessage.style.marginTop = '-1rem';
+			errorMessage.textContent = 'Du måste välja en dip först';
+			errorContainer.appendChild(errorMessage);
+
+			setTimeout(() => {
+				errorContainer.removeChild(errorMessage);
+			}, 3000);
+		}
+	} else {
+		if (errorMessage) {
+			errorContainer.removeChild(errorMessage);
+		}
+	}
 }
 
 // Funktion för att sätta upp filtermenyn
