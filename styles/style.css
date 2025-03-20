@@ -40,6 +40,7 @@
 	--white-text-color: #fff;
 	--darker-gray-bg-color: #353131;
 	--light-green-bg-color: #8ed8bf;
+	--snow-color: #f4f3f1b6;
 }
 
 /* Utils */
@@ -131,6 +132,7 @@ body {
 .menu__link--active {
 	border-color: var(--light-grey-bg-color);
 }
+
 .header {
 	padding: 1rem;
 	width: 100%;
@@ -197,9 +199,11 @@ body {
 	border: none;
 	cursor: pointer;
 }
+
 .header__basket-box--border {
 	border: 2px solid #353131;
 }
+
 .header__basket-item-count {
 	position: absolute;
 	background-color: var(--red-bg-color);

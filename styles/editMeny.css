@@ -134,7 +134,7 @@
 /* Styling för ta bort-knapp */
 .delete-btn {
     background-color: #e74c3c;
-    color: var(--white-text-color);
+    color: var(--black-text-color);
 }
 
 .delete-btn:hover {
@@ -144,7 +144,7 @@
 /* Styling för spara-knapp */
 .save-btn {
     background-color: #2ecc71;
-    color: var(--white-text-color);
+    color: var(--black-text-color);
 }
 
 .save-btn:hover {
@@ -333,4 +333,18 @@ input:checked+.slider:before {
 #cancelResetBtn {
     background-color: #e74c3c;
     color: var(--black-text-color);
+}
+
+/* Text som bara är där för att ge switchen en label men inte synas på sidan */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    overflow: hidden;
 }
