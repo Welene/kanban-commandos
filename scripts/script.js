@@ -84,9 +84,8 @@ if (path === '/pages/' || path === '/pages/index.html') {
 } else if (path === '/pages/register.html') {
 	runRegisterPage();
 	console.log('register.html');
-	runRegisterPage();
-	console.log('register.html');
 } else if (path === '/pages/editMenu.html') {
+	checkUserStatus();
 	runEditMenuPage();
 	renderHamburgerMenu();
 	console.log('editMenu.html');
