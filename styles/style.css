@@ -125,8 +125,8 @@ body {
 }
 
 .menu__link--logout {
-	border-color: var(--red-bg-color);
-	color: var(--red-bg-color);
+	border-color: #ff9292;
+	color: #ff9292;
 }
 
 .menu__link--active {
@@ -148,11 +148,13 @@ body {
 	cursor: pointer;
 	position: relative;
 }
+
 .header__title {
 	margin-top: 1.5rem;
 	color: var(--white-bg-color);
 	font-size: 1.2rem;
 }
+
 .header__nav-menu-lines,
 .header__nav-menu-lines::before,
 .header__nav-menu-lines::after {
