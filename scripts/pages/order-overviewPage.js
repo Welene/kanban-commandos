@@ -118,7 +118,7 @@ function createExpandedContent(truck) {
 						Inkl 20% moms
 					</p>
 				</section>
-				<p class="order-overview__total-cost">${totalIncome} SEK</p>
+				<h2 class="order-overview__total-cost">${totalIncome} SEK</h2>
 			</section>
 		`;
 
