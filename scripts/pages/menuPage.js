@@ -1,13 +1,13 @@
 import { fetchProducts } from '../api/api.js';
 import { addToBasket } from '../components/addToBasket.js';
 import { doesBasketItemCountsExist } from '../utils/utils.js';
+import { showMessage } from '../utils/utils.js';
 
 async function runMenuPage() {
 	const products = await fetchProducts();
 	createCards(products, true, true);
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
-	displayDipError();
 	setFilterMenu();
 }
 
@@ -93,9 +93,9 @@ function createDipCard(products) {
 		const selectedDips = document.querySelectorAll('.selected-dip');
 
 		if (selectedDips.length === 0) {
-			displayDipError(true);
+			showMessage('du valde en dip', true);
 		} else {
-			displayDipError(false);
+			showMessage('Du måste välja en dip först', false);
 
 			selectedDips.forEach((dip) => {
 				addToBasket(
@@ -148,28 +148,28 @@ function createDipCard(products) {
 	dipContainerRef.appendChild(sectionDipHTML);
 }
 
-function displayDipError(show) {
-	let errorContainer = document.querySelector(
-		'.food-menu-container__inner-grid--border-top'
-	);
+// function displayDipError(show) {
+// 	let errorContainer = document.querySelector(
+// 		'.food-menu-container__inner-grid--border-top'
+// 	);
 
-	let errorMessage = document.querySelector('.error-message');
+// 	let errorMessage = document.querySelector('.error-message');
 
-	if (show) {
-		if (!errorMessage) {
-			errorMessage = document.createElement('p');
-			errorMessage.classList.add('error-message');
-			errorMessage.style.color = 'red';
-			errorMessage.style.marginTop = '8px';
-			errorMessage.textContent = 'Vänligen välj minst en dipsås.';
-			errorContainer.appendChild(errorMessage);
-		}
-	} else {
-		if (errorMessage) {
-			errorContainer.removeChild(errorMessage);
-		}
-	}
-}
+// 	if (show) {
+// 		if (!errorMessage) {
+// 			errorMessage = document.createElement('p');
+// 			errorMessage.classList.add('error-message');
+// 			errorMessage.style.color = 'red';
+// 			errorMessage.style.marginTop = '8px';
+// 			errorMessage.textContent = 'Vänligen välj minst en dipsås.';
+// 			errorContainer.appendChild(errorMessage);
+// 		}
+// 	} else {
+// 		if (errorMessage) {
+// 			errorContainer.removeChild(errorMessage);
+// 		}
+// 	}
+// }
 
 // Ser till så filterfunktionen fungerar
 function setFilterMenu() {
