@@ -1,13 +1,13 @@
 import { fetchProducts } from '../api/api.js';
 import { addToBasket } from '../components/addToBasket.js';
 import { doesBasketItemCountsExist } from '../utils/utils.js';
-import { showMessage } from '../utils/utils.js';
 
 async function runMenuPage() {
 	const products = await fetchProducts();
 	createCards(products, true, true);
 	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
+	displayDipError();
 	setFilterMenu();
 }
 
@@ -89,13 +89,15 @@ function createDipCard(products) {
 	addDipButtonHTML.textContent = '+';
 
 	// Ser till att knappen först letar upp alla valda dippsorter före den lägger dem i basket
+
+	// if selectedDips is empty - displays dip error msg
 	addDipButtonHTML.addEventListener('click', () => {
 		const selectedDips = document.querySelectorAll('.selected-dip');
 
 		if (selectedDips.length === 0) {
-			showMessage('Du måste välja en dip först', true);
+			displayDipError(true);
 		} else {
-			showMessage('', false);
+			displayDipError(false);
 
 			selectedDips.forEach((dip) => {
 				addToBasket(
@@ -148,28 +150,34 @@ function createDipCard(products) {
 	dipContainerRef.appendChild(sectionDipHTML);
 }
 
-// function displayDipError(show) {
-// 	let errorContainer = document.querySelector(
-// 		'.food-menu-container__inner-grid--border-top'
-// 	);
+// styling and timeout for error msg -- inside the errorContainer
+function displayDipError(show) {
+	let errorContainer = document.querySelector(
+		'.food-menu-container__inner-grid--border-top'
+	);
 
-// 	let errorMessage = document.querySelector('.error-message');
+	let errorMessage = document.querySelector('.error-message');
 
-// 	if (show) {
-// 		if (!errorMessage) {
-// 			errorMessage = document.createElement('p');
-// 			errorMessage.classList.add('error-message');
-// 			errorMessage.style.color = 'red';
-// 			errorMessage.style.marginTop = '8px';
-// 			errorMessage.textContent = 'Vänligen välj minst en dipsås.';
-// 			errorContainer.appendChild(errorMessage);
-// 		}
-// 	} else {
-// 		if (errorMessage) {
-// 			errorContainer.removeChild(errorMessage);
-// 		}
-// 	}
-// }
+	if (show) {
+		if (!errorMessage) {
+			errorMessage = document.createElement('p');
+			errorMessage.classList.add('error-message');
+			errorMessage.style.color = '#EB5757';
+			errorMessage.style.fontWeight = 'bold';
+			errorMessage.style.marginTop = '-1rem';
+			errorMessage.textContent = 'Du måste välja en dip först';
+			errorContainer.appendChild(errorMessage);
+
+			setTimeout(() => {
+				errorContainer.removeChild(errorMessage);
+			}, 3000);
+		}
+	} else {
+		if (errorMessage) {
+			errorContainer.removeChild(errorMessage);
+		}
+	}
+}
 
 // Ser till så filterfunktionen fungerar
 function setFilterMenu() {
