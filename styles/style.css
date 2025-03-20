@@ -57,6 +57,10 @@ body {
 	min-height: 100vh;
 }
 
+.label-opacity {
+	display: none;
+}
+
 /* ==== INDEX PAGE ==== */
 
 /* ==== Burger Menu Styling ==== */
@@ -144,7 +148,11 @@ body {
 	cursor: pointer;
 	position: relative;
 }
-
+.header__title {
+	margin-top: 1.5rem;
+	color: var(--white-bg-color);
+	font-size: 1.2rem;
+}
 .header__nav-menu-lines,
 .header__nav-menu-lines::before,
 .header__nav-menu-lines::after {
@@ -193,7 +201,7 @@ body {
 }
 
 .header__basket-box--border {
-	border: 2px solid #cccccc;
+	border: 2px solid #353131;
 }
 
 .header__basket-item-count {
