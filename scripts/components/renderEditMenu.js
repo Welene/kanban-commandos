@@ -27,29 +27,61 @@ function renderEditableMenu(items) {
 		}
 	});
 
-	// Återställ meny
+	// Återställ meny med modal
 	const resetBtn = document.createElement('button');
 	resetBtn.textContent = '↺ Återställ meny';
 	resetBtn.classList.add('reset-btn');
 	resetBtn.addEventListener('click', () => {
-		if (confirm('Vill du återställa menyn från originaldatan?')) {
-			fetchProducts()
-				.then((apiData) => {
-					const resetItems = apiData.items.map((item) => ({
-						...item,
-						active: true,
-					}));
-					saveDataToLocalStorage('menuProducts', resetItems);
-					showMessage('Menyn återställd!', 'success');
-					setTimeout(() => {
-						window.location.reload();
-					}, 1000);
-					renderEditableMenu(resetItems);
-				})
-				.catch(() => {
-					showMessage('Misslyckades hämta från API.', 'error');
-				});
-		}
+		const modal = document.getElementById('confirmationModal');
+		modal.style.display = 'flex'; // Gör modalen synlig
+		modal.removeAttribute('inert'); // Gör modalen interaktiv
+	});
+
+	// Stäng modalen
+	const closeModal = document.getElementById('closeModal');
+	closeModal.addEventListener('click', () => {
+		const modal = document.getElementById('confirmationModal');
+		modal.style.display = 'none'; // Dölja modalen
+		modal.setAttribute('inert', true); // Gör modalen ointeraktiv
+	});
+
+	// När användaren trycker på "Ja", återställ menyn
+	const confirmResetBtn = document.getElementById('confirmResetBtn');
+	confirmResetBtn.addEventListener('click', () => {
+		fetchProducts()
+			.then((apiData) => {
+				const resetItems = apiData.items.map((item) => ({
+					...item,
+					active: true,
+				}));
+				saveDataToLocalStorage('menuProducts', resetItems);
+				showMessage('Menyn återställd!', 'success');
+				setTimeout(() => {
+					window.location.reload(); // Ladda om sidan för att visa de nya datan
+				}, 1000);
+				renderEditableMenu(resetItems);
+
+				// Dölja modalen efter återställning
+				const modal = document.getElementById('confirmationModal');
+				modal.style.display = 'none';
+				modal.setAttribute('inert', true); // Gör modalen ointeraktiv
+			})
+			.catch(() => {
+				showMessage('Misslyckades hämta från API.', 'error');
+
+				// Dölja modalen om det inte lyckas
+				const modal = document.getElementById('confirmationModal');
+				modal.style.display = 'none';
+				modal.setAttribute('inert', true); // Gör modalen ointeraktiv
+			});
+	});
+
+	// När användaren trycker på "Nej", stänger vi bara modalen
+	const cancelResetBtn = document.getElementById('cancelResetBtn');
+	cancelResetBtn.addEventListener('click', () => {
+		const modal = document.getElementById('confirmationModal');
+		modal.style.display = 'none'; // Dölja modalen
+		modal.setAttribute('inert', true); // Gör modalen ointeraktiv
 	});
 
 	// Filter
