@@ -183,16 +183,15 @@ function renderEditableMenu(items) {
 
 		// Switch + status
 		const toggleWrapper = document.createElement('label');
-		toggleWrapper.className = 'switch';
-
+		toggleWrapper.classList.add('switch');
+		const hiddenText = document.createElement('span');
+		hiddenText.classList.add('sr-only');
+		hiddenText.textContent = 'Toggle för att pausa eller återuppta produkt';
 		const toggleInput = document.createElement('input');
 		toggleInput.type = 'checkbox';
 		toggleInput.checked = !item.active;
-
 		const slider = document.createElement('span');
 		slider.className = 'slider';
-		toggleWrapper.append(toggleInput, slider);
-
 		const statusText = document.createElement('span');
 		statusText.textContent = toggleInput.checked ? 'Pausad' : 'Aktiv';
 		statusText.classList.add('status-text');
@@ -249,6 +248,7 @@ function renderEditableMenu(items) {
 		});
 
 		// Append
+		toggleWrapper.append(toggleInput, slider, hiddenText);
 		card.append(rowSection);
 		card.append(descLabel, descriptionInput);
 		if (ingredientsInput) {
