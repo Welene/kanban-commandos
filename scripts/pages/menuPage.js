@@ -93,9 +93,9 @@ function createDipCard(products) {
 		const selectedDips = document.querySelectorAll('.selected-dip');
 
 		if (selectedDips.length === 0) {
-			showMessage('du valde en dip', true);
+			showMessage('Du måste välja en dip först', true);
 		} else {
-			showMessage('Du måste välja en dip först', false);
+			showMessage('', false);
 
 			selectedDips.forEach((dip) => {
 				addToBasket(
