@@ -52,16 +52,7 @@ function runOrdersPage() {
 		totalCost += item.price * item.amount; // Lägg till produktens kostnad i totalen
 	});
 
-	totalCostElement.innerHTML = `<p class="total-cost__title">Total</p><p class="total-cost__price">${totalCost} SEK</p>`; // Uppdatera totalkostnaden
-
-	// Om användaren inte är inloggad, ändra checkout-knappen till "Logga in"
-	/* if (!currentUser || !currentUser.username) {
-        checkoutButton.textContent = 'Log in to place order';
-        checkoutButton.addEventListener('click', () => {
-            window.location.href = '/pages/index.html';
-        });
-        return;
-    } */
+	totalCostElement.innerHTML = `<h2 class="total-cost__title">Total</h2><h3 class="total-cost__price">${totalCost} SEK</h3>`; // Uppdatera totalkostnaden
 
 	// Om användaren är inloggad, tillåt beställning
 	checkoutButton.textContent = 'LÄGG BESTÄLLNING';

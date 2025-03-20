@@ -16,7 +16,7 @@
 .food-menu-container__top {
 	padding: 1rem 1.5rem;
 	display: flex;
-	gap: 2rem;
+	gap: 0.5rem;
 }
 
 .food-menu-container__title {
@@ -27,6 +27,7 @@
 .food-menu-container__filter {
 	flex: 1;
 	font-size: 1.5rem;
+	border-radius: 4px;
 }
 
 .food-menu-container__card-container {
@@ -95,4 +96,8 @@
 
 .selected-dip {
 	background-color: #353131;
+}
+
+.food-menu-container__label {
+	align-self: center;
 }
