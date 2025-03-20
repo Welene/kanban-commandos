@@ -1,0 +1,62 @@
+/* Grundläggande styling för menyn */
+.desktop-menu {
+	display: none;
+	background-color: var(--dark-grey-bg-color); /* Mörk bakgrund */
+	padding: 10px 0;
+	width: 100%;
+	height: 6rem;
+	justify-content: center;
+}
+
+/* Navigationscontainer */
+.desktop-menu__navigation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Listan inuti menyn */
+.desktop-menu__list {
+	list-style: none;
+	display: flex;
+	gap: 20px; /* Mellanrum mellan menyalternativ */
+	margin-right: 1rem;
+}
+
+/* Enskilda menyobjekt */
+.desktop-menu__item {
+	position: relative;
+}
+
+/* Länkar */
+.desktop-menu__link {
+	text-decoration: none;
+	color: var(--white-text-color); /* Vit text */
+	font-size: 1.3rem;
+	font-weight: 500;
+	padding: 10px 15px;
+	border-bottom: 2px solid var(--black-bg-color);
+	border-radius: 4px;
+	transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover-effekt */
+.desktop-menu__link:hover {
+	background-color: var(--black-bg-color);
+}
+
+/* Aktiv länk */
+.desktop-menu__link.active {
+	border-bottom: 2px solid var(--white-bg-color);
+}
+
+/* Logga ut-knappen */
+.desktop-menu__link--logout {
+	color: var(--red-bg-color); /* Röd */
+	font-weight: bold;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}

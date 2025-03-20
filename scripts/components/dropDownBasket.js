@@ -8,21 +8,23 @@ import { getBasketItems, addToBasketCount } from '../components/addToBasket.js';
 
 // Här ska funktionen för att öppna en dropdown-vy för när man trycker på kundvagnen skrivas.
 function openDropDownBasket() {
-	const basketRef = document.querySelector('#basket');
+	const basketRef = document.querySelectorAll('#basket');
 	// En lyssnare på basket-knappen
-	basketRef.addEventListener('click', () => {
-		// En kontroll för att se ifall det inte finns ett element med #overlayBasket så kommer den skapa basket
-		if (!document.querySelector('#overlayBasket')) {
-			// Funktion som skapar en basket genom DOM
-			createOverlayDropDownBasket();
-		}
-		// Om det finns en id #overlayBasket så ska hela tas bort ifall man klickar igen på basket-knappen
-		else {
-			const overlayBackgroundRef =
-				document.querySelector('#overlayBackground');
-			// Här tas hela elementet bort vid klick av öppen basket
-			overlayBackgroundRef.remove();
-		}
+	basketRef.forEach((basket) => {
+		basket.addEventListener('click', () => {
+			// En kontroll för att se ifall det inte finns ett element med #overlayBasket så kommer den skapa basket
+			if (!document.querySelector('#overlayBasket')) {
+				// Funktion som skapar en basket genom DOM
+				createOverlayDropDownBasket();
+			}
+			// Om det finns en id #overlayBasket så ska hela tas bort ifall man klickar igen på basket-knappen
+			else {
+				const overlayBackgroundRef =
+					document.querySelector('#overlayBackground');
+				// Här tas hela elementet bort vid klick av öppen basket
+				overlayBackgroundRef.remove();
+			}
+		});
 	});
 }
 

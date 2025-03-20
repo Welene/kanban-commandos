@@ -2,7 +2,10 @@ import {
 	getDataFromLocalStorage,
 	saveDataToLocalStorage,
 } from '../data/localStorage.js';
-import { highlightActiveBurgerLink } from '../utils/utils.js';
+import {
+	highlightActiveBurgerLink,
+	setupLogoutButton,
+} from '../utils/utils.js';
 // **Renderar hamburger menyn**
 function renderHamburgerMenu() {
 	const currentUser = getDataFromLocalStorage('currentUser');
@@ -143,22 +146,6 @@ function handleKeyboardToggle(event) {
 			// Växla värdet på checkboxen (om den är markerad eller inte)
 			menuToggle.checked = !menuToggle.checked;
 		}
-	}
-}
-
-function handleLogout() {
-	saveDataToLocalStorage('currentUser', null);
-
-	window.location.href = './index.html';
-}
-
-function setupLogoutButton() {
-	const logoutLink = document.querySelector('#logoutLink');
-	if (logoutLink) {
-		logoutLink.addEventListener('click', function (event) {
-			event.preventDefault();
-			handleLogout();
-		});
 	}
 }
 

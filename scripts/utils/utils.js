@@ -148,6 +148,23 @@ function showMessage(message, type) {
 
 	setTimeout(() => msgBox.remove(), 3000);
 }
+
+function handleLogout() {
+	saveDataToLocalStorage('currentUser', null);
+
+	window.location.href = './index.html';
+}
+
+function setupLogoutButton() {
+	const logoutLink = document.querySelector('#logoutLink');
+	if (logoutLink) {
+		logoutLink.addEventListener('click', function (event) {
+			event.preventDefault();
+			handleLogout();
+		});
+	}
+}
+
 export {
 	highlightActiveBurgerLink,
 	doesBasketItemCountsExist,
@@ -156,4 +173,6 @@ export {
 	handleRegisterIndexClick,
 	showMessage,
 	maskEmail,
+	handleLogout,
+	setupLogoutButton,
 };

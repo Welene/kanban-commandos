@@ -20,6 +20,7 @@ import { runRegisterPage } from './pages/registerPage.js';
 import { openDropDownBasket } from './components/dropDownBasket.js';
 import { runEditMenuPage } from './pages/editMenuPage.js';
 import { checkUserStatus } from './components/validateUser.js';
+import { renderDesktopHeader } from './components/desktopHeader.js';
 
 console.log('Script.js loaded');
 
@@ -31,6 +32,7 @@ if (path === '/pages/' || path === '/pages/index.html') {
 } else if (path === '/pages/about.html') {
 	checkUserStatus();
 	runAboutPage();
+	renderDesktopHeader();
 	renderHamburgerMenu();
 	openDropDownBasket();
 	console.log('about.html');
@@ -38,47 +40,55 @@ if (path === '/pages/' || path === '/pages/index.html') {
 	checkUserStatus();
 	runEtaPage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('eta.html');
 } else if (path === '/pages/history.html') {
 	checkUserStatus();
 	runHistoryPage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('history.html');
 } else if (path === '/pages/map.html') {
 	checkUserStatus();
 	runMapPage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('map.html');
 } else if (path === '/pages/menu.html') {
 	checkUserStatus();
 	runMenuPage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('menu.html');
 } else if (path === '/pages/order-overview.html') {
 	checkUserStatus();
 	runOrderOverviewPage();
+	renderDesktopHeader();
 	renderHamburgerMenu();
 	console.log('order-overview.html');
 } else if (path === '/pages/orders.html') {
 	checkUserStatus();
 	runOrdersPage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('orders.html');
 } else if (path === '/pages/profile.html') {
 	checkUserStatus();
 	runProfilePage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('profile.html');
 } else if (path === '/pages/receipt.html') {
 	checkUserStatus();
 	runReceiptPage();
 	renderHamburgerMenu();
+	renderDesktopHeader();
 	openDropDownBasket();
 	console.log('receipt.html');
 } else if (path === '/pages/register.html') {
