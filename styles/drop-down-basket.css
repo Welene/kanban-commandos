@@ -62,7 +62,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.8rem 2rem;
+	padding: 0.8rem 1rem;
 	background-color: var(--medium-grey-bg-color);
 }
 
@@ -83,6 +83,7 @@
 	bottom: 0;
 	background-color: var(--dark-black-btn-bg-color);
 	color: var(--white-text-color);
+	border: none;
 	font-size: 1.4rem;
 	font-weight: 700;
 	text-align: center;
