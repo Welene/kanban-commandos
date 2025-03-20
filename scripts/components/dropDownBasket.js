@@ -215,8 +215,8 @@ function updateQuantity(i, name, amount, price, action, totalAmount, id) {
 		newPriceRef.textContent = `${newPrice} kr`;
 
 		// Uppdatering av basket
-		basketData.items[i].amount = newAmount;
-
+		let item = basketData.items.find((item) => item.id === id);
+		item.amount = newAmount;
 		saveDataToLocalStorage('basket', basketData);
 	}
 
