@@ -55,15 +55,17 @@ function renderEditableMenu(items) {
 	// Filter
 	const filterLabel = document.createElement('label');
 	filterLabel.textContent = 'Filtrera typ: ';
+	filterLabel.setAttribute('for', 'filterSelect');
 	filterLabel.classList.add('edit-card__label', 'edit-card__label-type');
+
 	const filterSelect = document.createElement('select');
+	filterSelect.id = 'filterSelect';
 	['alla', 'wonton', 'dip', 'drink'].forEach((type) => {
 		const option = document.createElement('option');
 		option.value = type;
 		option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
 		filterSelect.appendChild(option);
 	});
-
 	filterSelect.addEventListener('change', () => {
 		const selectedType = filterSelect.value;
 		document.querySelectorAll('.edit-card').forEach((card) => {
@@ -91,18 +93,22 @@ function renderEditableMenu(items) {
 		// Namn
 		const nameLabel = document.createElement('label');
 		nameLabel.textContent = 'Namn';
+		nameLabel.setAttribute('for', `nameInput-${item.id}`); // Koppla label till input
 		nameLabel.classList.add('edit-card__label');
 
 		const nameInput = document.createElement('input');
+		nameInput.id = `nameInput-${item.id}`; // Unikt id för input
 		nameInput.value = item.name;
 		nameInput.classList.add('edit-card__name-input');
 
 		// Pris
 		const priceLabel = document.createElement('label');
 		priceLabel.textContent = 'Pris';
+		priceLabel.setAttribute('for', `priceInput-${item.id}`); // Koppla label till input
 		priceLabel.classList.add('edit-card__label');
 
 		const priceInput = document.createElement('input');
+		priceInput.id = `priceInput-${item.id}`; // Unikt id för input
 		priceInput.type = 'number';
 		priceInput.value = item.price;
 		priceInput.classList.add('edit-card__price-input');
@@ -115,9 +121,11 @@ function renderEditableMenu(items) {
 		// Beskrivning (textarea)
 		const descLabel = document.createElement('label');
 		descLabel.textContent = 'Beskrivning';
+		descLabel.setAttribute('for', `descInput-${item.id}`); // Koppla label till textarea
 		descLabel.classList.add('edit-card__label');
 
 		const descriptionInput = document.createElement('textarea');
+		descriptionInput.id = `descInput-${item.id}`; // Unikt id för textarea
 		descriptionInput.rows = 4;
 		descriptionInput.placeholder = 'Beskrivning';
 		descriptionInput.classList.add('edit-card__textarea');
@@ -129,9 +137,11 @@ function renderEditableMenu(items) {
 		if (item.type === 'wonton') {
 			ingredientsLabel = document.createElement('label');
 			ingredientsLabel.textContent = 'Ingredienser';
+			ingredientsLabel.setAttribute('for', `ingredientsInput-${item.id}`); // Koppla label till input
 			ingredientsLabel.classList.add('edit-card__label');
 
 			ingredientsInput = document.createElement('input');
+			ingredientsInput.id = `ingredientsInput-${item.id}`; // Unikt id för input
 			ingredientsInput.classList.add('edit-card__ingredient-input');
 			ingredientsInput.placeholder = 'kommaseparerade';
 			ingredientsInput.value = Array.isArray(item.ingredients)
