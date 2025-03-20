@@ -147,6 +147,7 @@ function initBasketDesktop() {
 			// Stoppar in den sist i headern
 			basketRef.forEach((basket) => {
 				basket.insertAdjacentHTML('beforeend', basketItemCountHTML);
+				console.log('hjas');
 			});
 		} else {
 			basketItemCountRef.textContent = basketItemCounts;
