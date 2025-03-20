@@ -5,10 +5,8 @@ function runEtaPage() {
 	clickEtaBtns();
 	displayEtaText();
 	displayReceiptNumber();
-	displayFoodTruck();
-
-	// Funktion för att skapa röda cirkeln runt basket om det finns tillagda items
 	doesBasketItemCountsExist();
+	displayFoodTruck();
 }
 
 export { runEtaPage };
