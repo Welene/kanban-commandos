@@ -55,7 +55,23 @@ function handleLoginClick() {
 			apiUsers = []; // Om apiUsers inte innehåller en 'users' array, sätt den till tom
 		}
 
+		//Fullösning för att åtminstone få in Jesper som admin
+		const jesperAdmin = [
+			{
+				email: 'jesper123@airbean.com',
+				password: 'fisnils123',
+				profile_image: 'https://randomuser.me/api/portraits/men/1.jpg',
+				receipts: [],
+				role: 'admin',
+				username: 'jesperdaking',
+			},
+		];
+		if (users.length === 0) {
+			saveDataToLocalStorage('users', jesperAdmin);
+		}
+
 		const allUsers = [...users, ...apiUsers]; // Slår samman användarna
+
 		console.log('All users (localStorage + API):', allUsers);
 
 		// checks again if you're logged in
