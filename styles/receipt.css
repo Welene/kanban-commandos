@@ -1,0 +1,112 @@
+.page {
+    font-family: 'Fira Sans', sans-serif;
+    background-color: var(--dark-grey-bg-color);
+    color: var(--black-text-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.emptyReciept {
+    text-align: center;
+}
+
+.receipt {
+    display: flex;
+    flex-direction: column;
+    background: var(--white-bg-color);
+    padding:1rem 0rem 0rem 0rem;
+    border-radius: 10px;
+    width: 95%;
+    min-height: 30.25rem;
+    max-width: 25rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.receipt__header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.receipt__logo {
+    width: 3,1rem;
+    height: 3.75rem;
+    align-self: center;
+    margin-bottom: .5rem;
+}
+
+.receipt__logo img {
+    width: 50px;
+    margin-bottom: 0.5rem;
+}
+
+.receipt__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.receipt__id {
+    font-size: 0.9rem;
+    color: var(--weakblack-text-color);
+}
+
+.receipt__items {
+    border-top: 2px solid var(--light-grey-bg-color);
+    padding-top: 1rem;
+    flex-grow: 1;
+}
+
+.receipt__item {
+    display: flex;
+    padding: 0rem 1rem 0rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.receipt__item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.receipt__item-price {
+    font-weight: bold;
+    text-align: right;
+    align-self: flex-start;
+}
+
+.receipt__item-name {
+    font-weight: bold;
+}
+
+.receipt__total {
+    background: var(--grey-bg-color);
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.receipt__total-note {
+    font-size: 0.9rem;
+    color: var(--weakblack-text-color);
+    margin-top: 0.3rem;;
+}
+
+.dotted-line--receipt {
+    align-self:flex-start;
+    padding-top: .5rem;
+}
+
+.main-wrapper__btn--receipt {
+    width: 95%;
+} 

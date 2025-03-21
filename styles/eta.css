@@ -1,0 +1,78 @@
+/* background color in body */
+.content__main {
+	background-color: var(--dark-grey-bg-color);
+}
+
+.main-wrapper__intro-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.2rem;
+}
+
+.main-wrapper__background-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.main-wrapper__hero {
+	height: 307px;
+	width: 330px;
+	z-index: -1;
+}
+
+/* main text content */
+.main-wrapper__status-heading {
+	width: 17rem;
+	margin-top: -1.8rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	font-size: 1.8rem;
+	letter-spacing: 0.1rem;
+	color: var(--white-text-color);
+	z-index: 1;
+}
+
+.main-wrapper__etaText {
+	font-weight: 500;
+	color: white;
+}
+
+.main_wrapper__foodTruck {
+	margin-top: 0.2rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--white-text-color);
+}
+
+.main-wrapper__receiptNumber {
+	margin: 1rem 0rem 1.2rem 0rem;
+	letter-spacing: 0.05rem;
+	color: var(--white-text-color);
+}
+
+/* buttons */
+.main-wrapper__btn {
+	width: 21rem;
+	padding: 1.4rem;
+	font-weight: 600;
+	font-size: 1.6rem;
+	font-family: 'Fira Sans', sans-serif;
+	border-radius: 0.3rem;
+	border-style: none;
+}
+
+.main-wrapper__btn--transparent {
+	background-color: var(--dark-grey-bg-color);
+	color: var(--snow-color);
+	border: 2px solid var(--snow-color);
+}
+
+.main-wrapper__btn--grey {
+	background-color: var(--darker-gray-bg-color);
+	color: var(--white-text-color);
+	padding: 1.5rem 0rem 1.6rem 0rem;
+}
