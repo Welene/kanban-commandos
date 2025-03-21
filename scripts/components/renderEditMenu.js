@@ -6,7 +6,7 @@ import {
 import { fetchProducts } from '../api/api.js';
 import { showMessage } from '../utils/utils.js';
 
-//Hör till MenuEdit.html, men jag fick dela på den då den blev för lång!
+// Hör till MenuEdit.html, men jag fick dela på den då den blev för lång!
 
 let isAddingProduct = false; // Flagga för att kontrollera om produktformulär är öppet
 
@@ -238,13 +238,31 @@ function renderEditableMenu(items) {
 		deleteBtn.textContent = 'Ta bort';
 		deleteBtn.classList.add('delete-btn');
 		deleteBtn.addEventListener('click', () => {
-			if (confirm(`Ta bort ${item.name}?`)) {
+			const deleteModal = document.getElementById(
+				'deleteConfirmationModal'
+			);
+			deleteModal.style.display = 'flex';
+			deleteModal.removeAttribute('inert');
+
+			const confirmDeleteBtn =
+				document.getElementById('confirmDeleteBtn');
+			confirmDeleteBtn.addEventListener('click', () => {
 				const updatedProducts = getDataFromLocalStorage('menuProducts');
 				updatedProducts.splice(index, 1);
 				saveDataToLocalStorage('menuProducts', updatedProducts);
 				showMessage('Produkt borttagen!', 'success');
 				renderEditableMenu(updatedProducts);
-			}
+
+				// Dölja modalen efter borttagning
+				deleteModal.style.display = 'none';
+				deleteModal.setAttribute('inert', true);
+			});
+
+			const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+			cancelDeleteBtn.addEventListener('click', () => {
+				deleteModal.style.display = 'none';
+				deleteModal.setAttribute('inert', true);
+			});
 		});
 
 		// Append

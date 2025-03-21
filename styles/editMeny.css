@@ -325,12 +325,14 @@ input:checked+.slider:before {
     opacity: 0.9;
 }
 
-#confirmResetBtn {
+#confirmResetBtn,
+#confirmDeleteBtn {
     background-color: #2ecc71;
     color: var(--black-text-color);
 }
 
-#cancelResetBtn {
+#cancelResetBtn,
+#cancelDeleteBtn {
     background-color: #e74c3c;
     color: var(--black-text-color);
 }
